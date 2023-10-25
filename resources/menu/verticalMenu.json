@@ -1,0 +1,16 @@
+{
+  "menu": [
+    {
+      "url": "/",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "dashboard-analytics"
+    },
+    {
+      "name": "Cards",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "cards-basic",
+      "url": "/cards/basic"
+    }
+  ]
+}
