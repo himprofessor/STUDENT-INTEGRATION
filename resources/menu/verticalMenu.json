@@ -7,10 +7,10 @@
       "slug": "dashboard-analytics"
     },
     {
-      "name": "Cards",
-      "icon": "menu-icon tf-icons bx bx-collection",
-      "slug": "cards-basic",
-      "url": "/cards/basic"
+      "name": "Course",
+      "icon": "menu-icon tf-icons bx bx-file",
+      "slug": "course",
+      "url": "/course"
     }
   ]
 }
