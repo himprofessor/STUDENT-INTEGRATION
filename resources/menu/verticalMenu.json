@@ -5,6 +5,24 @@
       "name": "Dashboard",
       "icon": "menu-icon tf-icons bx bx-home-circle",
       "slug": "dashboard-analytics"
+    },
+
+    {
+      "name": "Department & Staff",
+      "icon": "menu-icon tf-icons bx bx-copy",
+      "slug": "department&staff",
+      "submenu": [
+        {
+          "url": "department&staff/sidebar-department",
+          "name": "Department",
+          "slug": "sidebar-department"
+        },
+        {
+          "url": "department&staff/sidebar-staff",
+          "name": "Staff",
+          "slug": "sidebar-staff"
+        }
+      ]
     }
   ]
 }
