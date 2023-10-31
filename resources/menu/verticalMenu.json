@@ -5,12 +5,6 @@
       "name": "Dashboard",
       "icon": "menu-icon tf-icons bx bx-home-circle",
       "slug": "dashboard-analytics"
-    },
-    {
-      "name": "Course",
-      "icon": "menu-icon tf-icons bx bx-file",
-      "slug": "course",
-      "url": "/course"
     }
   ]
 }
