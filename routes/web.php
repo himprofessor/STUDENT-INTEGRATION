@@ -18,4 +18,7 @@ $controller_path = 'App\Http\Controllers';
 // Main Page Route
 Route::get('/', $controller_path . '\dashboard\AnalyticsController@index')->name('dashboard-analytics');
 
+// department & staff
+Route::get('/department&staff/sidebar-department', $controller_path . '\department&staff\PerfectScrollbar@index')->name('sidebar-department');
+Route::get('/department&staff/sidebar-staff', $controller_path . '\department&staff\TextDivider@index')->name('sidebar-staff');
 
