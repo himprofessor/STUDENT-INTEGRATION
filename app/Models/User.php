@@ -33,25 +33,27 @@ class User extends Authenticatable
       'remember_token',
   ];
 
-  /**
-   * The attributes that should be cast.
-   *
-   * @var array<string, string>
-   */
-  protected $user = [
-      'email_verified_at' => 'datetime',
-  ];
-  public static function store($request, $id = null)
-  {
-    $user = $request->only(
-        'username',
-        'email',
-        'password',
-        'image',
-    );
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
-    $user = self::updateOrCreate(['id' => $id], $user);
+    public static function store($request, $id = null)
+    {
+      $user = $request->only(
+          'username',
+          'email',
+          'password',
+          'image',
+      );
 
-    return $user;
-  }
+      $user = self::updateOrCreate(['id' => $id], $user);
+
+      return $user;
+    }
+
 }
