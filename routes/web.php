@@ -19,3 +19,14 @@ $controller_path = 'App\Http\Controllers';
 Route::get('/', $controller_path . '\dashboard\AnalyticsController@index')->name('dashboard-analytics');
 
 
+
+//Route USER//
+
+Route::prefix('user')->group(function () use ($controller_path) {
+  Route::get('/', $controller_path . '\user\UserController@index')->name('user');
+  Route::get('/create', $controller_path . '\user\UserController@create')->name('user.create');
+  Route::post('/store', $controller_path . '\user\UserController@store')->name('user.store');
+  Route::get('/edit/{id}', $controller_path . '\user\UserController@edit')->name('user.edit');
+  Route::put('/edit/{id}', $controller_path . '\user\UserController@update')->name('user.update');
+  Route::delete('/delete/{id}', $controller_path . '\user\UserController@destroy')->name('user.destroy');
+});
