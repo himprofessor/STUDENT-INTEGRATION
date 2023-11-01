@@ -23,6 +23,12 @@
           "slug": "sidebar-staff"
         }
       ]
+    },
+    {
+      "url": "/user",
+      "name": "User",
+      "icon": "menu-icon tf-icons bx bx-user",
+      "slug": "user"
     }
   ]
 }
