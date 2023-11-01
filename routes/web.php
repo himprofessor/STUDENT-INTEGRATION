@@ -18,7 +18,16 @@ $controller_path = 'App\Http\Controllers';
 // Main Page Route
 Route::get('/', $controller_path . '\dashboard\AnalyticsController@index')->name('dashboard-analytics');
 
-// department & staff
-Route::get('/department&staff/sidebar-department', $controller_path . '\department&staff\PerfectScrollbar@index')->name('sidebar-department');
-Route::get('/department&staff/sidebar-staff', $controller_path . '\department&staff\TextDivider@index')->name('sidebar-staff');
+//department
+
+Route::prefix('department&staff/department')->group(function () use ($controller_path) {
+
+    Route::get('/', $controller_path . '\department_staff\DepartmentController@index')->name('department');
+    Route::get('/create', $controller_path . '\department_staff\DepartmentController@create')->name('department.create');
+    Route::post('/store', $controller_path . '\department_staff\DepartmentController@store')->name('department.store');
+    Route::get('/edit/{id}', $controller_path . '\department_staff\DepartmentController@edit')->name('department.edit');
+    Route::put('/edit/{id}', $controller_path . '\department_staff\DepartmentController@update')->name('department.update');
+    Route::delete('/delete/{id}', $controller_path . '\department_staff\DepartmentController@destroy')->name('department.destroy');
+});
+
 

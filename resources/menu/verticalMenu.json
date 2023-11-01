@@ -13,9 +13,9 @@
       "slug": "department&staff",
       "submenu": [
         {
-          "url": "department&staff/sidebar-department",
+          "url": "department&staff/department",
           "name": "Department",
-          "slug": "sidebar-department"
+          "slug": "department"
         },
         {
           "url": "department&staff/sidebar-staff",
