@@ -20,22 +20,40 @@ class UserController extends Controller
     return view('content.user.create');
   }
 
-  public function store(Request $request)
-  {
-    DB::beginTransaction();
+  // public function store(Request $request)
+  // {
+  //   DB::beginTransaction();
 
-    User::store($request);
+  //   User::store($request);
 
-    DB::commit();
-    $user = new User();
-    $user->username=$request->input('username');
-    $user->email=$request->input('email');
-    $user->password=$request->input('password');
-    $user->image=$request->input('image');
+  //   DB::commit();
+  //   $user = new User();
+  //   $user->username=$request->input('username');
+  //   $user->email=$request->input('email');
+  //   $user->password=$request->input('password');
+  //   $user->image=$request->input('image');
 
-    return redirect('/user');
+  //   return redirect('/user');
 
-  }
+  // }
+
+    public function store(Request $request)
+    {
+      $user = new User;
+      $user->username = $request->input('username');
+      $user->email = trim($request->input('email'));
+      $user->password = bcrypt($request->input('password'));
+      if($request->hasfile('image')){
+        $file= $request->file('image');
+        $extention = $file->getClientOriginalExtention();
+        $fileName =time().'.'.$extention;
+        $file->move('upload/images/', $fileName);
+        $user->image = $fileName;
+      }
+      $user->save();
+      return redirect()->back()->with('status', 'user image added successfully.');
+    }
+
   public function show(User $user)
   {
 

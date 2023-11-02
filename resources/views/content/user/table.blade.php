@@ -7,7 +7,6 @@
             <th>ID</th>
             <th>UserName</th>
             <th>Email</th>
-            <th>Password</th>
             <th>Image</th>
             <th>Actions</th>
         </tr>
@@ -18,9 +17,8 @@
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->email }}</td>
-                <td>{{ $user->password }}</td>
                 <td>
-                  <img src="{{ asset('assets/img/images/' . $user->image) }}" width="50px">
+                  <img  src="{{ asset('upload/images/' . $user->image) }}" width="50px">
                 </td>
                 <td>
                   <a href="{{ url('user/edit', $user->id) }}" class="btn btn-primary btn-sm">

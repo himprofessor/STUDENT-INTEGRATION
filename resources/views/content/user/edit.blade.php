@@ -3,7 +3,11 @@
 @section('title', 'User Card - UI elements')
 
 @section('vendor-script')
-    <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
+  <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
+@endsection
+
+@section('page-script')
+  <script src="{{asset('assets/js/pages-account-settings-account.js')}}"></script>
 @endsection
 
 @section('content')
