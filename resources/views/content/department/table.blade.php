@@ -1,3 +1,6 @@
+@if (session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif
 <table class="table table-striped">
     <thead>
         <tr>
@@ -12,26 +15,24 @@
             $rowNumber = 1;
         @endphp
         @foreach ($departments as $department)
-            <tr>
-                <td>{{ $rowNumber }}</td>
-                <td>{{ $department->department_name }}</td>
+        <tr>
+            <td>{{ $rowNumber }}</td>
+            <td>{{ $department->department_name }}</td>
+            <td><img src="{{ asset('storage/' . $department->department_cover) }}" alt="Departent Cover" width="150" height="100"></td>
+            <td>
+                <a href="{{ url('department&staff/department/edit', $department->id) }}" class="btn btn-primary btn-sm">
+                    <i class="bx bx-edit-alt me-1"></i> Edit
+                </a>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmDelete{{ $department->id }}">
+                    <i class="bx bx-trash me-1"></i> Delete
+                </button>
+            </td>
+        </tr>
 
-                <td><img src="{{ asset('assets/img/images/' . $department->department_cover) }}" class="w-px-50 h-auto rounded-circle"></td>
-                <td>
-                    <a href="{{ url('department&staff/department/edit', $department->id) }}" class="btn btn-primary btn-sm">
-                        <i class="bx bx-edit-alt me-1"></i> Edit
-                    </a>
-                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#confirmDelete{{ $department->id }}">
-                        <i class="bx bx-trash me-1"></i> Delete
-                    </button>
-                </td>
-            </tr>
-
-            @include('content.department.delete')
-            @php
-                $rowNumber++;
-            @endphp
+        @include('content.department.delete')
+        @php
+            $rowNumber++;
+        @endphp
         @endforeach
     </tbody>
 </table>

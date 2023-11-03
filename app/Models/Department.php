@@ -14,13 +14,25 @@ class Department extends Model
     ];
     public static function store($request, $id = null)
     {
-        $data = $request->only(
+        // dd(request()->all());
+        $department = $request->only(
             'department_name',
-            'department_cover',
         );
 
-        $data = self::updateOrCreate(['id' => $id], $data);
+        if ($request->hasFile('department_cover')) {
+            $imagePath = $request->file('department_cover')->store('public/assets/img/imges');
 
-        return $data;
+            $department['department_cover'] = str_replace('public/', '', $imagePath);
+        }
+     
+        if ($id) {
+            // If $id is provided, it's an update operation
+            self::where('id', $id)->update($department);
+        } else {
+            // If $id is null, it's an insert (create) operation
+            $department = self::create($department);
+        }
+
+        return $department;
     }
 }
