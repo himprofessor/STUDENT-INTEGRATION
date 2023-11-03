@@ -14,7 +14,6 @@ class Department extends Model
     ];
     public static function store($request, $id = null)
     {
-        // dd(request()->all());
         $department = $request->only(
             'department_name',
         );
