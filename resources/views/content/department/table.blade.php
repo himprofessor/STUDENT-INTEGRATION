@@ -4,7 +4,7 @@
             <td>#</td>
             <th>department_name</th>
             <th>department_cover</th>
-            <th>Action</th>
+            <th>Action Department</th>
         </tr>
     </thead>
     <tbody class="table-border-bottom-0">
@@ -15,7 +15,8 @@
             <tr>
                 <td>{{ $rowNumber }}</td>
                 <td>{{ $department->department_name }}</td>
-                <td>{{ $department->department_cover }}</td>
+
+                <td><img src="{{ asset('assets/img/images/' . $department->department_cover) }}" class="w-px-50 h-auto rounded-circle"></td>
                 <td>
                     <a href="{{ url('department&staff/department/edit', $department->id) }}" class="btn btn-primary btn-sm">
                         <i class="bx bx-edit-alt me-1"></i> Edit

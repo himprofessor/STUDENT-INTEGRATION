@@ -6,6 +6,11 @@
     <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
 
+<!-- //department image -->
+@section('page-script')
+<script src="{{asset('assets/js/pages-account-settings-account.js')}}"></script>
+@endsection
+
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h5 class="fw-bold">Department List</h5>

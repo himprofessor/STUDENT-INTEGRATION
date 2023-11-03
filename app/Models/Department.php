@@ -12,7 +12,6 @@ class Department extends Model
         'department_name',
         'department_cover',
     ];
-
     public static function store($request, $id = null)
     {
         $data = $request->only(
