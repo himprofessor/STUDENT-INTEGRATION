@@ -20,7 +20,7 @@
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->password }}</td>
                 <td>
-                  <img src="{{ asset('assets/img/images/' . $user->image) }}" alt class="w-px-40 h-auto rounded-circle" width="50px">
+                    <img src="{{ asset('storage/' . $user->image) }}" alt="User Image" width="100">
                 </td>
                 <td>
                   <a href="{{ url('user/edit', $user->id) }}" class="btn btn-primary btn-sm">
