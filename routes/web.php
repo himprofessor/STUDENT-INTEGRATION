@@ -18,7 +18,12 @@ $controller_path = 'App\Http\Controllers';
 // Main Page Route
 Route::get('/', $controller_path . '\dashboard\AnalyticsController@index')->name('dashboard-analytics');
 
-// department & staff
-Route::get('/department&staff/sidebar-department', $controller_path . '\department&staff\PerfectScrollbar@index')->name('sidebar-department');
-Route::get('/department&staff/sidebar-staff', $controller_path . '\department&staff\TextDivider@index')->name('sidebar-staff');
-
+// Route of table staff
+Route::prefix('staff')->group(function () use ($controller_path) {
+    Route::get('/', $controller_path . '\department_staff\StaffController@index')->name('staff');
+    Route::get('/create', $controller_path . '\department_staff\StaffController@create')->name('staff.create');
+    Route::post('/store', $controller_path . '\department_staff\StaffController@store')->name('staff.store');
+    Route::get('/edit/{id}', $controller_path . '\department_staff\StaffController@edit')->name('staff.edit');
+    Route::put('/edit/{id}', $controller_path . '\department_staff\StaffController@update')->name('staff.update');
+    Route::delete('/delete/{id}', $controller_path . '\department_staff\StaffController@destroy')->name('staff.destroy');
+});
