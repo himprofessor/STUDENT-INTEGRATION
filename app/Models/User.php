@@ -10,35 +10,61 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+  use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array<int, string>
+   */
+  protected $fillable = [
+    'username',
+    'email',
+    'password',
+    'image',
+  ];
+  /**
+   * The attributes that should be hidden for serialization.
+   *
+   * @var array<int, string>
+   */
+  protected $hidden = [
+    // 'password',
+    'remember_token',
+  ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+  /**
+   * The attributes that should be cast.
+   *
+   * @var array<string, string>
+   */
+  protected $casts = [
+    'email_verified_at' => 'datetime',
+  ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+  public static function store($request, $id = null)
+  {
+      $user = $request->only(
+          'username',
+          'email',
+          'password',
+      );
+  
+      // Check if a new image file was uploaded
+      if ($request->hasFile('image')) {
+          $imagePath = $request->file('image')->store('public/assets/img/images');
+          $user['image'] = str_replace('public/', '', $imagePath);
+      }
+  
+      if ($id) {
+          // If $id is provided, it's an update operation
+          self::where('id', $id)->update($user);
+      } else {
+          // If $id is null, it's an insert (create) operation
+          $user = self::create($user);
+      }
+  
+      return $user;
+  }
+  
 }

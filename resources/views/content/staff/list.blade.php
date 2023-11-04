@@ -9,7 +9,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h3 class="fw-bold">List of staff</h3>
-    <a href="{{ url('staff/create') }}" class="btn btn-primary">Create</a>
+    <a href="{{ url('staff/create') }}" class="btn btn-primary">Add New</a>
 </div>
 
 <div class="card">

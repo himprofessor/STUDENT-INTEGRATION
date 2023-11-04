@@ -13,9 +13,9 @@
       "slug": "department&staff",
       "submenu": [
         {
-          "url": "department&staff/sidebar-department",
+          "url": "department&staff/department",
           "name": "Department",
-          "slug": "sidebar-department"
+          "slug": "department"
         },
         {
           "url": "/staff",
@@ -23,6 +23,12 @@
           "slug": "staff"
         }
       ]
+    },
+    {
+      "url": "/user",
+      "name": "User",
+      "icon": "menu-icon tf-icons bx bx-user",
+      "slug": "user"
     }
   ]
 }

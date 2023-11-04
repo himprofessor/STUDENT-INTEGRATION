@@ -18,4 +18,15 @@ class Department extends Model
     {
         return $this->hasMany(Staff::class);
     }
+    public static function store($request, $id = null)
+    {
+        $data = $request->only(
+            'department_name',
+            'department_cover',
+        );
+
+        $data = self::updateOrCreate(['id' => $id], $data);
+
+        return $data;
+    }
 }
