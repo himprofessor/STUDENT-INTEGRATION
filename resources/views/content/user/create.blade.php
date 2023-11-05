@@ -7,7 +7,7 @@
 @endsection
 
 @section('page-script')
-<script src="{{asset('assets/js/pages-account-settings-account.js')}}"></script>
+    <script src="{{ asset('assets/js/pages-account-settings-account.js') }}"></script>
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@
         <div class="col-xl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('user.store') }}">
+                    <form method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data">
                         @csrf
                         @include('content.user.form')
                         <a href="{{ url('user') }}" class="btn btn-secondary">Cancel</a>

@@ -12,13 +12,16 @@
         </tr>
     </thead>
     <tbody class="table-border-bottom-0">
+        @php
+            $rowNumber = 1;
+        @endphp
         @foreach ($users as $user)
             <tr>
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
-                  <img  src="{{ asset('upload/images/' . $user->image) }}" width="50px">
+                    <img src="{{ asset('storage/' . $user->image) }}" alt="User Image" width="100">
                 </td>
                 <td>
                   <a href="{{ url('user/edit', $user->id) }}" class="btn btn-primary btn-sm">
@@ -31,7 +34,9 @@
                 </td>
             </tr>
           @include('content.user.delete')
-            </tr>
         @endforeach
+        @php
+            $rowNumber++;
+        @endphp
     </tbody>
 </table>

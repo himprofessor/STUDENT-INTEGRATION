@@ -3,11 +3,11 @@
 @section('title', 'User Card - UI elements')
 
 @section('vendor-script')
-  <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
 
 @section('page-script')
-  <script src="{{asset('assets/js/pages-account-settings-account.js')}}"></script>
+    <script src="{{ asset('assets/js/pages-account-settings-account.js') }}"></script>
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@
         <div class="col-xl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('user.edit',$user->id) }}">
+                    <form method="POST" action="{{ route('user.edit',$user->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         @include('content.user.form', ['user' => $user])
