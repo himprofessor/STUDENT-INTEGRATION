@@ -58,7 +58,6 @@ class User extends Authenticatable
           $imagePath = $request->file('image')->store('public/assets/img/images');
           $user['image'] = str_replace('public/', '', $imagePath);
       }
-
       if ($id) {
           // If $id is provided, it's an update operation
           self::where('id', $id)->update($user);
