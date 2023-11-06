@@ -7,20 +7,20 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class DepartmentController extends Controller
 {
     public function index()
     {
         $departments = Department::orderBy('created_at', 'desc')->paginate(10);
-        
+
         return view('content.department.list', compact('departments'));
     }
 
     public function create()
     {
-        $departments = Department::all();
 
-        return view('content.department.create', compact('departments'));
+        return view('content.department.create');
     }
 
     public function store(Request $request)
@@ -69,5 +69,6 @@ class DepartmentController extends Controller
 
         // Redirect back to the department list or a success page
         return redirect()->route('department')->with('success', 'Department has been deleted successfully.');
+
     }
 }

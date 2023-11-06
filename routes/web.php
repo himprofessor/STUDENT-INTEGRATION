@@ -28,14 +28,19 @@ Route::prefix('staff')->group(function () use ($controller_path) {
   Route::delete('/delete/{id}', $controller_path . '\department_staff\StaffController@destroy')->name('staff.destroy');
 });
 //route department
-Route::prefix('department&staff/department')->group(function () use ($controller_path) {
+Route::prefix('department&staff/')->group(function () use ($controller_path) {
+  Route::prefix('department')->group(function () use ($controller_path) {
+    Route::get('/', $controller_path . '\department_staff\DepartmentController@index')->name('department');
+    Route::get('/create', $controller_path . '\department_staff\DepartmentController@create')->name('department.create');
+    Route::post('/store', $controller_path . '\department_staff\DepartmentController@store')->name('department.store');
+    Route::get('/edit/{id}', $controller_path . '\department_staff\DepartmentController@edit')->name('department.edit');
+    Route::put('/edit/{id}', $controller_path . '\department_staff\DepartmentController@update')->name('department.update');
+    Route::delete('/delete/{id}', $controller_path . '\department_staff\DepartmentController@destroy')->name('department.destroy');
+  });
+// Todo:staff
 
-  Route::get('/', $controller_path . '\department_staff\DepartmentController@index')->name('department');
-  Route::get('/create', $controller_path . '\department_staff\DepartmentController@create')->name('department.create');
-  Route::post('/store', $controller_path . '\department_staff\DepartmentController@store')->name('department.store');
-  Route::get('/edit/{id}', $controller_path . '\department_staff\DepartmentController@edit')->name('department.edit');
-  Route::put('/edit/{id}', $controller_path . '\department_staff\DepartmentController@update')->name('department.update');
-  Route::delete('/delete/{id}', $controller_path . '\department_staff\DepartmentController@destroy')->name('department.destroy');
+
+
 });
 //route user
 Route::prefix('user')->group(function () use ($controller_path) {
