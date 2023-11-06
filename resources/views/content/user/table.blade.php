@@ -7,18 +7,19 @@
             <th>ID</th>
             <th>UserName</th>
             <th>Email</th>
-            <th>Password</th>
             <th>Image</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody class="table-border-bottom-0">
+        @php
+            $rowNumber = 1;
+        @endphp
         @foreach ($users as $user)
             <tr>
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->email }}</td>
-                <td>{{ $user->password }}</td>
                 <td>
                     <img src="{{ asset('storage/' . $user->image) }}" alt="User Image" width="100">
                 </td>
@@ -33,7 +34,9 @@
                 </td>
             </tr>
           @include('content.user.delete')
-            </tr>
         @endforeach
+        @php
+            $rowNumber++;
+        @endphp
     </tbody>
 </table>

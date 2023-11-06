@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -38,8 +39,9 @@ class User extends Authenticatable
    *
    * @var array<string, string>
    */
-  protected $casts = [
+  protected $users = [
     'email_verified_at' => 'datetime',
+    'password' => 'hashed',
   ];
 
   public static function store($request, $id = null)
@@ -49,13 +51,13 @@ class User extends Authenticatable
           'email',
           'password',
       );
-  
+      $user['password'] = Hash::make($request->password);
+
       // Check if a new image file was uploaded
       if ($request->hasFile('image')) {
           $imagePath = $request->file('image')->store('public/assets/img/images');
           $user['image'] = str_replace('public/', '', $imagePath);
       }
-  
       if ($id) {
           // If $id is provided, it's an update operation
           self::where('id', $id)->update($user);
@@ -63,8 +65,8 @@ class User extends Authenticatable
           // If $id is null, it's an insert (create) operation
           $user = self::create($user);
       }
-  
+
       return $user;
   }
-  
+
 }

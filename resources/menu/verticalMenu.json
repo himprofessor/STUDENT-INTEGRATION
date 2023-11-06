@@ -18,9 +18,9 @@
           "slug": "department"
         },
         {
-          "url": "department&staff/sidebar-staff",
+          "url": "/staff",
           "name": "Staff",
-          "slug": "sidebar-staff"
+          "slug": "staff"
         }
       ]
     },
