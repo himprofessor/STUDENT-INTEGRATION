@@ -21,6 +21,7 @@
                     <form method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data">
                         @csrf
                         @include('content.user.form')
+                        <br>
                         <a href="{{ url('user') }}" class="btn btn-secondary">Cancel</a>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
