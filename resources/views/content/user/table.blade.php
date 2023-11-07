@@ -17,7 +17,7 @@
         @endphp
         @foreach ($users as $user)
             <tr>
-                <td>{{ $user->id }}</td>
+                <td>{{ $rowNumber }}</td>
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
@@ -34,9 +34,9 @@
                 </td>
             </tr>
           @include('content.user.delete')
-        @endforeach
         @php
             $rowNumber++;
         @endphp
+        @endforeach
     </tbody>
 </table>

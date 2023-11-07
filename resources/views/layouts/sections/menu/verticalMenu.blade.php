@@ -7,7 +7,7 @@
         @include('_partials.macros',["width"=>25,"withbg"=>'#696cff'])
 
       </span>
-      <span class="app-brand-text demo menu-text fw-bold ms-2">PNC</span>
+      <span class=" demo menu-text fw-bold ms-2 w-25">STUDENT INTEGRATION</span>
     </a>
 
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-autod-block d-xl-none">
