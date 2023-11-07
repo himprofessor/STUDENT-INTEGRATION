@@ -22,14 +22,24 @@ class Department extends Model
 
     public static function store($request, $id = null)
     {
-        $validatedData = $request->validate([
-            
-            'department_name' => 'required',
-            'department_cover' => 'required|image|mimes:jpeg,png,gif|max:800',
-        ], [
-            'department_name.required' => 'Please enter the department name',
-            'department_cover.required' => 'Please choose a department cover image',
-        ]);
+        //Condition edit
+        if ($id) {
+            $validatedData = $request->validate([
+
+                'department_name' => 'required',
+            ], [
+                'department_name.required' => '* Please enter the department name',
+            ]);
+        } else {
+            $validatedData = $request->validate([
+
+                'department_name' => 'required',
+                'department_cover' => 'required|image|mimes:jpeg,png,gif|max:800',
+            ], [
+                'department_name.required' => 'Please enter the department name',
+                'department_cover.required' => 'Please choose a department cover image',
+            ]);
+        }
 
         $department = $request->only('department_name');
 

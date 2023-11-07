@@ -10,6 +10,9 @@
 <script src="{{asset('assets/js/pages-account-settings-account.js')}}"></script>
 @endsection
 
+<!-- Link javascript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 @section('content')
 
 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -30,3 +33,14 @@
     </div>
 </div>
 @endsection
+
+<!-- Jascript Validate department -->
+<script>
+$(document).ready(function() {
+  $('#basic-default-fullname, #upload').on('input change', function() {
+    $('#department-name-error').hide();
+    $('#department-cover-error').hide();
+    $(this).removeClass('is-invalid');
+  });
+});
+</script>
