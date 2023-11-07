@@ -18,7 +18,7 @@
             <td>{{$staff->last_name}}</td>
             <td>{{$staff->email}}</td>
             <td>{{$staff->position}}</td>
-            <td><img src="{{asset('storage/'.$staff->profile)}}" class="w-50 h-50"></td>
+            <td><img src="{{asset('storage/'.$staff->profile)}}" class="w-50"></td>
             <td>{{$staff->phone}}</td>
             <td>
                 <a href="{{ url('department&staff/staff/edit', $staff->id) }}" class="btn btn-primary btn-sm">
