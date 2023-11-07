@@ -46,27 +46,52 @@ class User extends Authenticatable
 
   public static function store($request, $id = null)
   {
-      $user = $request->only(
-          'username',
-          'email',
-          'password',
-      );
-      $user['password'] = Hash::make($request->password);
-
-      // Check if a new image file was uploaded
-      if ($request->hasFile('image')) {
-          $imagePath = $request->file('image')->store('public/assets/img/images');
-          $user['image'] = str_replace('public/', '', $imagePath);
-      }
-      if ($id) {
-          // If $id is provided, it's an update operation
-          self::where('id', $id)->update($user);
-      } else {
-          // If $id is null, it's an insert (create) operation
-          $user = self::create($user);
-      }
-
-      return $user;
+    if ($id) {
+      $validatedData = $request->validate([
+        'username' => 'required',
+        'email' => 'required',
+        'password' => 'required|min:8',
+      ],
+      [
+        'username.required' => '*Please enter the  user name',
+        'email.required' => '*Please enter your email',
+        'password.required' => '*Please enter your password',
+      ]);
+  } else {
+      $validatedData = $request->validate([
+        'username' => 'required',
+        'email' => 'required',
+        'password' => 'required|min:8',
+        'image' => 'required',
+      ],
+      [
+        'username.required' => 'Please enter the  user name',
+        'email.required' => 'Please enter your email',
+        'password.required' => 'Please enter your password',
+        'image.required' => 'Please upload your image',
+      ]);
   }
 
+    $user = $request->only(
+        'username',
+        'email',
+        'password',
+    );
+    $user['password'] = Hash::make($request->password);
+
+    // Check if a new image file was uploaded
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('public/assets/img/images');
+        $user['image'] = str_replace('public/', '', $imagePath);
+    }
+    if ($id) {
+        // If $id is provided, it's an update operation
+        self::where('id', $id)->update($user);
+    } else {
+        // If $id is null, it's an insert (create) operation
+        $user = self::create($user);
+    }
+
+    return $user;
+  }
 }

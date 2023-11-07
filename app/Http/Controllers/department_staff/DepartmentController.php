@@ -7,7 +7,6 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
 class DepartmentController extends Controller
 {
     public function index()
@@ -19,7 +18,6 @@ class DepartmentController extends Controller
 
     public function create()
     {
-
         return view('content.department.create');
     }
 
