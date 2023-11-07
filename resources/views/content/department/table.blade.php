@@ -18,7 +18,7 @@
         <tr>
             <td>{{ $rowNumber }}</td>
             <td>{{ $department->department_name }}</td>
-            <td><img src="{{ asset('storage/' . $department->department_cover) }}" alt="Departent Cover" width="150" height="100"></td>
+            <td><img src="{{ asset('storage/' . $department->department_cover) }}" alt="Departent Cover" width="150"></td>
             <td>
                 <a href="{{ url('department&staff/department/edit', $department->id) }}" class="btn btn-primary btn-sm">
                     <i class="bx bx-edit-alt me-1"></i> Edit

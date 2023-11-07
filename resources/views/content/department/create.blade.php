@@ -6,7 +6,6 @@
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
 
-<!-- //test department image -->
 @section('page-script')
 <script src="{{asset('assets/js/pages-account-settings-account.js')}}"></script>
 @endsection
@@ -23,7 +22,7 @@
                 <form method="POST" action="{{ route('department.store') }}" enctype="multipart/form-data">
                     @csrf
                     @include('content.department.form')
-                    <a href="{{ url('department&staff/department') }}" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ url('department&staff/department') }}" class="btn btn-secondary me-1">Cancel</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
