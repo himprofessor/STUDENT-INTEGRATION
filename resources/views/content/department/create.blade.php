@@ -6,10 +6,12 @@
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
 
-<!-- //test department image -->
 @section('page-script')
 <script src="{{asset('assets/js/pages-account-settings-account.js')}}"></script>
 @endsection
+
+<!-- Link javascript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 @section('content')
 
@@ -23,7 +25,7 @@
                 <form method="POST" action="{{ route('department.store') }}" enctype="multipart/form-data">
                     @csrf
                     @include('content.department.form')
-                    <a href="{{ url('department&staff/department') }}" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ url('department&staff/department') }}" class="btn btn-secondary me-1">Cancel</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
@@ -31,3 +33,14 @@
     </div>
 </div>
 @endsection
+
+<!-- Javascript Validate department -->
+<script>
+$(document).ready(function() {
+  $('#basic-default-fullname, #upload').on('input change', function() {
+    $('#department-name-error').hide();
+    $('#department-cover-error').hide();
+    $(this).removeClass('is-invalid');
+  });
+});
+</script>

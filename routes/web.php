@@ -39,6 +39,7 @@ Route::prefix('department&staff/')->group(function () use ($controller_path) {
     Route::delete('/delete/{id}', $controller_path . '\department_staff\StaffController@destroy')->name('staff.destroy');
   });
 });
+
 //route user
 Route::prefix('user')->group(function () use ($controller_path) {
   Route::get('/', $controller_path . '\user\UserController@index')->name('user');
