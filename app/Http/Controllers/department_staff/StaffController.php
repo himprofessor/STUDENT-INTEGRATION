@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\department_staff;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StaffRequest;
 use App\Models\Department;
 use App\Models\Staff;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StaffController extends Controller
@@ -20,7 +20,7 @@ class StaffController extends Controller
         $staff = new Staff();
         return view('content.staff.create', compact('departments', 'staff'));
     }
-    public function store(StaffRequest $request)
+    public function store(Request $request)
     {
         DB::beginTransaction();
         Staff::store($request);
@@ -34,7 +34,7 @@ class StaffController extends Controller
         $departmentselete = $staff->department;
         return view('content.staff.edit', compact('staff', 'departments', 'departmentselete'));
     }
-    public function update(StaffRequest $request, $id)
+    public function update(Request $request, $id)
     {
         DB::beginTransaction();
         Staff::store($request, $id);

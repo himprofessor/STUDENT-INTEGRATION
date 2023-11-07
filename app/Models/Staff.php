@@ -23,6 +23,57 @@ class Staff extends Model
 
     public static function store($request, $id = null)
     {
+        if($id){
+            $validatedData = $request->validate([
+                'first_name' => 'required|min:1|max:50',
+                'last_name' => 'required|min:1|max:50',
+                'email' => 'required|email|unique:staff,email,'. $id,
+                'position' => 'required',
+                'phone' => 'required|digits:10',
+                'department_id' => 'required',
+                'start_date' => 'required',
+                'end_date' => 'required',
+                'about' => 'required|min:1',
+            ], 
+            [
+                'first_name.required' => 'Please input first name',
+                'last_name.required' => 'Please input last name',
+                'email.required' => 'Please input email',
+                'position.required' => 'Please input position',
+                'phone.required' => 'Please input phone number',
+                'department_id.required' => 'Please select department name',
+                'start_date.required' => 'Please select start date',
+                'end_date.required' => 'Please select end date',
+                'about.required' => 'Please input something here',
+            ]);
+        }
+        else{
+            $validatedData = $request->validate([
+                'first_name' => 'required|min:1|max:50',
+                'last_name' => 'required|min:1|max:50',
+                'email' => 'required|email|unique:staff,email,'. $id,
+                'position' => 'required',
+                'phone' => 'required|digits:10',
+                'department_id' => 'required',
+                'profile' => 'required|mimes:jpeg,png,gif|max:800',
+                'start_date' => 'required',
+                'end_date' => 'required',
+                'about' => 'required|min:1',
+            ],
+            [
+                'first_name.required' => 'Please input first name',
+                'last_name.required' => 'Please input last name',
+                'email.required' => 'Please input email',
+                'position.required' => 'Please input position',
+                'phone.required' => 'Please input phone number',
+                'department_id.required' => 'Please select department name',
+                'profile.required' => 'Please upload profile',
+                'start_date.required' => 'Please select start date',
+                'end_date.required' => 'Please select end date',
+                'about.required' => 'Please input something here',
+            ]);
+        }
+        
         $data = $request->only(
             'first_name',
             'last_name',
