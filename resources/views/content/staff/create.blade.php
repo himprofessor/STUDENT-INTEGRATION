@@ -6,7 +6,9 @@
 @section('vendor-script')
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
-
+@section('page-script')
+<script src="{{asset('assets/js/pages-account-settings-account.js')}}"></script>
+@endsection
 @section('content')
 <div class="row row-2">
     <div class="col-xl">
@@ -16,7 +18,7 @@
                 <form method="POST" action="{{ route('staff.store') }}"  enctype="multipart/form-data">
                     @csrf
                     @include('content.staff.form')
-                    <a href="{{ url('staff') }}" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ url('/department&staff/staff') }}" class="btn btn-secondary">Cancel</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

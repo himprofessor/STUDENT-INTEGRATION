@@ -18,7 +18,7 @@
           "slug": "department"
         },
         {
-          "url": "/staff",
+          "url": "department&staff/staff",
           "name": "Staff",
           "slug": "staff"
         }
