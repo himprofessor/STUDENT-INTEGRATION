@@ -34,7 +34,7 @@
 </div>
 @endsection
 
-<!-- Jascript Validate department -->
+<!-- Javascript Validate department -->
 <script>
 $(document).ready(function() {
   $('#basic-default-fullname, #upload').on('input change', function() {
