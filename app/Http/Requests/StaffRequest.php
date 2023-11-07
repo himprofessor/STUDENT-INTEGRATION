@@ -17,7 +17,7 @@ class StaffRequest extends FormRequest
     }
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response()->json(["success" => false, "message" => $validator->errors()], 412));
+        throw new HttpResponseException(response()->json(["message" => $validator->errors()], 412));
     }
 
     /**
@@ -27,17 +27,17 @@ class StaffRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             "first_name" =>"required|min:1|max:100",
             "last_name" =>"required|min:1|max:100",
             "email" =>"required|min:10|max:100",
             "position" =>"required",
-            "profile" => "required",
             "phone" =>"required",
             "start_date" =>"required",
             "end_date" =>"required",
             "department_id" =>"required",
             "about" =>"required",
         ];
+        return $rules;
     }
 }

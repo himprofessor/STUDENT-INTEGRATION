@@ -28,15 +28,15 @@
 
 <div class="d-flex">
     <img src="{{ old('profile', $staff->profile ?? '') ? asset('storage/' . old('profile', $staff->profile ?? '')) : asset('assets/img/avatars/1.png') }}"
-        alt="staff-avatar" class="d-block rounded border border-sm" width="40", height="40" id="uploadedAvatar" 
-    />
-    <label for="upload" class="btn d-flex justify-conten-start w-100 bg-light border border-sm" tabindex="0">
-        <span class="d-none d-sm-block">Upload new photo</span>
+        alt="staff-avatar" class="d-block rounded border border-sm" width="40" height="40" id="uploadedAvatar" />
+    <label for="upload" class="btn d-flex justify-content-start w-100 bg-light border border-sm" tabindex="0">
+        <span class="d-none d-sm-block">Upload Image</span>
         <i class="bx bx-upload d-block d-sm-none"></i>
         <input type="file" name="profile" id="upload" class="account-file-input" hidden
-            accept="profile/png, profile/jpeg" />
+            accept="image/png, image/jpeg" />
     </label>
-</div><br>
+</div>
+<br>
 
 <fieldset class="form-group">
     <strong>Phone Number</strong>
