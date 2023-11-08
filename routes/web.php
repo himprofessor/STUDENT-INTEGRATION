@@ -49,3 +49,13 @@ Route::prefix('user')->group(function () use ($controller_path) {
   Route::put('/edit/{id}', $controller_path . '\user\UserController@update')->name('user.update');
   Route::delete('/delete/{id}', $controller_path . '\user\UserController@destroy')->name('user.destroy');
 });
+
+//route career opportunities
+Route::prefix('career-opportunities')->group(function () use ($controller_path) {
+  Route::get('/', $controller_path . '\career_opportunity\CareerOpportunitiesController@index')->name('career-opportunities');
+  Route::get('/create', $controller_path . '\career_opportunity\CareerOpportunitiesController@create')->name('career-opportunities.create');
+  Route::post('/store', $controller_path . '\career_opportunity\CareerOpportunitiesController@store')->name('career-opportunities.store');
+  Route::get('/edit/{id}', $controller_path . '\career_opportunity\CareerOpportunitiesController@edit')->name('career-opportunities.edit');
+  Route::put('/edit/{id}', $controller_path . '\career_opportunity\CareerOpportunitiesController@update')->name('career-opportunities.update');
+  Route::delete('/delete/{id}', $controller_path . '\career_opportunity\CareerOpportunitiesController@destroy')->name('career-opportunities.destroy');
+});

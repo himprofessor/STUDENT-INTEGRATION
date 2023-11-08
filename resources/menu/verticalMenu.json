@@ -6,7 +6,6 @@
       "icon": "menu-icon tf-icons bx bx-home-circle",
       "slug": "dashboard-analytics"
     },
-
     {
       "name": "Department & Staff",
       "icon": "menu-icon tf-icons bx bx-copy",
@@ -29,6 +28,12 @@
       "name": "User",
       "icon": "menu-icon tf-icons bx bx-user",
       "slug": "user"
+    },
+    {
+      "url": "/career-opportunities",
+      "name": "Career-opportunities",
+      "icon": "menu-icon tf-icons bx bx-medal",
+      "slug": "career-opportunities"
     }
   ]
 }
