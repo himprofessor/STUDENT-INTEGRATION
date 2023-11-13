@@ -32,4 +32,8 @@ class Media extends Model
     {
         return $this->hasOne(Staff::class, 'media_id', 'id');
     }
+    public function department(): HasOne
+    {
+        return $this->hasOne(Department::class, 'media_id', 'id');
+    }
 }

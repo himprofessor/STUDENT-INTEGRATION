@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Department extends Model
 {
@@ -12,17 +13,12 @@ class Department extends Model
 
     protected $fillable = [
         'department_name',
-        'department_cover',
+        'media_id',
     ];
-
-    public function staff(): HasMany
-    {
-        return $this->hasMany(Staff::class);
-    }
 
     public static function store($request, $id = null)
     {
-        //Condition edit
+        //Condition validate edit
         if ($id) {
             $validatedData = $request->validate([
 
@@ -34,28 +30,42 @@ class Department extends Model
             $validatedData = $request->validate([
 
                 'department_name' => 'required',
-                'department_cover' => 'required|image|mimes:jpeg,png,gif|max:800',
+                'image' => 'required|image|mimes:jpeg,png,gif|max:800',
             ], [
                 'department_name.required' => 'Please enter the department name',
-                'department_cover.required' => 'Please choose a department cover image',
+                'image.required' => 'Please choose a department cover image',
             ]);
         }
-
+ 
         $department = $request->only('department_name');
 
-        if ($request->hasFile('department_cover')) {
-            $imagePath = $request->file('department_cover')->store('public/assets/img/images');
-            $department['department_cover'] = str_replace('public/', '', $imagePath);
-        }
-
         if ($id) {
-            // If $id is provided, it's an update operation
-            self::where('id', $id)->update($department);
+            $media_id = self::find($id)->media_id;
+            if ($request->hasFile('image')) {
+                $media = Media::store($request, $media_id);
+                $department['media_id'] = $media_id;
+            }
+            $existingUser = self::find($id);
+            $existingUser->update($department);
+            $department = $existingUser;
         } else {
-            // If $id is null, it's an insert (create) operation
+            if ($request->hasFile('image')) {
+                $media = Media::store($request);
+                $department['media_id'] = $media->id;
+                $department['image'] = $media->image;
+            }
             $department = self::create($department);
         }
-
         return $department;
+    }
+
+    public function staff(): HasMany
+    {
+        return $this->hasMany(Staff::class);
+    }
+
+    public function media(): HasOne
+    {
+        return $this->hasOne(Media::class, 'id', 'media_id');
     }
 }
