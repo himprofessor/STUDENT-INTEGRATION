@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
             $table->string('department_name');
-            $table->string('department_cover')->nullable();
+            $table->unsignedBigInteger('media_id');
+            $table->foreign('media_id')->references('id')->on('media')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -1,5 +1,5 @@
 @if (session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
+<div class="alert alert-success">{{ session('success') }}</div>
 @endif
 <table class="table table-striped">
     <thead>
@@ -12,13 +12,18 @@
     </thead>
     <tbody class="table-border-bottom-0">
         @php
-            $rowNumber = 1;
+        $rowNumber = 1;
         @endphp
         @foreach ($departments as $department)
         <tr>
             <td>{{ $rowNumber }}</td>
             <td>{{ $department->department_name }}</td>
-            <td><img src="{{ asset('storage/' . $department->department_cover) }}" alt="Departent Cover" width="150"></td>
+            <td>
+                @if ($department->media)
+                <img src="{{ asset('storage/' . $department->media->image) }}" alt="Departent Cover" width="150">
+                @endif
+            </td>
+
             <td>
                 <a href="{{ url('department&staff/department/edit', $department->id) }}" class="btn btn-primary btn-sm">
                     <i class="bx bx-edit-alt me-1"></i> Edit
@@ -31,7 +36,7 @@
 
         @include('content.department.delete')
         @php
-            $rowNumber++;
+        $rowNumber++;
         @endphp
         @endforeach
     </tbody>
