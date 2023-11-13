@@ -31,18 +31,18 @@
 </fieldset><br>
 
 <div>
-    <strong>Upload Image <span class="text-danger">*</span></strong>
-    <div class="d-flex">
-        <img src="{{ old('profile', $staff->profile ?? '') ? asset('storage/' . old('profile', $staff->profile ?? '')) : asset('assets/img/avatars/11.png') }}" alt="staff-avatar" class="d-block rounded border border-sm" width="40" height="40" id="uploadedAvatar" />
-        <label for="upload" class="btn d-flex justify-content-start w-100 bg-light border border-sm" tabindex="0">
-            <span class="d-none d-sm-block">Upload Image</span>
-            <i class="bx bx-upload d-block d-sm-none"></i>
-            <input type="file" name="profile" id="upload" class="account-file-input @error('profile') is-invalid @enderror" hidden accept="image/png, image/jpeg" />
-        </label>
-    </div>
-    @error('profile')
-    <div class="text-danger">{{ $message }}</div>
-    @enderror
+  <strong>Upload Image <span class="text-danger">*</span></strong>
+  <div class="d-flex">
+    <img src="{{ old('image', $staff->media->image ?? '') ? asset('storage/' . old('image', $staff->media->image ?? '')) : asset('assets/img/avatars/1.png') }}" alt="staff-avatar" class="d-block rounded border border-sm" width="40" height="40" id="uploadedAvatar" />
+      <label for="upload" class="btn d-flex justify-content-start w-100 bg-light border border-sm" tabindex="0">
+          <span class="d-none d-sm-block">Upload Image</span>
+          <i class="bx bx-upload d-block d-sm-none"></i>
+          <input type="file" name="image" id="upload" class="account-file-input @error('image') is-invalid @enderror" hidden accept="image/png, image/jpeg" />
+      </label>
+  </div>
+  @error('image')
+  <div class="text-danger">{{ $message }}</div>
+  @enderror
 </div><br>
 
 <fieldset class="form-group">

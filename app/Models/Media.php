@@ -24,12 +24,14 @@ class Media extends Model
             return self::create($data);
         }
     }
-
     public function user(): HasOne
     {
         return $this->hasOne(User::class, 'media_id', 'id');
     }
-
+    public function staff():HasOne
+    {
+        return $this->hasOne(Staff::class, 'media_id', 'id');
+    }
     public function department(): HasOne
     {
         return $this->hasOne(Department::class, 'media_id', 'id');
