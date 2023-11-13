@@ -1,7 +1,8 @@
 <div class="card-body">
     <div class="d-flex align-items-start align-items-sm-center gap-4">
-        <img src="{{ old('image', $user->image ?? '') ? asset('storage/' . old('image', $user->image ?? '')) : asset('assets/img/avatars/1.png') }}"
-            alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar"/>
+        <img src="{{ old('image', $user->media->image ?? '') ? asset('storage/' . old('image', $user->media->image ?? '')) : asset('assets/img/avatars/1.png') }}"
+            class="d-block rounded" height="100" width="100" id="uploadedAvatar"
+        />
         <div class="button-wrapper">
             <label for="upload" class="btn btn-primary me-2 mb-1" tabindex="0">
                 <span class="d-none d-sm-block">Upload new photo</span>

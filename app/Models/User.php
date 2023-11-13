@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -22,7 +22,7 @@ class User extends Authenticatable
     'username',
     'email',
     'password',
-    'image',
+    'media_id',
   ];
   /**
    * The attributes that should be hidden for serialization.
@@ -47,51 +47,65 @@ class User extends Authenticatable
   public static function store($request, $id = null)
   {
     if ($id) {
-      $validatedData = $request->validate([
-        'username' => 'required',
-        'email' => 'required',
-        'password' => 'required|min:8',
-      ],
-      [
-        'username.required' => '*Please enter the  user name',
-        'email.required' => '*Please enter your email',
-        'password.required' => '*Please enter your password',
-      ]);
-  } else {
-      $validatedData = $request->validate([
-        'username' => 'required',
-        'email' => 'required',
-        'password' => 'required|min:8',
-        'image' => 'required',
-      ],
-      [
-        'username.required' => 'Please enter the  user name',
-        'email.required' => 'Please enter your email',
-        'password.required' => 'Please enter your password',
-        'image.required' => 'Please upload your image',
-      ]);
-  }
+      $validatedData = $request->validate(
+        [
+          'username' => 'required',
+          'email' => 'required',
+          'password' => 'required|min:8',
+        ],
+        [
+          'username.required' => '*Please enter the  user name',
+          'email.required' => '*Please enter your email',
+          'password.required' => '*Please enter your password',
+        ]
+      );
+    } else {
+      $validatedData = $request->validate(
+        [
+          'username' => 'required',
+          'email' => 'required',
+          'password' => 'required|min:8',
+          'image' => 'required',
+        ],
+        [
+          'username.required' => 'Please enter the  user name',
+          'email.required' => 'Please enter your email',
+          'password.required' => 'Please enter your password',
+          'image.required' => 'Please upload your image',
+        ]
+      );
+    }
 
     $user = $request->only(
-        'username',
-        'email',
-        'password',
+      'username',
+      'email',
+      'password',
     );
     $user['password'] = Hash::make($request->password);
 
-    // Check if a new image file was uploaded
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('public/assets/img/images');
-        $user['image'] = str_replace('public/', '', $imagePath);
-    }
     if ($id) {
-        // If $id is provided, it's an update operation
-        self::where('id', $id)->update($user);
-    } else {
-        // If $id is null, it's an insert (create) operation
-        $user = self::create($user);
+      $media_id = self::find($id)->media_id;
+      if ($request->hasFile('image')) {
+        $media = Media::store($request, $media_id); 
+        $user['media_id'] = $media_id; 
+      }
+      $existingUser = self::find($id);
+      $existingUser->update($user);
+      $user = $existingUser;
+    } 
+    else {
+      if ($request->hasFile('image')) {
+        $media = Media::store($request); 
+        $user['media_id'] = $media->id; 
+        $user['image'] = $media->image; 
+      }
+      $user = self::create($user);
     }
-
     return $user;
+  }
+
+  public function media(): HasOne
+  {
+    return $this->hasOne(Media::class, 'id', 'media_id');
   }
 }

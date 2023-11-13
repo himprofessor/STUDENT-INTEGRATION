@@ -21,7 +21,9 @@
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
-                    <img src="{{ asset('storage/' . $user->image) }}" alt="User Image" width="100">
+                    @if ($user->media)
+                        <img src="{{ asset('storage/' . $user->media->image) }}" class="w-25">
+                    @endif
                 </td>
                 <td>
                   <a href="{{ url('user/edit', $user->id) }}" class="btn btn-primary btn-sm">
