@@ -4,6 +4,7 @@ namespace App\Http\Controllers\department_staff;
 
 use App\Http\Controllers\Controller;
 use App\Models\Department;
+use App\Models\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,14 +12,15 @@ class DepartmentController extends Controller
 {
     public function index()
     {
-        $departments = Department::orderBy('created_at', 'desc')->paginate(10);
+        $departments = Department::orderBy('created_at', 'desc')->with('media')->paginate(10);
 
         return view('content.department.list', compact('departments'));
     }
 
     public function create()
     {
-        return view('content.department.create');
+        $media = Media::all();
+        return view('content.department.create', compact('media'));
     }
 
     public function store(Request $request)
@@ -58,15 +60,13 @@ class DepartmentController extends Controller
         // Find the department by its ID and delete it
         $department = Department::find($id);
 
-        if ($department) {
-
-            $department->delete();
+        if ($department->media) {
+            $department->media->delete();
         }
 
         DB::commit();
 
         // Redirect back to the department list or a success page
         return redirect()->route('department')->with('success', 'Department has been deleted successfully.');
-
     }
 }
