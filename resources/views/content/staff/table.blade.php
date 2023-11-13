@@ -5,21 +5,23 @@
             <th>last_name</th>
             <th>email</th>
             <th>Position</th>
-            <th>Profile</th>
             <th>phone</th>
+            <th>Profile</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody class="table-border-bottom-0">
 
-        @foreach ($staffs as $staff)
+      @foreach ($staffs as $staff)
         <tr>
             <td>{{$staff->first_name}}</td>
             <td>{{$staff->last_name}}</td>
             <td>{{$staff->email}}</td>
             <td>{{$staff->position}}</td>
-            <td><img src="{{asset('storage/'.$staff->profile)}}" class="w-50"></td>
             <td>{{$staff->phone}}</td>
+            <td>
+              <img src="{{asset('storage/'.$staff->media->image)}}" class="w-75">
+            </td>
             <td>
                 <a href="{{ url('department&staff/staff/edit', $staff->id) }}" class="btn btn-primary btn-sm">
                     <i class="bx bx-edit-alt me-1"></i> Edit
@@ -31,6 +33,6 @@
         </tr>
 
         @include('content.staff.delete')
-        @endforeach
+      @endforeach
     </tbody>
 </table>

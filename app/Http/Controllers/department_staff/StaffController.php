@@ -4,6 +4,7 @@ namespace App\Http\Controllers\department_staff;
 use App\Http\Controllers\Controller;
 use App\Models\Department;
 use App\Models\Staff;
+use App\Models\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,14 +12,15 @@ class StaffController extends Controller
 {
     public static function index()
     {
-        $staffs = Staff::orderBy('created_at', 'desc')->with('department')->paginate(10);
+        $staffs = Staff::orderBy('created_at', 'desc')->with('media')->paginate(10);
         return view('content.staff.list', compact('staffs'));
     }
     public function create()
     {
+      $media = Media::all();
         $departments = Department::all();
         $staff = new Staff();
-        return view('content.staff.create', compact('departments', 'staff'));
+        return view('content.staff.create', compact('departments', 'staff', 'media'));
     }
     public function store(Request $request)
     {
@@ -46,8 +48,8 @@ class StaffController extends Controller
         DB::beginTransaction();
         //find staff by id and delete
         $staffs = Staff::find($id);
-        if ($staffs) {
-            $staffs->delete();
+        if ($staffs->media) {
+            $staffs->media->delete();
         }
         DB::commit();
         return redirect('department&staff/staff');

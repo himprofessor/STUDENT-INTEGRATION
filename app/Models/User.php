@@ -50,11 +50,11 @@ class User extends Authenticatable
       $validatedData = $request->validate(
         [
           'username' => 'required',
-          'email' => 'required',
+          'email' => 'required|email|unique:users,email,'. $id,
           'password' => 'required|min:8',
         ],
         [
-          'username.required' => '*Please enter the  user name',
+          'username.required' => '*Please enter the  username',
           'email.required' => '*Please enter your email',
           'password.required' => '*Please enter your password',
         ]
@@ -63,12 +63,12 @@ class User extends Authenticatable
       $validatedData = $request->validate(
         [
           'username' => 'required',
-          'email' => 'required',
+          'email' => 'required|email|unique:users,email,'. $id,
           'password' => 'required|min:8',
           'image' => 'required',
         ],
         [
-          'username.required' => 'Please enter the  user name',
+          'username.required' => 'Please enter the  username',
           'email.required' => 'Please enter your email',
           'password.required' => 'Please enter your password',
           'image.required' => 'Please upload your image',
@@ -86,18 +86,18 @@ class User extends Authenticatable
     if ($id) {
       $media_id = self::find($id)->media_id;
       if ($request->hasFile('image')) {
-        $media = Media::store($request, $media_id); 
-        $user['media_id'] = $media_id; 
+        $media = Media::store($request, $media_id);
+        $user['media_id'] = $media_id;
       }
       $existingUser = self::find($id);
       $existingUser->update($user);
       $user = $existingUser;
-    } 
+    }
     else {
       if ($request->hasFile('image')) {
-        $media = Media::store($request); 
-        $user['media_id'] = $media->id; 
-        $user['image'] = $media->image; 
+        $media = Media::store($request);
+        $user['media_id'] = $media->id;
+        $user['image'] = $media->image;
       }
       $user = self::create($user);
     }
