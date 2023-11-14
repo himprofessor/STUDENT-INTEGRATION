@@ -1,8 +1,12 @@
 @extends('layouts/contentNavbarLayout')
 
 @section('title', 'Cards basic - UI elements')
+
+<!-- Hide validation  -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- CKEditor  -->
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
 @section('vendor-script')
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
@@ -10,8 +14,6 @@
 @section('page-script')
 <script src="{{asset('assets/js/pages-account-settings-account.js')}}"></script>
 @endsection
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 @section('content')
 <div class="row row-2">

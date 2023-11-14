@@ -36,12 +36,12 @@
     ClassicEditor
         .create(document.querySelector('#editor'), {
             toolbar: [
-                'heading', 
-                '|', 
-                'bold', 
-                'italic', 
-                'link', 
-                'bulletedList', 
+                'heading',
+                '|',
+                'bold',
+                'italic',
+                'link',
+                'bulletedList',
                 'numberedList'
             ],
         })

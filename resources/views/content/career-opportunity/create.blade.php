@@ -1,8 +1,12 @@
 @extends('layouts/contentNavbarLayout')
 
 @section('title', 'Cards basic - UI elements')
+
+<!-- Hide validation  -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- CKEditor  -->
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
 @section('vendor-script')
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
@@ -26,7 +30,6 @@
             </div>
         </div>
     </div>
-
 </div>
 <script>
     // CKEditor
@@ -45,5 +48,14 @@
         .catch(error => {
             console.log(error);
         });
+
+    // Hide Validation text-danger
+    $(document).ready(function() {
+        $('input, textarea, file').on('input change', function() {
+            let fieldset = $(this).closest('fieldset');
+            fieldset.find('.text-danger').hide();
+            $(this).removeClass('is-invalid');
+        });
+    });
 </script>
 @endsection
