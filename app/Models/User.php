@@ -50,7 +50,7 @@ class User extends Authenticatable
       $validatedData = $request->validate(
         [
           'username' => 'required',
-          'email' => 'required|email|unique:users,email,'. $id,
+          'email' => 'required|email|unique:users,email,' . $id,
           'password' => 'required|min:8',
         ],
         [
@@ -63,7 +63,7 @@ class User extends Authenticatable
       $validatedData = $request->validate(
         [
           'username' => 'required',
-          'email' => 'required|email|unique:users,email,'. $id,
+          'email' => 'required|email|unique:users,email,' . $id,
           'password' => 'required|min:8',
           'image' => 'required',
         ],
@@ -92,8 +92,7 @@ class User extends Authenticatable
       $existingUser = self::find($id);
       $existingUser->update($user);
       $user = $existingUser;
-    }
-    else {
+    } else {
       if ($request->hasFile('image')) {
         $media = Media::store($request);
         $user['media_id'] = $media->id;
