@@ -1,7 +1,5 @@
 <div class="mb-3">
-
-  <label class="form-label" for="basic-default-fullname">Department Name <span style="color:red; font-size: larger;"> * </span></label>
-
+  <strong>Department Name <span class="text-danger">*</span></strong>
   <!-- // Message error when haven't enter the department name(Validate department name )-->
   <input type="text" placeholder="Please enter the department name" class="form-control @error('department_name') is-invalid @enderror" id="basic-default-fullname" name="department_name" value="{{ old('department_name', $department->department_name ?? '') }}" />
 
@@ -12,8 +10,6 @@
 </div>
 
 <div class="mb-3 col">
-  <!-- Account -->
-
   <div class="d-flex align-items-start align-items-sm-center gap-3">
     <img src="{{ old('image', $department->media->image ?? '') ? asset('storage/' . old('image', $department->media->image ?? '')) : asset('assets/img/avatars/missing_img.png') }}"
      alt="department-avatar" class="d-block rounded" width="120" height="120" id="uploadedAvatar" />

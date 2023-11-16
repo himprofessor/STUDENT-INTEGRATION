@@ -104,7 +104,7 @@
 
 <fieldset class="form-group">
     <strong>About Staff <span class="text-danger">*</span></strong>
-    <p><textarea class="form-control @error('about') is-invalid @enderror" id="editor" name="about">{!! old('about', $staff->about ?? '') !!}</textarea></p>
+    <p><textarea class="form-control @error('about') is-invalid @enderror" placeholder="Your text here" id="editor" name="about">{!! old('about', $staff->about ?? '') !!}</textarea></p>
     {{ csrf_field() }}
     @error('about')
     <div class="text-danger">{{ $message }}</div>
