@@ -34,6 +34,12 @@
       "name": "Career-opportunities",
       "icon": "menu-icon tf-icons bx bx-medal",
       "slug": "career-opportunities"
+    },
+    {
+      "url": "/slideshow",
+      "name": "Slideshow",
+      "icon": "menu-icon tf-icons bx bx-slideshow",
+      "slug": "slideshow"
     }
   ]
 }

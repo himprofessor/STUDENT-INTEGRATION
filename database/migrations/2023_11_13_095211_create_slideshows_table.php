@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('slideshows', function (Blueprint $table) {
             $table->id();
-            $table->string('department_name');
+            $table->string('heading');
+            $table->string('description')->nullable();
             $table->unsignedBigInteger('media_id');
             $table->foreign('media_id')->references('id')->on('media')->onDelete('cascade');
             $table->timestamps();
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('slideshows');
     }
 };

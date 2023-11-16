@@ -20,7 +20,7 @@
             <td>{{ $department->department_name }}</td>
             <td>
                 @if ($department->media)
-                <img src="{{ asset('storage/' . $department->media->image) }}" alt="Departent Cover" width="150">
+                <img src="{{ asset('storage/' . $department->media->image) }}" alt="Departent Cover"  width="120px">
                 @endif
             </td>
 

@@ -59,3 +59,16 @@ Route::prefix('career-opportunities')->group(function () use ($controller_path) 
   Route::put('/edit/{id}', $controller_path . '\career_opportunity\CareerOpportunitiesController@update')->name('career-opportunities.update');
   Route::delete('/delete/{id}', $controller_path . '\career_opportunity\CareerOpportunitiesController@destroy')->name('career-opportunities.destroy');
 });
+
+//route slideshow
+Route::prefix('slideshow')->group(function () use ($controller_path){
+  Route::get('/', $controller_path . '\slideshow\SlideshowController@index')->name('slideshow');
+  Route::get('/create', $controller_path . '\slideshow\SlideshowController@create')->name('slideshow.create');
+  Route::post('/store', $controller_path . '\slideshow\SlideshowController@store')->name('slideshow.store');
+  Route::get('/edit/{id}', $controller_path . '\slideshow\SlideshowController@edit')->name('slideshow.edit');
+  Route::put('/edit/{id}', $controller_path . '\slideshow\SlideshowController@update')->name('slideshow.update');
+  Route::delete('/delete/{id}', $controller_path . '\slideshow\SlideshowController@destroy')->name('slideshow.destroy');
+  
+});
+
+
