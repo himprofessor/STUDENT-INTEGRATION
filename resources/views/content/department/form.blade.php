@@ -11,12 +11,13 @@
 
 <div class="mb-3 col">
   <div class="d-flex align-items-start align-items-sm-center gap-3">
-    <img src="{{ old('image', $department->media->image ?? '') ? asset('storage/' . old('image', $department->media->image ?? '')) : asset('assets/img/avatars/missing_img.png') }}" alt="department-avatar" class="d-block rounded" width="120" height="120" id="uploadedAvatar" />
+    <img src="{{ old('image', $department->media->image ?? '') ? asset('storage/' . old('image', $department->media->image ?? '')) : asset('assets/img/avatars/missing_img.png') }}"
+     alt="department-avatar" class="d-block rounded" width="120" height="120" id="uploadedAvatar" />
 
     <div class="button-wrapper">
       <label for="upload" class="btn btn-primary me-2 mb-2 " tabindex="0">
 
-        <span class="d-none d-sm-block">Upload cover department</span>
+        <span class="d-none d-sm-block">Upload department cover</span>
         <i class="bx bx-upload d-block d-sm-none"></i>
 
       </label>
@@ -26,7 +27,7 @@
         <span class="d-none d-sm-block">Reset</span>
       </button>
 
-      <!-- //Use for message error when haven't choose image (Validate department name )-->
+      <!-- //Use for message error when haven't choose image (Validate department image)-->
       <input type="file" id="upload" class="account-file-input @error('image') is-invalid @enderror" name="image" hidden accept="image/png, image/jpeg" />
 
       @error('image')
