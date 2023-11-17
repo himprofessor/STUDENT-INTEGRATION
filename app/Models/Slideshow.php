@@ -22,23 +22,19 @@ class Slideshow extends Model
             $validated = $request->validate(
                 [
                     'heading' => 'required',
-                    'description' => 'required',
                 ],
                 [
                     'heading.required' => '* Please enter the heading',
-                    'description.required' => '* Please enter the description',
                 ]
             );
         } else {
             $validated = $request->validate(
                 [
                     'heading' => 'required',
-                    'description' => 'required',
                     'image' => 'required|image|mimes:jpeg,png,gif|max:800',
                 ],
                 [
                     'heading.required' => 'Please enter the heading',
-                    'description.required' => 'Please enter the description',
                     'image.required' => 'Please choose a slideshow image',
                     'image.mimes' => 'Only JPEG, PNG, and GIF images are allowed',
                 ]

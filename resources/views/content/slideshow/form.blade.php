@@ -30,11 +30,5 @@
 
 <fieldset class="form-group ">
     <strong>Descriptions <span style="color:red; font-size: larger;">*</span></strong>
-    <textarea class="form-control " id="editor" name="description">{!! old('description', $slideshow->description ?? '') !!}</textarea>
-    {{ csrf_field() }}
-
-    @error('description')
-    <div class="invalid-feedback">{{ $message }}</div>
-    @enderror
-
+    <textarea class="form-control " placeholder="Your text here" id="editor" name="description">{!! old('description', $slideshow->description ?? '') !!}</textarea>
 </fieldset><br>
