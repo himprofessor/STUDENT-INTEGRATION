@@ -12,9 +12,11 @@ class DepartmentController extends Controller
 {
     public function index()
     {
-        $departments = Department::orderBy('created_at', 'desc')->with('media')->paginate(10);
+        $departments = Department::orderBy('created_at', 'desc')->with('media')->paginate(4);
 
-        return view('content.department.list', compact('departments'));
+        $totalDepartments = Department::count();
+
+        return view('content.department.list', compact('departments', 'totalDepartments'));
     }
 
     public function create()
@@ -22,6 +24,20 @@ class DepartmentController extends Controller
         $media = Media::all();
         return view('content.department.create', compact('media'));
     }
+
+    // Search
+
+    public function search(Request $request)
+{
+    $searchDepartment = $request->input('search');
+    $departments = Department::where('department_name', 'like', '%' . $searchDepartment . '%')
+        ->orderBy('id', 'desc')
+        ->paginate(2);
+
+    $totalDepartments = Department::count();
+
+    return view('content.department.list', compact('departments', 'searchDepartment', 'totalDepartments'));
+}
 
     public function store(Request $request)
     {

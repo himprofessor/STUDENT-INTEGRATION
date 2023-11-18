@@ -1,6 +1,16 @@
-@if (session('success'))
-<div class="alert alert-success">{{ session('success') }}</div>
+@if (session()->has('success'))
+<div class="alert alert-success" id="success-message">
+    {{ session('success') }}
+</div>
 @endif
+
+<script>
+    // Fade out the success message after 5 seconds
+    setTimeout(function() {
+        document.getElementById('success-message').style.display = 'none';
+    }, 800);
+</script>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -20,7 +30,7 @@
             <td>{{ $department->department_name }}</td>
             <td>
                 @if ($department->media)
-                <img src="{{ asset('storage/' . $department->media->image) }}" alt="Departent Cover"  width="120px">
+                <img src="{{ asset('storage/' . $department->media->image) }}" alt="Departent Cover"  width="110px">
                 @endif
             </td>
 
