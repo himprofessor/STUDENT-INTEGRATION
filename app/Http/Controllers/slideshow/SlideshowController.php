@@ -12,14 +12,33 @@ class SlideshowController extends Controller
 {
     public function index()
     {
-        $slideshows = Slideshow::orderBy('created_at', 'desc')->paginate(10);
-        return view('content.slideshow.list', compact('slideshows'));
+        $slideshows = Slideshow::orderBy('created_at', 'desc')->with('media')->paginate(3);
+
+        $totalSlideshows = Slideshow::count();
+
+        return view('content.slideshow.list', compact('slideshows', 'totalSlideshows'));
     }
+
 
     public function create()
     {
         $media = Media::all();
         return view('content.slideshow.create', compact('media'));
+    }
+
+    // Search
+    
+    public function search(Request $request)
+    {
+        $searchSlideshow = $request->input('search');
+        $slideshows = Slideshow::where('heading', 'like', '%' . $searchSlideshow . '%')
+            ->orWhere('description', 'like', '%' . $searchSlideshow . '%')
+            ->orderBy('id', 'desc')
+            ->paginate(2);
+    
+        $totalSlideshows = Slideshow::count();
+    
+        return view('content.slideshow.list', compact('slideshows', 'searchSlideshow', 'totalSlideshows'));
     }
 
     public function store(Request $request)

@@ -10,13 +10,22 @@
       <h5 class="fw-bold">Slideshow List</h5>
       <a href="{{ url('slideshow/create') }}" class="btn btn-primary"> Add New</a>
   </div>
-  <div class="card">
-      <div class="card-body">
-          <div class="table-responsive text-nowrap">
-              @include('content.slideshow.table')
-              {{ $slideshows->links() }}
-          </div>
-      </div>
-  </div>
+  
+<!-- Include the search form -->
+@include('content.slideshow.search')
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            @include('content.slideshow.table')
+        </div>
+        
+        <div class="d-flex justify-content-between mt-3">
+            <div class="align-self-start">Total: {{$totalSlideshows}}</div>
+            <div class="align-self-end">{{ $slideshows->links() }}</div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
