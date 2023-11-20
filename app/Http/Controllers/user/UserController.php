@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\user;
+
 use App\Http\Controllers\Controller;
 use App\Models\Media;
 use App\Models\User;
@@ -36,13 +37,13 @@ class UserController extends Controller
   {
     $user = User::find($id);
     $media = $user->media; // Get the associated media for the user
-    return view('content.user.edit', compact('user','media'));
+    return view('content.user.edit', compact('user', 'media'));
   }
 
   public function update(Request $request, $id)
   {
     DB::beginTransaction();
-    User::store($request,$id);
+    User::store($request, $id);
     DB::commit();
     return redirect('/user');
   }
@@ -58,5 +59,16 @@ class UserController extends Controller
     DB::commit();
     // Redirect back to the User list or a success page
     return redirect('/user');
+  }
+
+  public function search(Request $request)
+  {
+    // Your search logic here
+    $username = $request->input('username');
+
+    // Assuming you have a method to search users based on the username
+    $users = User::where('username', 'like', "%$username%")->paginate(10);
+
+    return view('content.user.list', ['users' => $users]);
   }
 }
