@@ -15,24 +15,30 @@
     <thead>
         <tr>
             <td>#</td>
-            <th>department_name</th>
             <th>department_cover</th>
+            <th>department_name</th>
             <th>Action Department</th>
         </tr>
     </thead>
     <tbody class="table-border-bottom-0">
+        <!-- -------- So not found when search see result---- -->
+        @if ($departments->isEmpty())
+        <tr>
+            <td colspan="4">No result found</td>
+        </tr>
+        @else
         @php
         $rowNumber = 1;
         @endphp
         @foreach ($departments as $department)
         <tr>
             <td>{{ $rowNumber }}</td>
-            <td>{{ $department->department_name }}</td>
             <td>
                 @if ($department->media)
-                <img src="{{ asset('storage/' . $department->media->image) }}" alt="Departent Cover"  width="110px">
+                <img src="{{ asset('storage/' . $department->media->image) }}" alt="Departent Cover" width="110px">
                 @endif
             </td>
+            <td>{{ $department->department_name }}</td>
 
             <td>
                 <a href="{{ url('department&staff/department/edit', $department->id) }}" class="btn btn-primary btn-sm">
@@ -49,5 +55,6 @@
         $rowNumber++;
         @endphp
         @endforeach
+        @endif
     </tbody>
 </table>

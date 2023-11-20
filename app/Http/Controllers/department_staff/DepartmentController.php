@@ -12,7 +12,7 @@ class DepartmentController extends Controller
 {
     public function index()
     {
-        $departments = Department::orderBy('created_at', 'desc')->with('media')->paginate(4);
+        $departments = Department::orderBy('created_at', 'desc')->with('media')->paginate(10);
 
         $totalDepartments = Department::count();
 
