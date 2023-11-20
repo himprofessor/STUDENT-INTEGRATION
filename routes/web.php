@@ -48,6 +48,7 @@ Route::prefix('user')->group(function () use ($controller_path) {
   Route::get('/edit/{id}', $controller_path . '\user\UserController@edit')->name('user.edit');
   Route::put('/edit/{id}', $controller_path . '\user\UserController@update')->name('user.update');
   Route::delete('/delete/{id}', $controller_path . '\user\UserController@destroy')->name('user.destroy');
+  Route::get('/search', $controller_path . '\user\UserController@search')->name('user.search');
 });
 
 //route career opportunities
