@@ -26,26 +26,25 @@ class SlideshowController extends Controller
         return view('content.slideshow.create', compact('media'));
     }
 
-    // Search
-    
+    // Function Search
+
     public function search(Request $request)
     {
-        $searchSlideshow = $request->input('search');
-        $slideshows = Slideshow::where('heading', 'like', '%' . $searchSlideshow . '%')
-            ->orWhere('description', 'like', '%' . $searchSlideshow . '%')
-            ->orderBy('id', 'desc')
-            ->paginate(2);
-    
-        $totalSlideshows = Slideshow::count();
-    
-        return view('content.slideshow.list', compact('slideshows', 'searchSlideshow', 'totalSlideshows'));
+        $searchTerm = $request->input('search');
+
+        $slideshows = Slideshow::where(function ($query) use ($searchTerm) {
+            $query->where('heading', 'like', "%$searchTerm%")
+                ->orWhere('description', 'like', "%$searchTerm%");
+        })->paginate(10);
+
+        return view('content.slideshow.list', compact('slideshows'));
     }
 
     public function store(Request $request)
     {
         DB::beginTransaction();
 
-       Slideshow::store($request);
+        Slideshow::store($request);
 
         DB::commit();
         return redirect('slideshow')->with('success', 'Slideshow has been created successfully.');

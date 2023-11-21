@@ -21,12 +21,6 @@
         </tr>
     </thead>
     <tbody class="table-border-bottom-0">
-        <!-- -------- So not found when search see result---- -->
-        @if ($departments->isEmpty())
-        <tr>
-            <td colspan="4">No result found</td>
-        </tr>
-        @else
         @php
         $rowNumber = 1;
         @endphp
@@ -52,9 +46,8 @@
 
         @include('content.department.delete')
         @php
-        $rowNumber++;
+            $rowNumber++;
         @endphp
         @endforeach
-        @endif
     </tbody>
 </table>

@@ -12,7 +12,7 @@ class DepartmentController extends Controller
 {
     public function index()
     {
-        $departments = Department::orderBy('created_at', 'desc')->with('media')->paginate(10);
+        $departments = Department::orderBy('created_at', 'desc')->with('media')->paginate(3);
 
         $totalDepartments = Department::count();
 
@@ -25,19 +25,17 @@ class DepartmentController extends Controller
         return view('content.department.create', compact('media'));
     }
 
-    // Search
-
+// Function search
     public function search(Request $request)
-{
-    $searchDepartment = $request->input('search');
-    $departments = Department::where('department_name', 'like', '%' . $searchDepartment . '%')
-        ->orderBy('id', 'desc')
-        ->paginate(2);
+    {
+        // Your search logic here
+        $department_name = $request->input('department_name');
 
-    $totalDepartments = Department::count();
+        // Assuming you have a method to search de$departments based on the department_name 
+        $departments = Department::where('department_name', 'like', "%$department_name%")->paginate(10);
 
-    return view('content.department.list', compact('departments', 'searchDepartment', 'totalDepartments'));
-}
+        return view('content.department.list', ['departments' => $departments]);
+    }
 
     public function store(Request $request)
     {
