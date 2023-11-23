@@ -30,10 +30,10 @@
         <tr>
             <td>{{ $rowNumber }}</td>
             <td>
-              <img src="{{asset('storage/'.$slideshow->media->image)}}" width="100px" alt="Slideshow" >
+                <img src="{{asset('storage/'.$slideshow->media->image)}}" width="100px" alt="Slideshow">
             </td>
             <td>{{ $slideshow->heading }}</td>
-            <td>{{ html_entity_decode(strip_tags($slideshow->description)) }}</td>
+            <td>{!!($slideshow->description)!!}</td>
 
             <td>
                 <a href="{{ url('slideshow/edit', $slideshow->id) }}" class="btn btn-primary btn-sm">
@@ -44,6 +44,7 @@
                 </button>
             </td>
         </tr>
+        
         @include('content.slideshow.delete')
         @php
         $rowNumber++;

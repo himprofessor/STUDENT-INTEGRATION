@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Slideshow;
 
+use Intervention\Image\Facades\Image;
+
 use App\Http\Controllers\Controller;
 use App\Models\Media;
 use App\Models\Slideshow;
@@ -12,7 +14,7 @@ class SlideshowController extends Controller
 {
     public function index()
     {
-        $slideshows = Slideshow::orderBy('created_at', 'desc')->with('media')->paginate(3);
+        $slideshows = Slideshow::orderBy('created_at', 'desc')->with('media')->paginate(10);
 
         $totalSlideshows = Slideshow::count();
 
@@ -82,5 +84,30 @@ class SlideshowController extends Controller
 
         // Redirect back to the slideshow list or a success page
         return redirect()->route('slideshow')->with('success', 'Slideshow has been deleted successfully.');
+    }
+
+    public function crop(Request $request, $id)
+    {
+        $slideshow = Slideshow::findOrFail($id);
+    
+        $request->validate([
+            'croppedImage' => 'required|image|max:2048' // Adjust the validation rules as needed
+        ]);
+    
+        $croppedImage = $request->file('croppedImage');
+    
+        $fileName = uniqid() . '.' . $croppedImage->getClientOriginalExtension();
+    
+        $image = Image::make($croppedImage);
+    
+        // Perform any additional image manipulation if needed (e.g., resizing, filters)
+    
+        $image->save(public_path('storage/' . $fileName));
+    
+        // Update the slideshow record with the new image file name
+        $slideshow->image = $fileName;
+        $slideshow->save();
+    
+        return redirect()->route('slideshow.index')->with('success', 'Image cropped successfully');
     }
 }

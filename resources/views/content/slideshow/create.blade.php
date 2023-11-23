@@ -5,6 +5,11 @@
 <!-- CKEditor  -->
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
+<!-- //crop -->
+<script src="https://unpkg.com/cropperjs/dist/cropper.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.css">
+
 @section('vendor-script')
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
@@ -65,3 +70,47 @@ $(document).ready(function() {
 
 </script>
 
+<!-- // Crop image in javascrip -->
+<script>
+    $(document).ready(function() {
+        $('#upload').on('change', function() {
+            $('#cropForm').show();
+            var input = this;
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#cropPreview').attr('src', e.target.result);
+
+                // Initialize Cropper.js
+                var cropper = new Cropper($('#cropPreview')[0], {
+                    aspectRatio: 1, // Set the desired aspect ratio for cropping
+                    viewMode: 1, // Set the default view mode
+                    autoCropArea: 0.5, // Set the initial auto crop area
+                });
+
+                $('#cropButton').on('click', function() {
+                    // Get the cropped canvas
+                    var canvas = cropper.getCroppedCanvas();
+
+                    // Convert canvas to base64 data URL
+                    var croppedImage = canvas.toDataURL();
+
+                    // Set the cropped image as the source for the original image
+                    $('#uploadedAvatar').attr('src', croppedImage);
+
+                    // Hide the crop form
+                    $('#cropForm').hide();
+
+                    // Attach the cropped image to the file input
+                    canvas.toBlob(function(blob) {
+                        var newFile = new File([blob], input.files[0].name, { type: input.files[0].type });
+                        input.files = [newFile];
+
+                        // Show the image in the slideshow list
+                        $('#slideshowListImage').attr('src', croppedImage);
+                    });
+                });
+            };
+            reader.readAsDataURL(input.files[0]);
+        });
+    });
+</script>
