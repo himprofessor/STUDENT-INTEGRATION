@@ -75,7 +75,7 @@ class User extends Authenticatable
         ]
       );
     }
-
+    // dd(request()->all());
     $user = $request->only(
       'username',
       'email',
@@ -86,7 +86,7 @@ class User extends Authenticatable
     if ($id) {
       $media_id = self::find($id)->media_id;
       if ($request->hasFile('image')) {
-        $media = Media::store($request, $media_id);
+        $media = Media::croppImage($request, $media_id);
         $user['media_id'] = $media_id;
       }
       $existingUser = self::find($id);
@@ -94,7 +94,8 @@ class User extends Authenticatable
       $user = $existingUser;
     } else {
       if ($request->hasFile('image')) {
-        $media = Media::store($request);
+        // dd9($request->file(''));
+        $media = Media::croppImage($request);
         $user['media_id'] = $media->id;
         $user['image'] = $media->image;
       }
