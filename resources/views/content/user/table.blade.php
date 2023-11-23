@@ -26,7 +26,7 @@
                     @endif --}}
                     <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                         <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                            class="avatar avatar-xs pull-up" title="{{ $user->username }}">
+                            class="avatar avatar-sm pull-up" title="{{ $user->username }}">
                             <img src="{{ asset('storage/' . $user->media->image) }}" alt="Avatar"
                                 class="rounded-circle">
                         </li>
@@ -34,17 +34,7 @@
                 </td>
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->email }}</td>
-
                 <td>
-                    {{-- <div class="btn-group" role="group" aria-label="User Actions">
-                        <a href="{{ url('user/edit', $user->id) }}" class="btn btn-primary btn-sm">
-                            <i class="bx bx-edit-alt me-1"></i> Edit
-                        </a>
-                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#confirmDelete{{ $user->id }}">
-                            <i class="bx bx-trash me-1"></i> Delete
-                        </button>
-                    </div> --}}
                     <a href="{{ url('user/edit', $user->id) }}" class="btn btn-primary btn-sm">
                         <i class="bx bx-edit-alt me-1"></i> Edit
                     </a>
@@ -53,7 +43,6 @@
                         <i class="bx bx-trash me-1"></i> Delete
                     </button>
                 </td>
-
             </tr>
             @include('content.user.delete')
             @php

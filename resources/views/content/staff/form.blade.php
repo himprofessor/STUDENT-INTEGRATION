@@ -1,11 +1,30 @@
-<div class="mb-3 col-md-3">
-    <label for="upload" class="d-flex justify-content-center border border-sm py-5" tabindex="0">
-        <img src="{{ old('image', $staff->media->image ?? '') ? asset('storage/' . old('image', $staff->media->image ?? '')) : asset('assets/img/avatars/1.png') }}" alt="staff-avatar" id="uploadedAvatar" width="100" height="100" style="cursor: pointer;" />
-        <input type="file" name="image" id="upload" class="account-file-input @error('image') is-invalid @enderror" hidden accept="image/png, image/jpeg" />
-    </label>
-    @error('image')
-    <div class="text-danger">{{ $message }}</div>
-    @enderror
+<div class="mb-3 col-md-3 border border-1">
+    <div class="card-body">
+        <div class="d-flex justify-content-center">
+            <div id="croppie-container" class="rounded" style="width: 200px; height: 200px; border: 2px solid #ddd; overflow: hidden; display: none;"></div>
+            <div class="button-wrapper">
+                <label for="upload" tabindex="0">
+                    <div class="img" id="img">
+                        <img src="{{ old('image', $staff->media->image ?? '') ? asset('storage/' . old('image', $staff->media->image ?? '')) : asset('assets/img/avatars/1.png') }}" class="d-block rounded" height="100" width="100" id="uploadedAvatar" style="cursor: pointer;" />
+                        <input type="file" name="image" id="upload" class="account-file-input @error('image') is-invalid @enderror" hidden accept="image/png, image/jpeg"/>
+                    </div>
+                </label>
+                @error('image')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Hidden input to store cropped image data -->
+        <input type="hidden" id="cropped-image" name="cropped_image">
+
+        <!-- Button to trigger cropping -->
+        <div class="d-flex justify-content-center">
+            <button type="button" id="crop-button" class="btn btn-primary mt-3" style="display: none;">Crop Image</button>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="mb-3 col-md-6">

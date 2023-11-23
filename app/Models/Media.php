@@ -25,7 +25,6 @@ class Media extends Model
         } else {
             return self::create($data);
         }
-   
     }
 
     public static function croppImage($request, $id = null){
