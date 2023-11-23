@@ -1,11 +1,23 @@
+@if (session()->has('success'))
+<div class="alert alert-success" id="success-message">
+    {{ session('success') }}
+</div>
+@endif
+
+<script>
+    // Fade out the success message after 5 seconds
+    setTimeout(function() {
+        document.getElementById('success-message').style.display = 'none';
+    }, 800);
+</script>
 
 <table class="table table-striped">
     <thead>
         <tr>
             <th>#</th>
+            <th>Slideshow</th>
             <th>Heading</th>
             <th>Description</th>
-            <th>Slideshow</th>
             <th>Actions Slideshow</th>
         </tr>
     </thead>
@@ -17,11 +29,11 @@
         @foreach ($slideshows as $slideshow)
         <tr>
             <td>{{ $rowNumber }}</td>
-            <td>{{ $slideshow->heading }}</td>
-            <td>{{ html_entity_decode(strip_tags($slideshow->description)) }}</td>
             <td>
               <img src="{{asset('storage/'.$slideshow->media->image)}}" width="100px" alt="Slideshow" >
             </td>
+            <td>{{ $slideshow->heading }}</td>
+            <td>{{ html_entity_decode(strip_tags($slideshow->description)) }}</td>
 
             <td>
                 <a href="{{ url('slideshow/edit', $slideshow->id) }}" class="btn btn-primary btn-sm">
