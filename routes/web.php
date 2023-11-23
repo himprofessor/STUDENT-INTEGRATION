@@ -37,6 +37,7 @@ Route::prefix('department&staff/')->group(function () use ($controller_path) {
     Route::get('/edit/{id}', $controller_path . '\department_staff\StaffController@edit')->name('staff.edit');
     Route::put('/edit/{id}', $controller_path . '\department_staff\StaffController@update')->name('staff.update');
     Route::delete('/delete/{id}', $controller_path . '\department_staff\StaffController@destroy')->name('staff.destroy');
+    Route::get('/search', $controller_path . '\department_staff\StaffController@search')->name('staff.search');
   });
 });
 
@@ -59,6 +60,7 @@ Route::prefix('career-opportunities')->group(function () use ($controller_path) 
   Route::get('/edit/{id}', $controller_path . '\career_opportunity\CareerOpportunitiesController@edit')->name('career-opportunities.edit');
   Route::put('/edit/{id}', $controller_path . '\career_opportunity\CareerOpportunitiesController@update')->name('career-opportunities.update');
   Route::delete('/delete/{id}', $controller_path . '\career_opportunity\CareerOpportunitiesController@destroy')->name('career-opportunities.destroy');
+  Route::get('/search', $controller_path . '\career_opportunity\CareerOpportunitiesController@search')->name('career-opportunities.search');
 });
 
 //route slideshow
@@ -71,5 +73,3 @@ Route::prefix('slideshow')->group(function () use ($controller_path){
   Route::delete('/delete/{id}', $controller_path . '\slideshow\SlideshowController@destroy')->name('slideshow.destroy');
   
 });
-
-

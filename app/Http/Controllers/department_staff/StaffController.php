@@ -17,7 +17,7 @@ class StaffController extends Controller
     }
     public function create()
     {
-      $media = Media::all();
+        $media = Media::all();
         $departments = Department::all();
         $staff = new Staff();
         return view('content.staff.create', compact('departments', 'staff', 'media'));
@@ -53,5 +53,15 @@ class StaffController extends Controller
         }
         DB::commit();
         return redirect('department&staff/staff');
+    }
+    public function search(Request $request)
+    {
+      // Your code here
+      $nameOrEmail = $request->input('first_name','last_name', 'email');
+      // Assuming you have a method to search staffs based on the first name, last name and email
+      $staffs = Staff::where('first_name', 'like', "%$nameOrEmail%")
+        ->orWhere('last_name', 'like', "%$nameOrEmail%")
+        ->orWhere('email', 'like', "%$nameOrEmail%")->paginate(10);
+      return view('content.staff.list', ['staffs' => $staffs]);
     }
 }

@@ -16,6 +16,9 @@
 @endsection
 
 @section('content')
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h5 class="fw-bold">Career Opportunity Create </h5>
+</div>
 <div class="row row-2">
     <div class="col-xl">
         <div class="card">

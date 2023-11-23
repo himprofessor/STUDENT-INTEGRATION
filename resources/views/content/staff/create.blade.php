@@ -16,11 +16,13 @@
 @endsection
 
 @section('content')
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h5 class="fw-bold">Staff Create</h5>
+</div>
 <div class="row row-2">
     <div class="col-xl">
         <div class="card">
             <div class="card-body">
-                <h3 class="fw-bold text-center ">Create Staff</h3>
                 <form method="POST" action="{{ route('staff.store') }}" enctype="multipart/form-data">
                     @csrf
                     @include('content.staff.form')
@@ -51,10 +53,9 @@
 
     // Hide Validation text-danger
     $(document).ready(function() {
-        $('input, select, textarea, p,file').on('input change', function() {
-            let fieldset = $(this).closest('fieldset');
-            fieldset.find('.text-danger').hide();
+        $('#basic-default-firstname, #basic-default-lastname, #basic-default-email, #basic-default-position, #basic-default-department, #basic-default-start, #basic-default-end, #basic-default-phone').on('input change', function() {
             $(this).removeClass('is-invalid');
+            $(this).next('.text-danger').hide();
         });
     });
 </script>
