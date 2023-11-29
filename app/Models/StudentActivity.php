@@ -17,6 +17,33 @@ class StudentActivity extends Model
 
     public static function store($request, $id = null)
     {
+        if ($id) {
+            $validatedData = $request->validate(
+                [
+                    // 'image' => 'required|min:1|max:6',
+                    'title' => 'required|min:1|max:100',
+                    'user_id' => 'required',
+                ],
+                [
+                    // 'image.required'   => 'Photos must less than 6 itmes',
+                    'title.required'   => 'Please input title',
+                    'user_id.required' => 'Please select user name',
+                ]
+            );
+        } else {
+            $validatedData = $request->validate(
+                [
+                    'image' => 'required|min:1|max:6',
+                    'title' => 'required|min:1|max:100',
+                    'user_id' => 'required',
+                ],
+                [
+                    'image.required'   => 'Please upload photos',
+                    'title.required'   => 'Please input title',
+                    'user_id.required' => 'Please select user name',
+                ]
+            );
+        }
         $data = $request->only(
             'title',
             'description',
@@ -32,11 +59,12 @@ class StudentActivity extends Model
             $data = $newStudentActivity;
         }
         
-        if ($request->hasFile('image')) {
-            $mediaIds = Media::multipleImage($request);
-            $data->media()->sync($mediaIds);
-        }
-
+        $existingMediaIds = $data->media()->pluck('id')->toArray();
+        $mediaIds = Media::multipleImage($request, $existingMediaIds);
+        $data->media()->sync($mediaIds);
+        
+        // pluck and toArray are methods used to retrieve specific value
+        // dd($data);// ID of studnet-activities
         return $data;
     }
 
