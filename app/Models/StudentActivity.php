@@ -33,19 +33,19 @@ class StudentActivity extends Model
         }
 
         if ($request->hasFile('image')) {
-            $mediaIds = Media::multiple($request);
+            $mediaIds = Media::multipleImage($request);
             $data->media()->sync($mediaIds);
         }
 
         return $data;
     }
 
-    public function media()
-    {
-        return $this->belongsToMany(Media::class, 'student_activity_media');
-    }
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+    public function media()
+    {
+        return $this->belongsToMany(Media::class, 'student_activity_media');
     }
 }
