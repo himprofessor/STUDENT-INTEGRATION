@@ -7,15 +7,42 @@
 @endsection
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold">List of career opportunities</h3>
-    <a href="{{ url('career-opportunities/create') }}" class="btn btn-primary">Add New</a>
-</div>
 
-<div class="card">
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="fw-bold mb-0">Career Opportunities List</h5>
+    </div>
     <div class="card-body">
+        <form action="{{ url('career-opportunities/search') }}" method="GET" class="mb-3">
+            <div class="row">
+                <!-- search button  -->
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" name="job_title" class="form-control" placeholder="Search by job title" value="{{ request()->get('job_title') }}">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bx bx-search"></i> Search
+                        </button>
+                    </div>
+                </div>
+                <!-- clear and add new button  -->
+                <div class="col-md-6 text-end">
+                    {{-- @if (request()->has('job_title')) --}}
+                    <a href="{{ url('career-opportunities') }}" class="btn btn-outline-secondary">
+                        <i class="bx bx-refresh"></i> Clear
+                    </a>
+                    {{-- @endif --}}
+                    <a href="{{ url('career-opportunities/create') }}" class="btn btn-success">
+                        <i class="bx bx-plus"></i> New
+                    </a>
+                </div>
+            </div>
+        </form>
         <div class="table-responsive text-nowrap">
             @include('content.career-opportunity.table')
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <p>Total Records: {{ $careeropportunities->total() }}</p>
+            {{ $careeropportunities->links() }}
         </div>
     </div>
 </div>

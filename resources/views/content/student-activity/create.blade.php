@@ -17,17 +17,16 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h5 class="fw-bold">Career Opportunity Create </h5>
+    <h5 class="fw-bold">Student Activities Create</h5>
 </div>
 <div class="row row-2">
     <div class="col-xl">
         <div class="card">
             <div class="card-body">
-                <h3 class="fw-bold text-center ">Create Career Opportunities</h3>
-                <form method="POST" action="{{ route('career-opportunities.store') }}">
+                <form method="POST" action="{{ route('student-activities.store') }}" enctype="multipart/form-data">
                     @csrf
-                    @include('content.career-opportunity.form')
-                    <a href="{{ url('career-opportunities') }}" class="btn btn-secondary">Cancel</a>
+                    @include('content.student-activity.form')
+                    <a href="{{ url('student-activities') }}" class="btn btn-secondary">Cancel</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
@@ -54,11 +53,31 @@
 
     // Hide Validation text-danger
     $(document).ready(function() {
-        $('input, textarea, file').on('input change', function() {
-            let fieldset = $(this).closest('fieldset');
-            fieldset.find('.text-danger').hide();
+        $('#basic-default-firstname').on('input change', function() {
             $(this).removeClass('is-invalid');
+            $(this).next('.text-danger').hide();
         });
     });
+
+    // PreviewImage create 
+    function previewImages(event) {
+        let previewContainer = document.getElementById('preview-container');
+        previewContainer.innerHTML = ''; // Clear any existing previews
+        let files = event.target.files;
+        for (let i = 0; i < files.length; i++) {
+            let file = files[i];
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                let image = document.createElement('img');
+                image.src = e.target.result;
+                image.classList.add('d-block', 'rounded');
+                image.style.cursor = 'pointer';
+                image.height = 100;
+                image.width = 100;
+                previewContainer.appendChild(image);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
 </script>
 @endsection

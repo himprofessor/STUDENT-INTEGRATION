@@ -34,8 +34,7 @@
 </div>
 
 <div class="md-3">
-    <label class="form-label" for="basic-default-fullname">UserName</label>
-    <span style="color: red">*</span>
+    <strong>Username</strong><span class="text-danger">*</span>
     <input type="text" class="form-control @error('username') is-invalid @enderror" id="basic-default-fullname"
         name="username" value="{{ old('username', $user->username ?? '') }}" />
     @error('username')
@@ -43,10 +42,9 @@
             <strong>{{ $message }}</strong>
         </span>
     @enderror
-</div>
+</div><br>
 <div class="md-3">
-    <label class="form-label" for="basic-default-fullname">Email</label>
-    <span style="color: red">*</span>
+    <strong>Emaiil</strong><span class="text-danger">*</span>
     <input type="email" class="form-control @error('email') is-invalid @enderror" id="basic-default-fullname"
         name="email" value="{{ old('email', $user->email ?? '') }}" />
     @error('email')
@@ -54,10 +52,9 @@
             <strong>{{ $message }}</strong>
         </span>
     @enderror
-</div>
+</div><br>
 <div class="md-3">
-    <label class="form-label" for="basic-default-fullname">Password</label>
-    <span style="color: red">*</span>
+    <strong>Password</strong><span class="text-danger">*</span>
     <input type="password" class="form-control @error('password') is-invalid @enderror" id="basic-default-fullname"
         name="password" value="{{ old('password', $user->password ?? '') }}" />
     @error('password')

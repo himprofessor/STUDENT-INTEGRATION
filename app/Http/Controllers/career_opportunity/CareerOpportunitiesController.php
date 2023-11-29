@@ -49,4 +49,12 @@ class CareerOpportunitiesController extends Controller
         DB::commit();
         return redirect('career-opportunities');
     }
+    public function search(Request $request)
+    {
+      // Your code here
+      $career = $request->input('job_title');
+      // Assuming you have a method to search career opportunities based on job title
+      $careeropportunities = CareerOpportunity::where('job_title', 'like', "%$career%")->paginate(10);
+      return view('content.career-opportunity.list', ['careeropportunities' => $careeropportunities]);
+    }
 }

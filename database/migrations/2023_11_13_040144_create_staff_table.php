@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('start_date')->nullable();
             $table->string('end_date')->nullable();
-            $table->string('about')->nullable();
+            $table->text('about')->nullable();
             $table->unsignedBigInteger('media_id');
             $table->foreign('media_id')->references('id')->on('media')->onDelete('cascade');
             $table->unsignedBigInteger('department_id');

@@ -11,7 +11,9 @@
         @foreach ($careeropportunities as $careeropportunity)
         <tr>
             <td>{{$careeropportunity->job_title}}</td>
-            <td>{{ html_entity_decode(strip_tags($careeropportunity->job_description)) }}</td>
+            <td style="white-space: pre-wrap;">
+                {!! ($careeropportunity->job_description) !!}
+            </td>
             <td>
                 <a href="{{ url('career-opportunities/edit', $careeropportunity->id) }}" class="btn btn-primary btn-sm">
                     <i class="bx bx-edit-alt me-1"></i> Edit
