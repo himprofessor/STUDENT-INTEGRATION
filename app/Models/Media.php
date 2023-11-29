@@ -59,9 +59,7 @@ class Media extends Model
         ]);
         $mediaIds = [];
         if ($request->hasFile('image')) {
-
             $photos = $request->file('image');
-
             foreach ($photos as $photo) {
                 $path = $photo->store('public/assets/img/images');
                 $image = str_replace('public/', '', $path);
@@ -69,15 +67,10 @@ class Media extends Model
                 $mediaIds[] = $media->id;
             }
         }
-        
         return $mediaIds;
         // add update or else condition
     }
 
-    public function studentActivities()
-    {
-        return $this->belongsToMany(StudentActivity::class, 'student_activity_media');
-    }
     public function user(): HasOne
     {
         return $this->hasOne(User::class, 'media_id', 'id');
@@ -93,5 +86,9 @@ class Media extends Model
     public function slideshow(): HasOne
     {
         return $this->hasOne(Slideshow::class, 'media_id', 'id');
+    }
+    public function studentActivities()
+    {
+        return $this->belongsToMany(StudentActivity::class, 'student_activity_media');
     }
 }

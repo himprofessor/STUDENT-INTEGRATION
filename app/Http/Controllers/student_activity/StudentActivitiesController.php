@@ -22,7 +22,6 @@ class StudentActivitiesController extends Controller
         $studentactivities = new StudentActivity();
         return view('content.student-activity.create', compact('studentactivities', 'users'));
     }
-
     public function store(Request $request)
     {
         DB::beginTransaction();
@@ -30,7 +29,6 @@ class StudentActivitiesController extends Controller
         DB::commit();
         return redirect('student-activities')->with('success', 'student activity has been created successfully.');
     }
-
     public function edit($id)
     {
         $studentactivities = StudentActivity::find($id);
@@ -38,7 +36,6 @@ class StudentActivitiesController extends Controller
         $userselete = $studentactivities->user;
         return view('content.student-activity.edit', compact('studentactivities', 'users', 'userselete'));
     }
-
     public function update(Request $request, $id)
     {
         DB::beginTransaction();
@@ -46,11 +43,9 @@ class StudentActivitiesController extends Controller
         DB::commit();
         return redirect('student-activities');
     }
-
     public function destroy($id)
     {
         DB::beginTransaction();
-
         // Find student activity by id
         $studentactivities = StudentActivity::find($id);
         if ($studentactivities) {
@@ -59,20 +54,16 @@ class StudentActivitiesController extends Controller
             foreach ($media as $med) {
                 $med->delete();
             }
-
             // Delete the student activity
             $studentactivities->delete();
         }
-
         DB::commit();
         return redirect('student-activities');
     }
-    
     public function search(Request $request)
     {
         // Your code here
         $activities = $request->input('title');
-
         // Assuming you have a method to search activities based on title
         $studentactivities = StudentActivity::where('title', 'like', "%$activities%")->paginate(10);
 

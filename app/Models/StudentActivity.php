@@ -31,7 +31,7 @@ class StudentActivity extends Model
             $newStudentActivity = self::create($data);
             $data = $newStudentActivity;
         }
-
+        
         if ($request->hasFile('image')) {
             $mediaIds = Media::multipleImage($request);
             $data->media()->sync($mediaIds);
