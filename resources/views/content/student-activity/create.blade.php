@@ -53,7 +53,7 @@
 
     // Hide Validation text-danger
     $(document).ready(function() {
-        $('#basic-default-firstname').on('input change', function() {
+        $('#basic-default-title, #basic-default-user, #basic-default-image').on('input change', function() {
             $(this).removeClass('is-invalid');
             $(this).next('.text-danger').hide();
         });

@@ -52,23 +52,35 @@ class Media extends Model
         }
     }
 
-    public static function multipleImage($request)
+    public static function multipleImage($request, $existingMediaIds = [])
     {
         $data = $request->validate([
             'image.*' => 'required|image',
         ]);
         $mediaIds = [];
+        
         if ($request->hasFile('image')) {
             $photos = $request->file('image');
             foreach ($photos as $photo) {
                 $path = $photo->store('public/assets/img/images');
                 $image = str_replace('public/', '', $path);
-                $media = self::create(['image' => $image]);
-                $mediaIds[] = $media->id;
+
+                if (!empty($existingMediaIds)) {
+                    // Check if the media ID exists in the provided existing media IDs
+                    $existingMediaId = array_shift($existingMediaIds);
+
+                    // Update the existing media record with the new image path
+                    self::where('id', $existingMediaId)->update(['image' => $image]);
+
+                    $mediaIds[] = $existingMediaId;
+                } else {
+                    // Create a new media record
+                    $media = self::create(['image' => $image]);
+                    $mediaIds[] = $media->id;
+                }
             }
         }
         return $mediaIds;
-        // add update or else condition
     }
 
     public function user(): HasOne
