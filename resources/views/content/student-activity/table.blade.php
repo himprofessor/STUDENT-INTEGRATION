@@ -3,7 +3,7 @@
         <tr>
             <th>ID</th>
             <th>Title</th>
-            <th>User Name</th>
+            <th>Description</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -15,7 +15,7 @@
         <tr>
             <td class="hover-row" data-bs-toggle="modal" data-bs-target="#confirmView{{ $activities->id }}" style="cursor: pointer;" title="view Image">{{ $rowNumber }}</td>
             <td class="hover-row" data-bs-toggle="modal" data-bs-target="#confirmView{{ $activities->id }}" style="cursor: pointer;" title="view Image">{{$activities->title}}</td>
-            <td class="hover-row" data-bs-toggle="modal" data-bs-target="#confirmView{{ $activities->id }}" style="cursor: pointer;" title="view Image">{{$activities->user->username}}</td>
+            <td class="hover-row text-wrap" data-bs-toggle="modal" data-bs-target="#confirmView{{ $activities->id }}" style="cursor: pointer;" title="view Image">{!! $activities->description !!}</td>
             <td>
                 <a href="{{ url('student-activities/edit', $activities->id) }}" class="btn btn-primary btn-sm">
                     <i class="bx bx-edit-alt me-1"></i> Edit
