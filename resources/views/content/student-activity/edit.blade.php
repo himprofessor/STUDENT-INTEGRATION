@@ -49,7 +49,7 @@
             console.log(error);
         });
 
-    // PreviewImage create 
+    // PreviewImage edit 
     function previewImages(event) {
         let previewContainer = document.getElementById('preview-container');
         previewContainer.innerHTML = ''; // Clear any existing previews

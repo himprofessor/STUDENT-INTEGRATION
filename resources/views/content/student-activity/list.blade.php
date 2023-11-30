@@ -17,7 +17,7 @@
                 <!-- search button  -->
                 <div class="col-md-6">
                     <div class="input-group">
-                        <input type="text" name="title" class="form-control" placeholder="Search by job title" value="{{ request()->get('title') }}">
+                        <input type="text" name="title" class="form-control" placeholder="Search by title" value="{{ request()->get('title') }}">
                         <button type="submit" class="btn btn-primary">
                             <i class="bx bx-search"></i> Search
                         </button>

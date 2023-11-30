@@ -26,20 +26,6 @@
     @enderror
 </div>
 <div class="mb-3">
-    <strong>User Name</strong>
-    <select id="basic-default-user" name="user_id" class="form-select @error('user_id') is-invalid @enderror">
-        <option disabled selected>Select user name</option>
-        @foreach ($users as $user)
-        <option value="{{ $user->id }}" {{$user->id == $studentactivities->user_id ? 'selected':''}}>
-            {{ $user->username }}
-        </option>
-        @endforeach
-    </select>
-    @error('user_id')
-    <div class="text-danger">{{ $message }}</div>
-    @enderror
-</div>
-<div class="mb-3">
     <strong>Description</strong>
     <p><textarea class="form-control" placeholder="Your description here" id="editor" name="description">{!! old('description', $studentactivities->description?? '') !!}</textarea></p>
     {{ csrf_field() }}
