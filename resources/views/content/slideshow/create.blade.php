@@ -10,6 +10,9 @@
 
 <link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+
 @section('vendor-script')
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
@@ -59,58 +62,62 @@
 </script>
 @endsection
 
-<!-- Javascript Validate slideshow -->
-<script>
-$(document).ready(function() {
-  $('#basic-default-fullname, #upload').on('input change', function() {
-    $('#heading-error').hide();
-    $(this).removeClass('is-invalid');
-  });
-});
 
-</script>
-
-<!-- // Crop image in javascrip -->
 <script>
+    // <!-- Javascript Validate slideshow -->
+    $(document).ready(function() {
+        $('#basic-default-fullname, #upload').on('input change', function() {
+            $('#heading-error').hide();
+            $(this).removeClass('is-invalid');
+        });
+    });
+
+    // <!-- Javascript crop image slideshow -->
     $(document).ready(function() {
         $('#upload').on('change', function() {
+
+            $('#uploadedAvatar').hide();
             $('#cropForm').show();
-            var input = this;
-            var reader = new FileReader();
+            let input = this;
+            let reader = new FileReader();
             reader.onload = function(e) {
                 $('#cropPreview').attr('src', e.target.result);
 
                 // Initialize Cropper.js
-                var cropper = new Cropper($('#cropPreview')[0], {
-                    aspectRatio: 1, // Set the desired aspect ratio for cropping
-                    viewMode: 1, // Set the default view mode
-                    autoCropArea: 0.5, // Set the initial auto crop area
+
+                let cropper = new Cropper($('#cropPreview')[0], {
+                    viewport: {
+                        width: 400,
+                        height: 400
+                    },
+                    boundary: {
+                        width: 500,
+                        height: 500
+                    },
+                    showZoomer: false,
+                    enableResize: true,
+                    enableOrientation: true,
+                    mouseWheelZoom: 'ctrl'
                 });
 
                 $('#cropButton').on('click', function() {
-                    // Get the cropped canvas
-                    var canvas = cropper.getCroppedCanvas();
-
-                    // Convert canvas to base64 data URL
-                    var croppedImage = canvas.toDataURL();
+                    let canvas = cropper.getCroppedCanvas(); // Get the cropped canvas
+                    let croppedImage = canvas.toDataURL(); // Convert canvas to base64 data URL
 
                     // Set the cropped image as the source for the original image
                     $('#uploadedAvatar').attr('src', croppedImage);
+                    $('#uploadedAvatar').show();
+                    $('#cropForm').hide(); // Hide the crop form
 
-                    // Hide the crop form
-                    $('#cropForm').hide();
-
-                    // Attach the cropped image to the file input
-                    canvas.toBlob(function(blob) {
-                        var newFile = new File([blob], input.files[0].name, { type: input.files[0].type });
-                        input.files = [newFile];
-
-                        // Show the image in the slideshow list
-                        $('#slideshowListImage').attr('src', croppedImage);
-                    });
+                    // Set the cropped image data to the hidden input field
+                    $('#croppedImage').val(croppedImage);
                 });
             };
             reader.readAsDataURL(input.files[0]);
+        });
+         $('#crop-modal').on('hidden.bs.modal', function() {
+            // Clear the file input to allow reselection of the same file
+            $('#upload').val('');
         });
     });
 </script>

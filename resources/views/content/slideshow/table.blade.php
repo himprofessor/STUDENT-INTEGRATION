@@ -33,7 +33,7 @@
                 <img src="{{asset('storage/'.$slideshow->media->image)}}" width="100px" alt="Slideshow">
             </td>
             <td>{{ $slideshow->heading }}</td>
-            <td>{!!($slideshow->description)!!}</td>
+            <td class="text-wrap">{!!($slideshow->description)!!}</td>
 
             <td>
                 <a href="{{ url('slideshow/edit', $slideshow->id) }}" class="btn btn-primary btn-sm">

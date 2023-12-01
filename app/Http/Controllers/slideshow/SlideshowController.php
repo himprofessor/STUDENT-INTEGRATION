@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Slideshow;
 
 use Intervention\Image\Facades\Image;
-
 use App\Http\Controllers\Controller;
 use App\Models\Media;
 use App\Models\Slideshow;

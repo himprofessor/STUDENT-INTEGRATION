@@ -31,7 +31,7 @@ class Slideshow extends Model
             $validated = $request->validate(
                 [
                     'heading' => 'required',
-                    'image' => 'required|image|mimes:jpeg,png,gif|max:800',
+                    'image' => 'required|image|mimes:jpeg,png,gif|max:1000',
                 ],
                 [
                     'heading.required' => 'Please enter the heading',
@@ -46,7 +46,7 @@ class Slideshow extends Model
         if ($id) {
             $media_id = self::find($id)->media_id;
             if ($request->hasFile('image')) {
-                $media = Media::store($request, $media_id);
+                $media = Media::croppImage($request, $media_id);
                 $data['media_id'] = $media_id;
             }
             $existingSlideshow = self::find($id);
@@ -54,7 +54,7 @@ class Slideshow extends Model
             $data = $existingSlideshow;
         } else {
             if ($request->hasFile('image')) {
-                $media = Media::store($request);
+                $media = Media::croppImage($request);
                 $data['media_id'] = $media->id;
                 $data['image'] = $media->image;
             }
