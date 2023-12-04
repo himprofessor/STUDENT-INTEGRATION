@@ -23,7 +23,6 @@
     <div class="col-xl">
         <div class="card">
             <div class="card-body">
-                <h3 class="fw-bold text-center ">Create Career Opportunities</h3>
                 <form method="POST" action="{{ route('career-opportunities.store') }}">
                     @csrf
                     @include('content.career-opportunity.form')

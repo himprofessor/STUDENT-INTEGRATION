@@ -22,18 +22,20 @@ class StudentActivity extends Model
                     'title' => 'required|min:1|max:100',
                 ],
                 [
-                    'title.required'   => 'Please input title',
+                    'title.required' => 'Please input title',
                 ]
             );
         } else {
             $validatedData = $request->validate(
                 [
-                    'image' => 'required|min:1|max:6',
-                    'title' => 'required|min:1|max:100',
+                    'image'   => 'required|array|min:1|max:5',
+                    'image.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+                    'title'   => 'required|min:1|max:100',
                 ],
                 [
-                    'image.required'   => 'Please upload photos',
-                    'title.required'   => 'Please input title',
+                    'image.required' => 'Please upload at least one image',
+                    'image.max'      => 'This image must not be more than 5 images',
+                    'title'          => 'Please input title',
                 ]
             );
         }

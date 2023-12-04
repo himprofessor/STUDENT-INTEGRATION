@@ -15,7 +15,7 @@
      alt="department-avatar" class="d-block rounded" width="120" height="120" id="uploadedAvatar" />
 
     <div class="button-wrapper">
-      <label for="upload" class="btn btn-primary me-2 mb-2 " tabindex="0">
+      <label for="upload" class="btn me-2 mb-2" style="background-color: #009DE1; color:white" tabindex="0">
 
         <span class="d-none d-sm-block">Upload department cover</span>
         <i class="bx bx-upload d-block d-sm-none"></i>

@@ -26,13 +26,12 @@
                     @method('PUT')
                     @include('content.user.form', ['user' => $user])
                     <a href="{{ url('user') }}" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn" style="background-color: #009DE1; color:white">Update</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-@endsection
 <script>
     $(document).ready(function() {
         // Initialize Croppie
@@ -99,3 +98,4 @@
 
     });
 </script>
+@endsection

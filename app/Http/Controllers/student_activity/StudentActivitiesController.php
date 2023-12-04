@@ -12,15 +12,13 @@ class StudentActivitiesController extends Controller
 {
     public static function index()
     {
-        $users = User::all();
         $studentactivities = StudentActivity::orderBy('created_at', 'desc')->paginate(10);
-        return view('content.student-activity.list', compact('studentactivities', 'users'));
+        return view('content.student-activity.list', compact('studentactivities'));
     }
     public function create()
     {
-        $users = User::all();
         $studentactivities = new StudentActivity();
-        return view('content.student-activity.create', compact('studentactivities', 'users'));
+        return view('content.student-activity.create', compact('studentactivities'));
     }
     public function store(Request $request)
     {
@@ -62,11 +60,11 @@ class StudentActivitiesController extends Controller
     }
     public function search(Request $request)
     {
-        // Your code here
-        $activities = $request->input('title');
-        // Assuming you have a method to search activities based on title
-        $studentactivities = StudentActivity::where('title', 'like', "%$activities%")->paginate(10);
-
-        return view('content.student-activity.list', ['studentactivities' => $studentactivities]);
+        $studentactivities = StudentActivity::where("title", "like", "%" . $request->search . "%")->paginate(10);
+        if ($request->ajax()) {
+            return view('content.student-activity.table', ['studentactivities' => $studentactivities])->render();
+        } else {
+            return view('content.student-activity.list', ['studentactivities' => $studentactivities]);
+        }
     }
 }

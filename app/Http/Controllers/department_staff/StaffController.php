@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\department_staff;
+
 use App\Http\Controllers\Controller;
 use App\Models\Department;
 use App\Models\Staff;
@@ -56,12 +57,14 @@ class StaffController extends Controller
     }
     public function search(Request $request)
     {
-      // Your code here
-      $nameOrEmail = $request->input('first_name','last_name', 'email');
-      // Assuming you have a method to search staffs based on the first name, last name and email
-      $staffs = Staff::where('first_name', 'like', "%$nameOrEmail%")
-        ->orWhere('last_name', 'like', "%$nameOrEmail%")
-        ->orWhere('email', 'like', "%$nameOrEmail%")->paginate(10);
-      return view('content.staff.list', ['staffs' => $staffs]);
+        $searchStaff = Staff::where('first_name', 'like', '%' . $request->search . '%')
+            ->orWhere('last_name', 'like', '%' . $request->search . '%')
+            ->orWhere('email', 'like', '%' . $request->search . '%')
+            ->paginate(10);
+        if ($request->ajax()) {
+            return view('content.staff.table', ['staffs' => $searchStaff])->render();
+        } else {
+            return view('content.staff.list', ['staffs' => $searchStaff]);
+        }
     }
 }
