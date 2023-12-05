@@ -27,7 +27,7 @@
                     @csrf
                     @include('content.student-activity.form')
                     <a href="{{ url('student-activities') }}" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn" style="background-color: #009DE1; color:white">Submit</button>
                 </form>
             </div>
         </div>

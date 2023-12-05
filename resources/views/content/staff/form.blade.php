@@ -110,7 +110,7 @@
     </div>
 </div>
 <fieldset class="form-group">
-    <strong>About Staff <span class="text-danger">*</span></strong>
+    <strong>About Staff</strong>
     <p><textarea class="form-control" placeholder="Your text here" id="editor" name="about">{!! old('about', $staff->about ?? '') !!}</textarea></p>
     {{ csrf_field() }}
 </fieldset>

@@ -6,7 +6,7 @@
     </div>
 </div>
 <div class="mb-3">
-    <strong>Upload Multiple Photos </strong>
+    <strong>Upload Multiple Photos <span class="text-danger">*</span></strong>
     <div class="button-wrapper">
         <label for="upload" id="basic-default-image" class="btn border border-1 w-100" tabindex="0">
             <span class="d-none d-sm-block text-start">Upload Muiltiple Images</span>
@@ -19,7 +19,7 @@
     @enderror
 </div>
 <div class="mb-3">
-    <strong>Title</strong>
+    <strong>Title <span class="text-danger">*</span></strong>
     <input type="text" placeholder="input title" class="form-control @error('title') is-invalid @enderror" id="basic-default-title" name="title" value="{{ old('title', $studentactivities->title?? '') }}" />
     @error('title')
     <div class="text-danger">{{ $message }}</div>

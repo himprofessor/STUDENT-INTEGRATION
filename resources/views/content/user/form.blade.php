@@ -5,7 +5,7 @@
             <img src="{{ old('image', $user->media->image ?? '') ? asset('storage/' . old('image', $user->media->image ?? '')) : asset('assets/img/avatars/1.png') }}" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
         </div>
         <div class="button-wrapper">
-            <label for="upload" class="btn btn-primary me-2 mb-1" tabindex="0">
+            <label for="upload" class="btn me-2 mb-1" tabindex="0" style="background-color: 009DE1; color:white">
                 <span class="d-none d-sm-block">Upload new photo</span>
                 <i class="bx bx-upload d-block d-sm-none"></i>
             </label>

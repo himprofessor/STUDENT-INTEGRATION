@@ -7,7 +7,6 @@ use App\Models\Media;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class UserController extends Controller
 {
   public function index()
@@ -64,11 +63,13 @@ class UserController extends Controller
   public function search(Request $request)
   {
     // Your search logic here
-    $username = $request->input('username');
-
-    // Assuming you have a method to search users based on the username
-    $users = User::where('username', 'like', "%$username%")->paginate(10);
-
-    return view('content.user.list', ['users' => $users]);
+    $username = User::where("username", "like", "%" . $request->search . "%")
+    ->orWhere("email", "like", "%" . $request->search . "%")
+    ->paginate(10);
+    if ($request->ajax()) {
+      return view('content.user.table', ['users' => $username])->render();
+    } else {
+      return view('content.user.list', ['users' => $username]);
+    }
   }
 }

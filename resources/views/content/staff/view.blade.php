@@ -9,7 +9,7 @@
                     <div class="col-md-4 text-center px-1 border-end">
                         <img src="{{ asset('storage/' . $staff->media->image) }}" class="rounded-circle" alt="Staff Image" width="100" height="100">
                         <h4 class="mt-4 text-wrap">{{$staff->first_name}} {{$staff->last_name}}</h4>
-                        <h4 class="mb-3 text-wrap">{{$staff->position}}</h4>
+                        <p class="mb-3 text-wrap">{{$staff->position}}</p>
                     </div>
                     <div class="col-md-8">
                         <div class="row">

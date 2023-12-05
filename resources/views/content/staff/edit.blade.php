@@ -28,7 +28,7 @@
                     @method('PUT')
                     @include('content.staff.form', ['staff' => $staff])
                     <a href="{{ url('department&staff/staff') }}" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn" style="background-color: #009DE1; color:white">Update</button>
                 </form>
             </div>
         </div>
