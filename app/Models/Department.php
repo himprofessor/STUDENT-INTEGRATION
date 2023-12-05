@@ -30,7 +30,7 @@ class Department extends Model
             $validatedData = $request->validate([
 
                 'department_name' => 'required',
-                'image' => 'required|image|mimes:jpeg,png,gif|max:800',
+                'image' => 'required|image|mimes:jpeg,png,gif|max:2000',
             ], [
                 'department_name.required' => 'Please enter the department name',
                 'image.required' => 'Please choose a department cover image',

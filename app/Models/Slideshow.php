@@ -18,28 +18,18 @@ class Slideshow extends Model
 
     public static function store($request, $id = null)
     {
-        if ($id) {
-            $validated = $request->validate(
-                [
-                    'heading' => 'required',
-                ],
-                [
-                    'heading.required' => '* Please enter the heading',
-                ]
-            );
-        } else {
-            $validated = $request->validate(
-                [
-                    'heading' => 'required',
-                    'image' => 'required|image|mimes:jpeg,png,gif|max:1000',
-                ],
-                [
-                    'heading.required' => 'Please enter the heading',
-                    'image.required' => 'Please choose a slideshow image',
-                    'image.mimes' => 'Only JPEG, PNG, and GIF images are allowed',
-                ]
-            );
-        }
+        $rules = [
+            'image' => 'nullable|image|mimes:jpeg,png,gif|max:20000',
+            'heading' => 'nullable', // Make 'heading' optional
+        ];
+        $messages = [
+            'image.mimes' => 'Only JPEG, PNG, and GIF images are allowed',
+        ];
+
+        // Remove the 'required' message for 'heading'
+        unset($messages['heading.required']);
+
+        $validated = $request->validate($rules, $messages);
 
         $data = $request->only('heading', 'description');
 

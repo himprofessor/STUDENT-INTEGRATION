@@ -1,8 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Slideshow;
-
-use Intervention\Image\Facades\Image;
 use App\Http\Controllers\Controller;
 use App\Models\Media;
 use App\Models\Slideshow;
@@ -20,25 +17,10 @@ class SlideshowController extends Controller
         return view('content.slideshow.list', compact('slideshows', 'totalSlideshows'));
     }
 
-
     public function create()
     {
         $media = Media::all();
         return view('content.slideshow.create', compact('media'));
-    }
-
-    // Function Search
-
-    public function search(Request $request)
-    {
-        $searchTerm = $request->input('search');
-
-        $slideshows = Slideshow::where(function ($query) use ($searchTerm) {
-            $query->where('heading', 'like', "%$searchTerm%")
-                ->orWhere('description', 'like', "%$searchTerm%");
-        })->paginate(10);
-
-        return view('content.slideshow.list', compact('slideshows'));
     }
 
     public function store(Request $request)
@@ -80,33 +62,19 @@ class SlideshowController extends Controller
             $slideshow->media->delete();
         }
         DB::commit();
-
         // Redirect back to the slideshow list or a success page
         return redirect()->route('slideshow')->with('success', 'Slideshow has been deleted successfully.');
     }
 
-    public function crop(Request $request, $id)
+    public function search(Request $request)
     {
-        $slideshow = Slideshow::findOrFail($id);
-    
-        $request->validate([
-            'croppedImage' => 'required|image|max:2048' // Adjust the validation rules as needed
-        ]);
-    
-        $croppedImage = $request->file('croppedImage');
-    
-        $fileName = uniqid() . '.' . $croppedImage->getClientOriginalExtension();
-    
-        $image = Image::make($croppedImage);
-    
-        // Perform any additional image manipulation if needed (e.g., resizing, filters)
-    
-        $image->save(public_path('storage/' . $fileName));
-    
-        // Update the slideshow record with the new image file name
-        $slideshow->image = $fileName;
-        $slideshow->save();
-    
-        return redirect()->route('slideshow.index')->with('success', 'Image cropped successfully');
+        $searchTerm = $request->input('search');
+
+        $slideshows = Slideshow::where(function ($query) use ($searchTerm) {
+            $query->where('heading', 'like', "%$searchTerm%")
+                ->orWhere('description', 'like', "%$searchTerm%");
+        })->paginate(10);
+
+        return view('content.slideshow.list', compact('slideshows'));
     }
 }

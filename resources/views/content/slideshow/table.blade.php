@@ -14,7 +14,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>#</th>
+            <th>ID</th>
             <th>Slideshow</th>
             <th>Heading</th>
             <th>Description</th>
@@ -30,10 +30,11 @@
         <tr>
             <td>{{ $rowNumber }}</td>
             <td>
-                <img src="{{asset('storage/'.$slideshow->media->image)}}" width="100px" alt="Slideshow">
+                <img src="{{ asset('storage/' .$slideshow->media->image) }}" class="equal-image" alt="Slideshow Image" width="200" height="100">
             </td>
-            <td>{{ $slideshow->heading }}</td>
-            <td class="text-wrap">{!!($slideshow->description)!!}</td>
+
+            <td class="text-wrap">{{ $slideshow->heading ?? '' }}</td>
+            <td class="text-wrap">{!! $slideshow->description ?? '' !!}</td>
 
             <td>
                 <a href="{{ url('slideshow/edit', $slideshow->id) }}" class="btn btn-primary btn-sm">
@@ -44,7 +45,7 @@
                 </button>
             </td>
         </tr>
-        
+
         @include('content.slideshow.delete')
         @php
         $rowNumber++;

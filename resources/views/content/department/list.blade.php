@@ -31,7 +31,7 @@
                             <i class="bx bx-refresh"></i> Clear
                         </a>
                         {{-- @endif --}}
-                        <a href="{{ url('department&staff/department/create') }}" class="btn btn-success">
+                        <a href="{{ url('department&staff/department/create') }}" class="btn btn-primary">
                             <i class="bx bx-plus"></i> New
                         </a>
                     </div>

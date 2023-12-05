@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="input-group">
-                            <input type="text" name="search" class="form-control" placeholder="Search by heading or description"
+                            <input type="text" name="search" class="form-control" placeholder="Search by heading ..."
                                 value="{{ request()->get('search') }}">
                             <button type="submit" class="btn btn-primary">
                                 <i class="bx bx-search"></i> Search
@@ -27,7 +27,7 @@
                         <a href="{{ url('slideshow') }}" class="btn btn-outline-secondary">
                             <i class="bx bx-refresh"></i> Clear
                         </a>
-                        <a href="{{ url('slideshow/create') }}" class="btn btn-success">
+                        <a href="{{ url('slideshow/create') }}" class="btn btn-primary">
                             <i class="bx bx-plus"></i> New
                         </a>
                     </div>

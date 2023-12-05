@@ -14,7 +14,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <td>#</td>
+            <td>ID</td>
             <th>department_cover</th>
             <th>department_name</th>
             <th>Action Department</th>

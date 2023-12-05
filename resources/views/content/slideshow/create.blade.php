@@ -73,9 +73,12 @@
     });
 
     // <!-- Javascript crop image slideshow -->
-    $(document).ready(function() {
-        $('#upload').on('change', function() {
 
+    $(document).ready(function() {
+        let cropper;
+        let originalImageSrc;
+
+        $('#upload').on('change', function() {
             $('#uploadedAvatar').hide();
             $('#cropForm').show();
             let input = this;
@@ -84,8 +87,7 @@
                 $('#cropPreview').attr('src', e.target.result);
 
                 // Initialize Cropper.js
-
-                let cropper = new Cropper($('#cropPreview')[0], {
+                cropper = new Cropper($('#cropPreview')[0], {
                     viewport: {
                         width: 400,
                         height: 400
@@ -115,7 +117,24 @@
             };
             reader.readAsDataURL(input.files[0]);
         });
-         $('#crop-modal').on('hidden.bs.modal', function() {
+
+        $('.account-image-reset').on('click', function() {
+            cropper.destroy(); // Destroy the existing cropper instance
+            $('#uploadedAvatar').attr('src', originalImageSrc); // Restore the original image
+            $('#uploadedAvatar').show();
+            $('#cropForm').hide();
+            $('#upload').val(''); // Clear the file input
+
+            // Clear the cropped image data from the hidden input field
+            $('#croppedImage').val('');
+        });
+
+        $('#crop-modal').on('show.bs.modal', function() {
+            // Store the original image source
+            originalImageSrc = $('#uploadedAvatar').attr('src');
+        });
+
+        $('#crop-modal').on('hidden.bs.modal', function() {
             // Clear the file input to allow reselection of the same file
             $('#upload').val('');
         });

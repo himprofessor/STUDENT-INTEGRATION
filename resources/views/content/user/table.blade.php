@@ -26,7 +26,7 @@
                     @endif --}}
                     <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                         <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                            class="avatar avatar-xs pull-up" title="{{ $user->username }}">
+                            class="avatar avatar-xm pull-up" title="{{ $user->username }}">
                             <img src="{{ asset('storage/' . $user->media->image) }}" alt="Avatar"
                                 class="rounded-circle">
                         </li>
