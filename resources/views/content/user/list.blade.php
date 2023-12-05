@@ -2,16 +2,6 @@
 
 @section('title', 'User List - UI elements')
 
-<!-- search ajax -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        }
-    });
-</script>
-
 @section('vendor-script')
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
@@ -52,6 +42,7 @@
         </div>
     </div>
 </div>
+<!-- search ajax  -->
 <script>
     $(document).ready(function() {
         $('#search').on('keyup', function() {
