@@ -24,12 +24,11 @@ Route::prefix('department&staff/')->group(function () use ($controller_path) {
   Route::prefix('department')->group(function () use ($controller_path) {
     Route::get('/', $controller_path . '\department_staff\DepartmentController@index')->name('department');
     Route::get('/create', $controller_path . '\department_staff\DepartmentController@create')->name('department.create');
-    Route::get('/search', $controller_path . '\department_staff\DepartmentController@search')->name('department.search');
-
     Route::post('/store', $controller_path . '\department_staff\DepartmentController@store')->name('department.store');
     Route::get('/edit/{id}', $controller_path . '\department_staff\DepartmentController@edit')->name('department.edit');
     Route::put('/edit/{id}', $controller_path . '\department_staff\DepartmentController@update')->name('department.update');
     Route::delete('/delete/{id}', $controller_path . '\department_staff\DepartmentController@destroy')->name('department.destroy');
+    Route::get('/search', $controller_path . '\department_staff\DepartmentController@search')->name('department.search');
   });
   //staff
   Route::prefix('staff')->group(function () use ($controller_path) {
@@ -39,6 +38,7 @@ Route::prefix('department&staff/')->group(function () use ($controller_path) {
     Route::get('/edit/{id}', $controller_path . '\department_staff\StaffController@edit')->name('staff.edit');
     Route::put('/edit/{id}', $controller_path . '\department_staff\StaffController@update')->name('staff.update');
     Route::delete('/delete/{id}', $controller_path . '\department_staff\StaffController@destroy')->name('staff.destroy');
+    Route::get('/search', $controller_path . '\department_staff\StaffController@search')->name('staff.search');
   });
 });
 
@@ -61,6 +61,7 @@ Route::prefix('career-opportunities')->group(function () use ($controller_path) 
   Route::get('/edit/{id}', $controller_path . '\career_opportunity\CareerOpportunitiesController@edit')->name('career-opportunities.edit');
   Route::put('/edit/{id}', $controller_path . '\career_opportunity\CareerOpportunitiesController@update')->name('career-opportunities.update');
   Route::delete('/delete/{id}', $controller_path . '\career_opportunity\CareerOpportunitiesController@destroy')->name('career-opportunities.destroy');
+  Route::get('/search', $controller_path . '\career_opportunity\CareerOpportunitiesController@search')->name('career-opportunities.search');
 });
 
 //route slideshow
@@ -73,4 +74,15 @@ Route::prefix('slideshow')->group(function () use ($controller_path) {
   Route::delete('/delete/{id}', $controller_path . '\slideshow\SlideshowController@destroy')->name('slideshow.destroy');
   Route::get('/search', $controller_path . '\slideshow\SlideshowController@search')->name('slideshow.search');
 
+});
+
+//route student activities
+Route::prefix('student-activities')->group(function () use ($controller_path) {
+  Route::get('/', $controller_path . '\student_activity\StudentActivitiesController@index')->name('student-activities');
+  Route::get('/create', $controller_path . '\student_activity\StudentActivitiesController@create')->name('student-activities.create');
+  Route::post('/store', $controller_path . '\student_activity\StudentActivitiesController@store')->name('student-activities.store');
+  Route::get('/edit/{id}', $controller_path . '\student_activity\StudentActivitiesController@edit')->name('student-activities.edit');
+  Route::put('/edit/{id}', $controller_path . '\student_activity\StudentActivitiesController@update')->name('student-activities.update');
+  Route::delete('/delete/{id}', $controller_path . '\student_activity\StudentActivitiesController@destroy')->name('student-activities.destroy');
+  Route::get('/search', $controller_path . '\student_activity\StudentActivitiesController@search')->name('student-activities.search');
 });

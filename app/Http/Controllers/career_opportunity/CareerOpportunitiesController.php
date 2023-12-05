@@ -11,7 +11,7 @@ class CareerOpportunitiesController extends Controller
 {
     public static function index()
     {
-        $careeropportunities = CareerOpportunity::orderBy('created_at','desc')->paginate(10);
+        $careeropportunities = CareerOpportunity::orderBy('created_at', 'desc')->paginate(10);
         return view('content.career-opportunity.list', compact('careeropportunities'));
     }
 
@@ -48,5 +48,14 @@ class CareerOpportunitiesController extends Controller
         }
         DB::commit();
         return redirect('career-opportunities');
+    }
+    public function search(Request $request)
+    {
+        $career = CareerOpportunity::where('job_title', 'like', '%' . $request->search . '%')->paginate(10);
+        if ($request->ajax()) {
+            return view('content.career-opportunity.table', ['careeropportunities' => $career])->render();
+        } else {
+            return view('content.career-opportunity.list', ['careeropportunities' => $career]);
+        }
     }
 }

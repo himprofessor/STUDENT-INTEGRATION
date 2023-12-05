@@ -31,23 +31,21 @@ class Staff extends Model
                     'first_name' => 'required|min:1|max:50',
                     'last_name' => 'required|min:1|max:50',
                     'email' => 'required|email|unique:staff,email,' . $id,
+                    'phone' => 'required',
                     'position' => 'required',
-                    'phone' => 'required|digits:10',
                     'department_id' => 'required',
                     'start_date' => 'required',
                     'end_date' => 'required',
-                    'about' => 'required|min:1',
                 ],
                 [
                     'first_name.required' => 'Please input first name',
                     'last_name.required' => 'Please input last name',
                     'email.required' => 'Please input email',
-                    'position.required' => 'Please input position',
                     'phone.required' => 'Please input phone number',
+                    'position.required' => 'Please input position',
                     'department_id.required' => 'Please select department name',
                     'start_date.required' => 'Please select start date',
                     'end_date.required' => 'Please select end date',
-                    'about.required' => 'Please input something here',
                 ]
             );
         } else {
@@ -56,23 +54,21 @@ class Staff extends Model
                     'first_name' => 'required|min:1|max:50',
                     'last_name' => 'required|min:1|max:50',
                     'email' => 'required|email|unique:staff,email,' . $id,
+                    'phone' => 'required',
                     'position' => 'required',
-                    'phone' => 'required|digits:10',
                     'department_id' => 'required',
                     'start_date' => 'required',
                     'end_date' => 'required',
-                    'about' => 'required|min:1',
                 ],
                 [
                     'first_name.required' => 'Please input first name',
                     'last_name.required' => 'Please input last name',
                     'email.required' => 'Please input email',
-                    'position.required' => 'Please input position',
                     'phone.required' => 'Please input phone number',
+                    'position.required' => 'Please input position',
                     'department_id.required' => 'Please select department name',
                     'start_date.required' => 'Please select start date',
                     'end_date.required' => 'Please select end date',
-                    'about.required' => 'Please input something here',
                 ]
             );
         }
@@ -91,15 +87,15 @@ class Staff extends Model
         if ($id) {
             $media_id = self::find($id)->media_id;
             if ($request->hasFile('image')) {
-                $media = Media::store($request, $media_id);
+                $media = Media::croppImage($request, $media_id);
                 $data['media_id'] = $media_id;
             }
-            $existingUser = self::find($id);
-            $existingUser->update($data);
-            $data = $existingUser;
+            $existingStaff = self::find($id);
+            $existingStaff->update($data);
+            $data = $existingStaff;
         } else {
             if ($request->hasFile('image')) {
-                $media = Media::store($request);
+                $media = Media::croppImage($request);
                 $data['media_id'] = $media->id;
                 $data['image'] = $media->image;
             }

@@ -40,6 +40,12 @@
       "name": "Slideshow",
       "icon": "menu-icon tf-icons bx bx-slideshow",
       "slug": "slideshow"
+    },
+    {
+      "url": "/student-activities",
+      "name": "Student-activities",
+      "icon": "menu-icon tf-icons bx bx-shape-polygon",
+      "slug": "student-activities"
     }
   ]
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\department_staff;
+
 use App\Http\Controllers\Controller;
 use App\Models\Department;
 use App\Models\Staff;
@@ -17,7 +18,7 @@ class StaffController extends Controller
     }
     public function create()
     {
-      $media = Media::all();
+        $media = Media::all();
         $departments = Department::all();
         $staff = new Staff();
         return view('content.staff.create', compact('departments', 'staff', 'media'));
@@ -53,5 +54,17 @@ class StaffController extends Controller
         }
         DB::commit();
         return redirect('department&staff/staff');
+    }
+    public function search(Request $request)
+    {
+        $searchStaff = Staff::where('first_name', 'like', '%' . $request->search . '%')
+            ->orWhere('last_name', 'like', '%' . $request->search . '%')
+            ->orWhere('email', 'like', '%' . $request->search . '%')
+            ->paginate(10);
+        if ($request->ajax()) {
+            return view('content.staff.table', ['staffs' => $searchStaff])->render();
+        } else {
+            return view('content.staff.list', ['staffs' => $searchStaff]);
+        }
     }
 }
