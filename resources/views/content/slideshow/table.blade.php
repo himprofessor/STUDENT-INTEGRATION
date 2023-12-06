@@ -29,10 +29,10 @@
         <tr>
             <td>{{ $rowNumber }}</td>
             <td>
-                <img src="{{asset('storage/'.$slideshow->media->image)}}" width="100px" alt="Slideshow">
+                <img src="{{ asset('storage/' .$slideshow->media->image) }}" class="equal-image" alt="Slideshow Image" width="200" height="100">
             </td>
-            <td>{{ $slideshow->heading }}</td>
-            <td class="text-wrap" style="width: 45%;">{!!($slideshow->description)!!}</td>
+            <td class="text-wrap">{{ $slideshow->heading }}</td>
+            <td class="text-wrap">{!!($slideshow->description)!!}</td>
             <td>
                 <a href="{{ url('slideshow/edit', $slideshow->id) }}" class="btn btn-sm" style="background-color: #009DE1; color:white">
                     <i class="bx bx-edit-alt me-2"></i> Edit
@@ -49,3 +49,10 @@
         @endforeach
     </tbody>
 </table>
+<!-- search ajax -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}
+    });
+</script>

@@ -29,7 +29,7 @@
             <td>{{ $rowNumber }}</td>
             <td>
                 @if ($department->media)
-                <img src="{{ asset('storage/' . $department->media->image) }}" alt="Departent Cover" width="110px">
+                <img src="{{ asset('storage/' .$department->media->image) }}" class="equal-image" alt="Departent Cover" width="150" height="90">
                 @endif
             </td>
             <td>{{ $department->department_name }}</td>
@@ -51,3 +51,12 @@
         @endforeach
     </tbody>
 </table>
+<!-- search ajax -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        }
+    });
+</script>

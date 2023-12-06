@@ -51,11 +51,6 @@ Route::prefix('user')->group(function () use ($controller_path) {
   Route::put('/edit/{id}', $controller_path . '\user\UserController@update')->name('user.update');
   Route::delete('/delete/{id}', $controller_path . '\user\UserController@destroy')->name('user.destroy');
   Route::get('/search', $controller_path . '\user\UserController@search')->name('user.search');
-
-
-  Route::get('/login', $controller_path . '\user\UserController@showLoginForm')->name('user.login');
-  Route::post('/login', $controller_path . '\user\UserController@login');
-  Route::post('/logout', $controller_path . '\user\UserController@logout')->name('user.logout');
 });
 
 //route career opportunities
@@ -73,15 +68,11 @@ Route::prefix('career-opportunities')->group(function () use ($controller_path) 
 Route::prefix('slideshow')->group(function () use ($controller_path) {
   Route::get('/', $controller_path . '\slideshow\SlideshowController@index')->name('slideshow');
   Route::get('/create', $controller_path . '\slideshow\SlideshowController@create')->name('slideshow.create');
-  Route::get('/search', $controller_path . '\slideshow\SlideshowController@search')->name('slideshow.search');
-
   Route::post('/store', $controller_path . '\slideshow\SlideshowController@store')->name('slideshow.store');
   Route::get('/edit/{id}', $controller_path . '\slideshow\SlideshowController@edit')->name('slideshow.edit');
   Route::put('/edit/{id}', $controller_path . '\slideshow\SlideshowController@update')->name('slideshow.update');
   Route::delete('/delete/{id}', $controller_path . '\slideshow\SlideshowController@destroy')->name('slideshow.destroy');
-
-  //Crop image
-  Route::post('/{id}/crop', $controller_path . '\slideshow\SlideshowController@crop')->name('slideshow.uploadCroppedImage');
+  Route::get('/search', $controller_path . '\slideshow\SlideshowController@search')->name('slideshow.search');
 
 });
 

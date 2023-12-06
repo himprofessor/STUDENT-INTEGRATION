@@ -69,15 +69,12 @@
                         url: e.target.result
                     });
                     // Open cropping modal
-                    $('#crop-modal').modal('show');
+                    // $('#crop-modal').modal('show');
                 };
                 reader.readAsDataURL(input.files[0]);
                 document.getElementById('img').style.display = 'none'
                 document.getElementById('croppie-container').style.display = 'block';
                 document.getElementById('crop-button').style.display = 'block';
-
-
-
             }
         });
 
