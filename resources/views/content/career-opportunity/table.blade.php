@@ -16,7 +16,7 @@
         <tr>
             <td>{{ $rowNumber }}</td>
             <td>{{$careeropportunity->job_title}}</td>
-            <td class="text-wrap" style="width: 60%;">
+            <td class="text-wrap">
                 {!! ($careeropportunity->job_description) !!}
             </td>
             <td>
@@ -36,3 +36,10 @@
         @endforeach
     </tbody>
 </table>
+<!-- search ajax -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}
+    });
+</script>
