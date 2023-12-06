@@ -22,7 +22,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="col-md-6 text-end">
+                <div class="col-md-6 text-md-end mt-3 mt-md-0">
                     <a href="{{ url('department&staff/department') }}" class="btn btn-outline-secondary">
                         <i class="bx bx-refresh"></i> Clear
                     </a>
