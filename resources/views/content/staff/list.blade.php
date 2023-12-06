@@ -2,6 +2,16 @@
 
 @section('title', 'Course List - UI elements')
 
+<!-- search ajax -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        }
+    });
+</script>
+
 @section('vendor-script')
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
@@ -12,31 +22,29 @@
         <h5 class="fw-bold mb-0">Staff List</h5>
     </div>
     <div class="card-body">
-        <form action="{{ url('department&staff/staff/search') }}" method="GET" class="mb-3">
+        <form class="mb-3">
             <div class="row">
-                <!-- search button  -->
+                <!-- search button -->
                 <div class="col-md-6">
                     <div class="input-group">
-                        <input type="text" name="first_name" class="form-control" placeholder="Search by first name or last name or email" value="{{ request()->get('first_name') }}">
-                        <button type="submit" class="btn btn-primary">
+                        <input type="text" name="search" id="search" class="form-control border border-1" placeholder="search by first name or last name or email">
+                        <button type="submit" class="btn" style="background-color: #009DE1; color: white">
                             <i class="bx bx-search"></i> Search
                         </button>
                     </div>
                 </div>
-                <!-- clear and add new button  -->
+                <!-- clear and add new button -->
                 <div class="col-md-6 text-end">
-                    {{-- @if (request()->has('first_name')) --}}
                     <a href="{{ url('department&staff/staff') }}" class="btn btn-outline-secondary">
                         <i class="bx bx-refresh"></i> Clear
                     </a>
-                    {{-- @endif --}}
-                    <a href="{{ url('department&staff/staff/create') }}" class="btn btn-success">
+                    <a href="{{ url('department&staff/staff/create') }}" class="btn" style="background-color:#009DE1; color: white">
                         <i class="bx bx-plus"></i> New
                     </a>
                 </div>
             </div>
         </form>
-        <div class="table-responsive text-nowrap">
+        <div class="table-responsive text-nowrap" id="containlist">
             @include('content.staff.table')
         </div>
         <div class="d-flex justify-content-between align-items-center mt-3">
@@ -45,4 +53,23 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#search').on('keyup', function() {
+            $value = $(this).val();
+            // alert($value);
+            $.ajax({
+                type: 'get',
+                url: '/department&staff/staff/search',
+                data: {
+                    'search': $value
+                },
+                success: function(data) {
+                    console.log(data);
+                    $('#containlist').html(data);
+                },
+            });
+        });
+    });
+</script>
 @endsection

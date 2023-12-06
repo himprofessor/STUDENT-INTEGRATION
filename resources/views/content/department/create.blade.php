@@ -26,7 +26,7 @@
                     @csrf
                     @include('content.department.form')
                     <a href="{{ url('department&staff/department') }}" class="btn btn-secondary me-1">Cancel</a>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn" style="background-color: #009DE1; color:white">Submit</button>
                 </form>
             </div>
         </div>

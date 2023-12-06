@@ -11,7 +11,7 @@ class CareerOpportunitiesController extends Controller
 {
     public static function index()
     {
-        $careeropportunities = CareerOpportunity::orderBy('created_at','desc')->paginate(10);
+        $careeropportunities = CareerOpportunity::orderBy('created_at', 'desc')->paginate(10);
         return view('content.career-opportunity.list', compact('careeropportunities'));
     }
 
@@ -51,10 +51,11 @@ class CareerOpportunitiesController extends Controller
     }
     public function search(Request $request)
     {
-      // Your code here
-      $career = $request->input('job_title');
-      // Assuming you have a method to search career opportunities based on job title
-      $careeropportunities = CareerOpportunity::where('job_title', 'like', "%$career%")->paginate(10);
-      return view('content.career-opportunity.list', ['careeropportunities' => $careeropportunities]);
+        $career = CareerOpportunity::where('job_title', 'like', '%' . $request->search . '%')->paginate(10);
+        if ($request->ajax()) {
+            return view('content.career-opportunity.table', ['careeropportunities' => $career])->render();
+        } else {
+            return view('content.career-opportunity.list', ['careeropportunities' => $career]);
+        }
     }
 }

@@ -14,7 +14,7 @@
                 <form method="POST" action="{{ route('department.destroy', $department->id) }}">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn" style="background-color: #E85252; color: white">Delete</button>
                 </form>
             </div>
         </div>

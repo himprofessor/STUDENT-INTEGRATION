@@ -26,7 +26,7 @@
                         @method('PUT')
                         @include('content.slideshow.form', ['slideshow' => $slideshow])
                         <a href="{{ url('slideshow') }}" class="btn btn-secondary">Cancel</a>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn" style="background-color: #009DE1; color:white">Update</button>
                     </form>
                 </div>
             </div>
