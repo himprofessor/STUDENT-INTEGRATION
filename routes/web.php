@@ -20,7 +20,7 @@ Route::get('/', $controller_path . '\dashboard\AnalyticsController@index')->name
 
 // Department and Staff
 Route::prefix('department&staff/')->group(function () use ($controller_path) {
-  // department 
+  // department
   Route::prefix('department')->group(function () use ($controller_path) {
     Route::get('/', $controller_path . '\department_staff\DepartmentController@index')->name('department');
     Route::get('/create', $controller_path . '\department_staff\DepartmentController@create')->name('department.create');
@@ -52,6 +52,11 @@ Route::prefix('user')->group(function () use ($controller_path) {
   Route::put('/edit/{id}', $controller_path . '\user\UserController@update')->name('user.update');
   Route::delete('/delete/{id}', $controller_path . '\user\UserController@destroy')->name('user.destroy');
   Route::get('/search', $controller_path . '\user\UserController@search')->name('user.search');
+
+
+  Route::get('/login', $controller_path . '\user\UserController@showLoginForm')->name('user.login');
+  Route::post('/login', $controller_path . '\user\UserController@login');
+  Route::post('/logout', $controller_path . '\user\UserController@logout')->name('user.logout');
 });
 
 //route career opportunities
@@ -78,7 +83,7 @@ Route::prefix('slideshow')->group(function () use ($controller_path) {
 
   //Crop image
   Route::post('/{id}/crop', $controller_path . '\slideshow\SlideshowController@crop')->name('slideshow.uploadCroppedImage');
-  
+
 });
 
 //route student activities

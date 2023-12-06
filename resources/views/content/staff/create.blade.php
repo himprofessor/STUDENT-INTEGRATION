@@ -63,12 +63,6 @@
 
     // Crop Image of Staff
     $(document).ready(function() {
-        $('#basic-default-fullname, #upload').on('input change', function() {
-            $('#basic-default-fullname-error').hide();
-            $(this).removeClass('is-invalid');
-        });
-    });
-    $(document).ready(function() {
         // Initialize Croppie
         var croppie = new Croppie(document.getElementById('croppie-container'), {
             viewport: {
