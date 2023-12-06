@@ -18,35 +18,25 @@ class Slideshow extends Model
 
     public static function store($request, $id = null)
     {
-        if ($id) {
-            $validated = $request->validate(
-                [
-                    'heading' => 'required',
-                ],
-                [
-                    'heading.required' => '* Please enter the heading',
-                ]
-            );
-        } else {
-            $validated = $request->validate(
-                [
-                    'heading' => 'required',
-                    'image' => 'required|image|mimes:jpeg,png,gif|max:800',
-                ],
-                [
-                    'heading.required' => 'Please enter the heading',
-                    'image.required' => 'Please choose a slideshow image',
-                    'image.mimes' => 'Only JPEG, PNG, and GIF images are allowed',
-                ]
-            );
-        }
+        $rules = [
+            'image' => 'nullable|image|mimes:jpeg,png,gif|max:20000',
+            'heading' => 'nullable', // Make 'heading' optional
+        ];
+        $messages = [
+            'image.mimes' => 'Only JPEG, PNG, and GIF images are allowed',
+        ];
+
+        // Remove the 'required' message for 'heading'
+        unset($messages['heading.required']);
+
+        $validated = $request->validate($rules, $messages);
 
         $data = $request->only('heading', 'description');
 
         if ($id) {
             $media_id = self::find($id)->media_id;
             if ($request->hasFile('image')) {
-                $media = Media::store($request, $media_id);
+                $media = Media::croppImage($request, $media_id);
                 $data['media_id'] = $media_id;
             }
             $existingSlideshow = self::find($id);
@@ -54,7 +44,7 @@ class Slideshow extends Model
             $data = $existingSlideshow;
         } else {
             if ($request->hasFile('image')) {
-                $media = Media::store($request);
+                $media = Media::croppImage($request);
                 $data['media_id'] = $media->id;
                 $data['image'] = $media->image;
             }

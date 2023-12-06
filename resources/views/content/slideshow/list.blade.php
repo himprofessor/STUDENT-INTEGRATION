@@ -2,14 +2,6 @@
 
 @section('title', 'Department List - UI elements')
 
-<!-- search ajax -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript">
-    $.ajaxSetup({
-        headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}
-    });
-</script>
-
 @section('vendor-script')
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
@@ -31,7 +23,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 text-end">
-                    <a href="{{ url('search') }}" class="btn btn-outline-secondary">
+                    <a href="{{ url('slideshow') }}" class="btn btn-outline-secondary">
                         <i class="bx bx-refresh"></i> Clear
                     </a>
                     <a href="{{ url('slideshow/create') }}" class="btn" style="background-color: #009DE1; color:white">

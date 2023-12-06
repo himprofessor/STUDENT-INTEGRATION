@@ -29,7 +29,7 @@
             <td>{{ $rowNumber }}</td>
             <td>
                 @if ($department->media)
-                <img src="{{ asset('storage/' . $department->media->image) }}" alt="Departent Cover" width="110px">
+                <img src="{{ asset('storage/' .$department->media->image) }}" class="equal-image" alt="Departent Cover" width="150" height="90">
                 @endif
             </td>
             <td>{{ $department->department_name }}</td>
