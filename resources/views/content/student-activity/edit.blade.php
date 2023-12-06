@@ -4,6 +4,9 @@
 <!-- CKEditor  -->
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 @section('vendor-script')
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
@@ -49,7 +52,7 @@
             console.log(error);
         });
 
-    // PreviewImage edit 
+    // PreviewImage edit
     function previewImages(event) {
         let previewContainer = document.getElementById('preview-container');
         previewContainer.innerHTML = ''; // Clear any existing previews

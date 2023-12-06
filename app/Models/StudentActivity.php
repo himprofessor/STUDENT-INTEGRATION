@@ -40,28 +40,26 @@ class StudentActivity extends Model
             );
         }
         $data = $request->only(
-            'title',
-            'description',
-        );
-
+          'title',
+          'description',);
         if ($id) {
-            $existingStudentActivity = self::find($id);
-            $existingStudentActivity->update($data);
-            $data = $existingStudentActivity;
+          $existingStudentActivity = self::find($id);
+          $existingStudentActivity->update($data);
+          $data = $existingStudentActivity;
         } else {
-            $newStudentActivity = self::create($data);
-            $data = $newStudentActivity;
+          $newStudentActivity = self::create($data);
+          $data = $newStudentActivity;
         }
-        if (request()->image) {
-            // pluck and toArray are methods used to retrieve specific value
-            $existingMediaIds = $data->media()->pluck('id')->toArray();
-            $mediaIds = Media::multipleImage($request, $existingMediaIds);
-            $data->media()->sync($mediaIds);
-        }
-        return $data;
-    }
-    public function media()
-    {
-        return $this->belongsToMany(Media::class, 'student_activity_media');
-    }
+        if(request()->image){
+          // pluck and toArray are methods used to retrieve specific value
+          $existingMediaIds = $data->media()->pluck('id')->toArray();
+          $mediaIds = Media::multipleImage($request, $existingMediaIds);
+          $data->media()->sync($mediaIds);
+      }
+      return $data;
+  }
+  public function media()
+  {
+      return $this->belongsToMany(Media::class, 'student_activity_media');
+  }
 }

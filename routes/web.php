@@ -20,7 +20,7 @@ Route::get('/', $controller_path . '\dashboard\AnalyticsController@index')->name
 
 // Department and Staff
 Route::prefix('department&staff/')->group(function () use ($controller_path) {
-  // department 
+  // department
   Route::prefix('department')->group(function () use ($controller_path) {
     Route::get('/', $controller_path . '\department_staff\DepartmentController@index')->name('department');
     Route::get('/create', $controller_path . '\department_staff\DepartmentController@create')->name('department.create');
