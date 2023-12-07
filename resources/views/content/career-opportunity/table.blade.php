@@ -12,7 +12,6 @@
         $rowNumber = 1;
         @endphp
         @foreach ($careeropportunities as $careeropportunity)
-        
         <tr>
             <td>{{ $rowNumber }}</td>
             <td>{{$careeropportunity->job_title}}</td>
@@ -28,10 +27,9 @@
                 </button>
             </td>
         </tr>
-
         @include('content.career-opportunity.delete')
         @php
-            $rowNumber++;
+        $rowNumber++;
         @endphp
         @endforeach
     </tbody>
@@ -40,6 +38,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
     $.ajaxSetup({
-        headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        }
     });
 </script>

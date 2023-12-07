@@ -41,6 +41,7 @@
         </div>
     </div>
 </div>
+<!-- search ajax  -->
 <script>
     $(document).ready(function() {
         $('#search').on('keyup', function() {
