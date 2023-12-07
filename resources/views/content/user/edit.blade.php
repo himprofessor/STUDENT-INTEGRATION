@@ -1,6 +1,8 @@
 @extends('layouts/contentNavbarLayout')
 
 @section('title', 'User Card - UI elements')
+<!-- crop image  -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 @section('vendor-script')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css">
@@ -11,7 +13,6 @@
 @section('page-script')
 <script src="{{ asset('assets/js/pages-account-settings-account.js') }}"></script>
 @endsection
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">

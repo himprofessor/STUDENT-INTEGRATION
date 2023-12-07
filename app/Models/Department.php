@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Department extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'department_name',
         'media_id',
@@ -36,7 +35,6 @@ class Department extends Model
                 'image.required' => 'Please choose a department cover image',
             ]);
         }
- 
         $department = $request->only('department_name');
 
         if ($id) {
@@ -63,7 +61,6 @@ class Department extends Model
     {
         return $this->hasMany(Staff::class);
     }
-
     public function media(): HasOne
     {
         return $this->hasOne(Media::class, 'id', 'media_id');

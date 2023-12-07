@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Slideshow extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'heading',
         'description',
@@ -52,7 +51,6 @@ class Slideshow extends Model
         }
         return $data;
     }
-
     public function media(): HasOne
     {
         return $this->hasOne(Media::class, 'id', 'media_id');

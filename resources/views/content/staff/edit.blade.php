@@ -50,7 +50,7 @@
         })
         .catch(error => {
             console.log(error);
-        });
+    });
 
     // Crop Image of Staff
     $(document).ready(function() {

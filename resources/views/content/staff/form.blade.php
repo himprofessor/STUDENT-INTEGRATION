@@ -6,7 +6,7 @@
                 <label for="upload" tabindex="0">
                     <div class="img" id="img">
                         <img src="{{ old('image', $staff->media->image ?? '') ? asset('storage/' . old('image', $staff->media->image ?? '')) : asset('assets/img/avatars/1.png') }}" class="d-block rounded" height="100" width="100" id="uploadedAvatar" style="cursor: pointer;" />
-                        <input type="file" name="image" id="upload" class="account-file-input @error('image') is-invalid @enderror" hidden accept="image/png, image/jpeg"/>
+                        <input type="file" name="image" id="upload" class="account-file-input @error('image') is-invalid @enderror" hidden accept="image/png, image/jpeg" />
                     </div>
                 </label>
                 @error('image')
@@ -22,7 +22,7 @@
 
         <!-- Button to trigger cropping -->
         <div class="d-flex justify-content-center">
-            <button type="button" id="crop-button" class="btn btn-primary mt-3" style="display: none;">Crop Image</button>
+            <button type="button" id="crop-button" class="btn mt-3" style="display: none; background-color:#009DE1; color: white">Crop Image</button>
         </div>
     </div>
 </div>

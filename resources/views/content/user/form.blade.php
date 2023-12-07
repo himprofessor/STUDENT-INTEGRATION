@@ -9,7 +9,6 @@
                 <span class="d-none d-sm-block">Upload new photo</span>
                 <i class="bx bx-upload d-block d-sm-none"></i>
             </label>
-
             <button type="button" class="btn btn-outline-secondary account-image-reset mb-1">
                 <i class="bx bx-reset d-block d-sm-none"></i>
                 <span class="d-none d-sm-block">Reset</span>
@@ -27,9 +26,8 @@
     <input type="hidden" id="cropped-image" name="cropped_image">
 
     <!-- Button to trigger cropping -->
-    <button type="button" id="crop-button" class="btn btn-primary mt-3" style="display: none;">Crop Image</button>
+    <button type="button" id="crop-button" class="btn mt-3" style="display: none; background-color:#009DE1; color: white">Crop Image</button>
 </div>
-
 <div class="md-3">
     <strong>Username</strong><span class="text-danger">*</span>
     <input type="text" class="form-control @error('username') is-invalid @enderror" id="basic-default-fullname" name="username" value="{{ old('username', $user->username ?? '') }}" />

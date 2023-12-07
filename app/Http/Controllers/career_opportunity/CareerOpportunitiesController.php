@@ -14,7 +14,6 @@ class CareerOpportunitiesController extends Controller
         $careeropportunities = CareerOpportunity::orderBy('created_at', 'desc')->paginate(10);
         return view('content.career-opportunity.list', compact('careeropportunities'));
     }
-
     public function create()
     {
         return view('content.career-opportunity.create');

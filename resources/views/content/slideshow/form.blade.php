@@ -39,17 +39,16 @@
 
   <!-- Crop image section -->
   <div class="form-group" id="cropForm" style="display: none;">
-    <legend class="font-weight-bold">Crop Image</legend>
     <div class="image-crop-container border rounded overflow-hidden mb-2">
       <img src="" alt="Crop Preview" id="cropPreview" class="img-fluid">
     </div>
-    <button type="button" class="btn btn-primary" id="cropButton">Crop Image</button>
+    <button type="button" class="btn" style="background-color:#009DE1; color: white" id="cropButton">Crop Image</button>
   </div>
 
   <!-- Hidden input field to store cropped image data -->
   <input type="hidden" id="croppedImage" name="cropped_image" />
   <!-- Button to trigger cropping -->
-  <button type="button" id="crop-button" class="btn btn-primary mt-2" style="display: none;">Crop Image</button>
+  <button type="button" id="crop-button" class="btn btn-primary mt-2" style="display: none;background-color:#009DE1; color: white">Crop Image</button>
 </fieldset>
 
 <fieldset class="form-group">

@@ -24,7 +24,7 @@
                         <img src="{{ asset('storage/' . $staff->media->image) }}" class="rounded-circle" alt="Staff Image" width="40" height="40">
                     @endif --}}
                     <ul class="list-unstyled staffs-list m-0 avatar-group d-flex align-items-center">
-                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-sm pull-up" title="{{$staff->first_name}}">
+                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xm pull-up" title="{{$staff->first_name}}">
                             <img src="{{ asset('storage/' . $staff->media->image) }}" alt="Avatar" class="rounded-circle">
                         </li>
                     </ul>

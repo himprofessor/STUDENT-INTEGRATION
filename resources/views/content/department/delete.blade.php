@@ -8,7 +8,6 @@
             <div class="modal-body">
                 <p class="mb-0 text-wrap">Are you sure you want to delete this Department?</p>
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <form method="POST" action="{{ route('department.destroy', $department->id) }}">
