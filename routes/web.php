@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 $controller_path = 'App\Http\Controllers';
 
 // Main Page Route
-Route::get('/', $controller_path . '\dashboard\AnalyticsController@index')->name('dashboard-analytics');
+Route::redirect("/", "/login");
+Route::get('/login', $controller_path . '\auth\LoginController@login')->name('login');
+Route::get('/dashbord', $controller_path . '\dashboard\AnalyticsController@index')->name('dashboard-analytics');
 
 // Department and Staff
 Route::prefix('department&staff/')->group(function () use ($controller_path) {
