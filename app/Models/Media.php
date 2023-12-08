@@ -71,7 +71,6 @@ class Media extends Model
 
                     // Update the existing media record with the new image path
                     self::where('id', $existingMediaId)->update(['image' => $image]);
-
                     $mediaIds[] = $existingMediaId;
                 } else {
                     // Create a new media record

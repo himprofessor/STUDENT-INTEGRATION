@@ -23,6 +23,7 @@
                         </button>
                     </div>
                 </div>
+                <!-- clear and add button  -->
                 <div class="col-md-6 text-md-end mt-3 mt-md-0">
                     <a href="{{ url('user') }}" class="btn btn-outline-secondary">
                         <i class="bx bx-refresh"></i> Clear
@@ -33,7 +34,7 @@
                 </div>
             </div>
         </form>
-        <div class="table-responsive text-nowrap" id="containlist">
+        <div class="table-responsive text-nowrap" id="contain">
             @include('content.user.table')
         </div>
         <div class="d-flex justify-content-between align-items-center mt-3">
@@ -56,7 +57,7 @@
                 },
                 success: function(data) {
                     console.log(data);
-                    $('#containlist').html(data);
+                    $('#contain').html(data);
                 },
             });
         });

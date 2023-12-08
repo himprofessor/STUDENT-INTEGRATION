@@ -34,7 +34,6 @@ class CareerOpportunity extends Model
                 ],
                 [
                     'job_title.required'       => 'Please enter a job title',
-                    'job_title.unique'         => 'Job title already taken',
                     'job_description.required' => 'Please enter your text here',
                 ]
             );

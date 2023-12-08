@@ -6,7 +6,6 @@
     <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
 
-<!-- //test department image -->
 @section('page-script')
 <script src="{{asset('assets/js/pages-account-settings-account.js')}}"></script>
 @endsection
