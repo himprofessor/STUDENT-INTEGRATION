@@ -15,9 +15,6 @@
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
 
-@section('page-script')
-<script src="{{ asset('assets/js/pages-account-settings-account.js') }}"></script>
-@endsection
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -39,6 +36,9 @@
     </div>
 </div>
 @endsection
+
+@section('page-script')
+<script src="{{ asset('assets/js/pages-account-settings-account.js') }}"></script>
 <script>
     // CKEditor
     ClassicEditor
@@ -64,7 +64,6 @@
             $(this).removeClass('is-invalid');
         });
     });
-
     // Javascript crop image slideshow
     $(document).ready(function() {
         $('#upload').on('change', function() {
@@ -108,3 +107,4 @@
         });
     });
 </script>
+@endsection
