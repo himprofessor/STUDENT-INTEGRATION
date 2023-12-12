@@ -68,4 +68,12 @@ class UserController extends Controller
       return view('content.user.list', ['users' => $username]);
     }
   }
+
+  public function profile()
+    {
+        // Assuming you have access to the user data
+        $user = auth()->user(); // You might need to adjust this based on your authentication setup
+
+        return view('content.user.profile', ['user' => $user]);
+    }
 }
