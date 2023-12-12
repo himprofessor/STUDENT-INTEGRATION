@@ -48,7 +48,7 @@
 </div><br>
 <div class="md-3">
     <strong>Password</strong><span class="text-danger">*</span>
-    <input type="password" class="form-control @error('password') is-invalid @enderror" id="basic-default-fullname" name="password" value="{{ old('password', $user->password ?? '') }}" />
+    <input type="password" class="form-control @error('password') is-invalid @enderror" id="basic-default-fullname" name="password" />
     @error('password')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>

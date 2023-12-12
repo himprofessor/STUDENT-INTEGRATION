@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('username');
             $table->string('email')->unique();
-            $table->string('password')->encrypt();
-            $table->unsignedBigInteger('media_id');
+            $table->string('password')->encrypt()->nullable();
+            $table->unsignedBigInteger('media_id')->nullable();
             $table->foreign('media_id')->references('id')->on('media')->onDelete('cascade');
             $table->timestamps();
         });
