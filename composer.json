@@ -9,10 +9,8 @@
   "license": "MIT",
   "require": {
     "php": "^8.0.2",
-    "ckeditor/ckeditor": "^4.23",
     "fruitcake/laravel-cors": "^2.0.5",
     "guzzlehttp/guzzle": "^7.2",
-    "intervention/image": "^2.7",
     "laravel/framework": "^9.0",
     "laravel/sanctum": "^2.14",
     "laravel/tinker": "^2.7"
