@@ -50,38 +50,38 @@ class User extends Authenticatable
           'username' => 'required',
           'email' => 'required|email|unique:users,email,' . $id,
       ];
-  
+
       $messages = [
           'username.required' => '*Please enter the username',
           'email.required' => '*Please enter your email',
       ];
-  
+
       // Only add password validation if it is present in the request
       if ($request->has('password')) {
           $rules['password'] = 'required';
           $messages['password.required'] = 'Please enter your password';
       }
-  
+
       // Validate the request data
       $validatedData = $request->validate($rules, $messages);
-  
+
       // Prepare user data
       $user = $request->only('username', 'email');
-  
+
       // Update password only if it is present in the request
       if ($request->has('password')) {
           $user['password'] = Hash::make($request->password);
       }
-  
+
       if ($id) {
           $media_id = self::find($id)->media_id;
-  
+
           // Update image if file is present in the request
           if ($request->hasFile('image')) {
               $media = Media::croppImage($request, $media_id);
               $user['media_id'] = $media_id;
           }
-  
+
           $existingUser = self::find($id);
           $existingUser->update($user);
           $user = $existingUser;
@@ -92,16 +92,20 @@ class User extends Authenticatable
               $user['media_id'] = $media->id;
               $user['image'] = $media->image;
           }
-  
+
           $user = self::create($user);
       }
-  
+
       return $user;
   }
-  
+
 
   public function media(): HasOne
   {
     return $this->hasOne(Media::class, 'id', 'media_id');
+  }
+  public function studentActivities()
+  {
+      return $this->hasMany(StudentActivity::class);
   }
 }
