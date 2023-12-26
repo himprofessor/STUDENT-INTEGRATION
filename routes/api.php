@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\department_staff\StaffController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('student-activity')->group(function () {
   Route::get('/list', [StudentActivityController::class, 'index']);
+});
+
+Route::prefix('staff-list')->group(function () {
+  Route::get('/list', [StaffController ::class, 'index']);
 });
