@@ -22,6 +22,10 @@ class Staff extends Model
         'department_id',
         'about',
     ];
+    // get api
+    public static function list(){
+        return self::orderBy('created_at', 'desc')->get();
+    }
 
     public static function store($request, $id = null)
     {
