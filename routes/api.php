@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\department_staff\DepartmentController;
 use App\Http\Controllers\api\department_staff\StaffController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,11 +19,15 @@ use App\Http\Controllers\api\StudentActivityController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+// studentActivity 
 Route::prefix('student-activity')->group(function () {
   Route::get('/list', [StudentActivityController::class, 'index']);
 });
-
+// staff 
 Route::prefix('staff-list')->group(function () {
   Route::get('/list', [StaffController ::class, 'index']);
+});
+// department 
+Route::prefix('department-list')->group(function () {
+  Route::get('/list', [DepartmentController ::class, 'index']);
 });
