@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\api\department_staff\DepartmentController;
+use App\Http\Controllers\api\department_staff\StaffController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +31,16 @@ Route::prefix('slideshow')->group(function () {
   
 });
 
+// studentActivity 
 Route::prefix('student-activity')->group(function () {
   Route::get('/list', [StudentActivityController::class, 'index']);
   
+});
+// staff 
+Route::prefix('staff-list')->group(function () {
+  Route::get('/list', [StaffController ::class, 'index']);
+});
+// department 
+Route::prefix('department-list')->group(function () {
+  Route::get('/list', [DepartmentController ::class, 'index']);
 });

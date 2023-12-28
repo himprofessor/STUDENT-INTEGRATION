@@ -26,7 +26,8 @@
                     @csrf
                     @method('PUT')
                     @include('content.user.form', ['user' => $user])
-                    <a href="{{ url('user') }}" class="btn btn-secondary">Cancel</a>
+                    <br>
+                    <a href="{{ url('user') }}" class="btn btn-secondary me-1">Cancel</a>
                     <button type="submit" class="btn" style="background-color: #009DE1; color:white">Update</button>
                 </form>
             </div>

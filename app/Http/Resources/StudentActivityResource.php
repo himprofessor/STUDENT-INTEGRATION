@@ -21,6 +21,7 @@ class StudentActivityResource extends JsonResource
       'image' => $this->media[0]->image
         ? asset('storage/' . $this->media[0]->image)
         : null,
+      'user' =>$this->user->username,
       'created_at' => $this->created_at->format('Y-m-d'),
       'updated_at' => $this->updated_at->format('Y-m-d'),
     ];

@@ -63,8 +63,13 @@ class StudentActivity extends Model
         }
         return $data;
     }
-    public function media()
-    {
-        return $this->belongsToMany(Media::class, 'student_activity_media');
-    }
+
+  public function media()
+  {
+    return $this->belongsToMany(Media::class, 'student_activity_media');
+  }
+  public function user()
+  {
+    return $this->belongsTo(User::class, 'id');
+  }
 }
