@@ -14,10 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\api\StudentActivityController;
+use App\Http\Controllers\api\SlideshowController;
+
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+//slideshow 
+Route::prefix('slideshow')->group(function () {
+  Route::get('/list', [SlideshowController::class, 'index']);
+  
+});
+
 Route::prefix('student-activity')->group(function () {
   Route::get('/list', [StudentActivityController::class, 'index']);
+  
 });

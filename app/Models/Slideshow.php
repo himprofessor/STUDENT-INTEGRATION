@@ -15,6 +15,9 @@ class Slideshow extends Model
         'media_id',
     ];
 
+    public static function list(){
+        return self::orderBy('created_at', 'desc')->get();
+      }
     public static function store($request, $id = null)
     {
         $rules = [
