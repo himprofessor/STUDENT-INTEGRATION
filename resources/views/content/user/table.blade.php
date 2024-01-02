@@ -5,7 +5,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>N.o</th>
             <th>profile</th>
             <th>UserName</th>
             <th>Email</th>

@@ -1,7 +1,7 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>N.o</th>
             <th>Title</th>
             <th>Description</th>
             <th>Actions</th>

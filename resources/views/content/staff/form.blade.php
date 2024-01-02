@@ -9,14 +9,11 @@
                         <input type="file" name="image" id="upload" class="account-file-input @error('image') is-invalid @enderror" hidden accept="image/png, image/jpeg" />
                     </div>
                 </label>
-                @error('image')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
             </div>
         </div>
-
+        @error('image')
+        <div class="text-danger text-center">{{ $message }}</div>
+        @enderror
         <!-- Hidden input to store cropped image data -->
         <input type="hidden" id="cropped-image" name="cropped_image">
 
