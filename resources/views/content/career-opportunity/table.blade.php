@@ -1,7 +1,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>N.o</th>
             <th>Job_Title</th>
             <th>Job_Description</th>
             <th>Actions</th>

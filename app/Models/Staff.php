@@ -63,6 +63,7 @@ class Staff extends Model
                     'department_id' => 'required',
                     'start_date' => 'required',
                     'end_date' => 'required',
+                    'image'=> 'required',
                 ],
                 [
                     'first_name.required' => 'Please input first name',
@@ -73,6 +74,7 @@ class Staff extends Model
                     'department_id.required' => 'Please select department name',
                     'start_date.required' => 'Please select start date',
                     'end_date.required' => 'Please select end date',
+                    'image.required' => 'Please upload image',
                 ]
             );
         }
