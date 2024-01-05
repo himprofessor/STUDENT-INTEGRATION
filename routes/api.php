@@ -24,17 +24,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 //slideshow 
 Route::prefix('slideshow')->group(function () {
   Route::get('/list', [SlideshowController::class, 'index']);
-  
 });
-
 // studentActivity 
 Route::prefix('student-activity')->group(function () {
   Route::get('/list', [StudentActivityController::class, 'index']);
-  
+  Route::get('/list/{id}', [StudentActivityController::class, 'getOne']);
 });
 // staff 
 Route::prefix('staff-list')->group(function () {
