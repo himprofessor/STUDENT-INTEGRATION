@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\api\CareerOppotunitiesController;
 use App\Http\Controllers\api\department_staff\DepartmentController;
 use App\Http\Controllers\api\department_staff\StaffController;
+use App\Http\Controllers\career_opportunity\CareerOpportunitiesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,23 +26,29 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-//slideshow 
+//slideshow
 Route::prefix('slideshow')->group(function () {
   Route::get('/list', [SlideshowController::class, 'index']);
-  
+
 });
 
-// studentActivity 
+// studentActivity
 Route::prefix('student-activity')->group(function () {
   Route::get('/list', [StudentActivityController::class, 'index']);
-  
 });
-// staff 
+
+// staff
 Route::prefix('staff-list')->group(function () {
   Route::get('/list', [StaffController ::class, 'index']);
 });
-// department 
+
+// department
 Route::prefix('department-list')->group(function () {
   Route::get('/list', [DepartmentController ::class, 'index']);
 });
+
+// careeroppotunities
+Route::prefix('career-opportunity')->group(function () {
+  Route::get('/list', [CareerOppotunitiesController ::class, 'index']);
+});
+
