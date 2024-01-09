@@ -14,13 +14,14 @@ class StudentActivityResource extends JsonResource
    */
   public function toArray($request)
   {
+    $images = $this->media->pluck('image')->map(function ($image) {
+      return asset('storage/' . $image);
+    })->toArray();
     return [
       'id' => $this->id,
       'title' => $this->title,
       'description' => html_entity_decode(strip_tags($this->description)),
-      'image' => $this->media[0]->image
-        ? asset('storage/' . $this->media[0]->image)
-        : null,
+      'images' => $images,
       'created_by' => $this->user->username ?? null,
       'created_at' => $this->created_at->format('Y-m-d'),
       'updated_at' => $this->updated_at->format('Y-m-d'),
