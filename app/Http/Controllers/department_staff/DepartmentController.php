@@ -26,7 +26,8 @@ class DepartmentController extends Controller
         DB::beginTransaction();
         Department::store($request);
         DB::commit();
-        return redirect()->route('department')->with('success', 'Department has been created successfully.');
+        return redirect('/department&staff/department')->with('success', 'Department has been created successfully.');
+
     }
     public function edit($id)
     {
@@ -39,7 +40,7 @@ class DepartmentController extends Controller
         Department::store($request, $id);
         DB::commit();
         // Redirect back to the department list or a success page
-        return redirect()->route('department', $id)->with('success', 'Department has been updated successfully.');
+        return redirect('/department&staff/department')->with('success', 'Department has been updated successfully.');
     }
     public function destroy($id)
     {
@@ -52,7 +53,8 @@ class DepartmentController extends Controller
         DB::commit();
 
         // Redirect back to the department list or a success page
-        return redirect()->route('department')->with('success', 'Department has been deleted successfully.');
+        return redirect('/department&staff/department')->with('success', 'Department has been deleted successfully.');
+
     }
     public function search(Request $request)
     {

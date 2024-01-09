@@ -25,7 +25,7 @@ class StudentActivitiesController extends Controller
         DB::beginTransaction();
         StudentActivity::store($request);
         DB::commit();
-        return redirect('student-activities')->with('success', 'student activity has been created successfully.');
+        return redirect('/student-activities')->with('success', 'student activity has been created successfully.');
     }
     public function edit($id)
     {

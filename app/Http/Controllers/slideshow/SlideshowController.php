@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Slideshow;
+
 use App\Http\Controllers\Controller;
 use App\Models\Media;
 use App\Models\Slideshow;
@@ -36,7 +38,7 @@ class SlideshowController extends Controller
         DB::beginTransaction();
         Slideshow::store($request, $id);
         DB::commit();
-        return redirect()->route('slideshow', $id)->with('success', 'Slideshow has been updated successfully.');
+        return redirect('/slideshow')->with('success', 'Slideshow has been updated successfully.');
     }
     public function destroy($id)
     {
@@ -47,15 +49,15 @@ class SlideshowController extends Controller
             $slideshow->media->delete();
         }
         DB::commit();
-        return redirect()->route('slideshow')->with('success', 'Slideshow has been deleted successfully.');
+        return redirect('/slideshow')->with('success', 'Slideshow has been deleted successfully.');
     }
     public function search(Request $request)
     {
         $searchSlideshow = Slideshow::where("heading", "like", "%" . $request->search . "%")->paginate(10);
         if ($request->ajax()) {
-            return view('content.slideshow.table', ['slideshows' => $searchSlideshow ])->render();
+            return view('content.slideshow.table', ['slideshows' => $searchSlideshow])->render();
         } else {
-            return view('content.slideshow.list', ['slideshows' => $searchSlideshow ]);
+            return view('content.slideshow.list', ['slideshows' => $searchSlideshow]);
         }
     }
 }

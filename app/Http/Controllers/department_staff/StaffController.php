@@ -28,7 +28,7 @@ class StaffController extends Controller
         DB::beginTransaction();
         Staff::store($request);
         DB::commit();
-        return redirect('department&staff/staff')->with('success', 'Staff has been created successfully.');
+        return redirect('/department&staff/staff')->with('success', 'Staff has been created successfully.');
     }
     public function edit($id)
     {
@@ -42,7 +42,7 @@ class StaffController extends Controller
         DB::beginTransaction();
         Staff::store($request, $id);
         DB::commit();
-        return redirect('department&staff/staff');
+        return redirect('/department&staff/staff');
     }
     public function destroy($id)
     {

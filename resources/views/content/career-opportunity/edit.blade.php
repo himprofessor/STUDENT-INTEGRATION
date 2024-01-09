@@ -20,7 +20,8 @@
     <div class="col-xl">
         <div class="card mb-4">
             <div class="card-body">
-                <form method="POST" action="{{ route('career-opportunities.edit',$careeropportunities->id) }}">
+
+                <form method="POST" action="{{ url('/career-opportunities/edit',$careeropportunities->id) }}">
                     @csrf
                     @method('PUT')
                     @include('content.career-opportunity.form', ['careeropportunities' => $careeropportunities])
