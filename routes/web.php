@@ -60,17 +60,6 @@ Route::middleware('auth')->group(function () use ($controller_path) {
     });
   });
 
-  //route career opportunities
-  Route::prefix('career-opportunities')->group(function () use ($controller_path) {
-    Route::get('/', $controller_path . '\career_opportunity\CareerOpportunitiesController@index')->name('career-opportunities');
-    Route::get('/create', $controller_path . '\career_opportunity\CareerOpportunitiesController@create')->name('career-opportunities');
-    Route::post('/store', $controller_path . '\career_opportunity\CareerOpportunitiesController@store')->name('career-opportunities.store');
-    Route::get('/edit/{id}', $controller_path . '\career_opportunity\CareerOpportunitiesController@edit')->name('career-opportunities');
-    Route::put('/edit/{id}', $controller_path . '\career_opportunity\CareerOpportunitiesController@update')->name('career-opportunities.update');
-    Route::delete('/delete/{id}', $controller_path . '\career_opportunity\CareerOpportunitiesController@destroy')->name('career-opportunities.destroy');
-    Route::get('/search', $controller_path . '\career_opportunity\CareerOpportunitiesController@search')->name('career-opportunities.search');
-  });
-
   //route slideshow
   Route::prefix('slideshow')->group(function () use ($controller_path) {
     Route::get('/', $controller_path . '\slideshow\SlideshowController@index')->name('slideshow');
@@ -92,4 +81,17 @@ Route::middleware('auth')->group(function () use ($controller_path) {
     Route::delete('/delete/{id}', $controller_path . '\student_activity\StudentActivitiesController@destroy')->name('student-activities.destroy');
     Route::get('/search', $controller_path . '\student_activity\StudentActivitiesController@search')->name('student-activities.search');
   });
+
+  //route career
+  Route::prefix('career')->group(function () use ($controller_path) {
+    Route::get('/', $controller_path . '\career\CareerController@index')->name('career');
+    Route::get('/create', $controller_path . '\career\CareerController@create')->name('career.create');
+    Route::post('/store', $controller_path . '\career\CareerController@store')->name('career.store');
+    Route::get('/edit/{id}', $controller_path . '\career\CareerController@edit')->name('career.edit');
+    Route::put('/edit/{id}', $controller_path . '\career\CareerController@update')->name('career.update');
+    Route::delete('/delete/{id}', $controller_path . '\career\CareerController@destroy')->name('career.destroy');
+    Route::get('/search', $controller_path . '\career\CareerController@search')->name('career.search');
+  });
+
+
 });

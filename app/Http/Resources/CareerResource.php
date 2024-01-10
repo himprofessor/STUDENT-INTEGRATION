@@ -16,9 +16,9 @@ class CareerResource extends JsonResource
     {
       return [
         'id' => $this->id,
-        'job_title' => $this->job_title,
-        'job_description' => html_entity_decode(strip_tags($this->job_description)),
-        // 'media_id' => $this->media->image ? asset('storage/' . $this->media->image) :null,
+        'title' => $this->title,
+        'description' => html_entity_decode(strip_tags($this->description)),
+        'media_id' => $this->media->image ? asset('storage/' . $this->media->image) :null,
     ];
   }
 }
