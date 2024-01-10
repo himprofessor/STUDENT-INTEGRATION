@@ -1,6 +1,6 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'Course List - UI elements')
+@section('title', 'Career List - UI elements')
 
 @section('vendor-script')
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
@@ -9,37 +9,35 @@
 @section('content')
 <div class="card mb-4">
     <div class="card-header">
-        <h5 class="fw-bold mb-0">Career Opportunities List</h5>
+        <h5 class="fw-bold mb-0">Career Opportunity List</h5>
     </div>
     <div class="card-body">
         <form class="mb-3">
             <div class="row">
-                <!-- search button  -->
                 <div class="col-md-6">
                     <div class="input-group">
-                        <input type="text" name="search" id="search" class="form-control border border-1" placeholder="Search by job title">
+                        <input type="text" name="search" id="search" class="form-control border border-1" placeholder="search by heading">
                         <button type="submit" class="btn" style="background-color: #009DE1; color:white">
                             <i class="bx bx-search"></i> Search
                         </button>
                     </div>
                 </div>
-                <!-- clear and add new button  -->
                 <div class="col-md-6 text-md-end mt-3 mt-md-0">
-                    <a href="{{ url('career-opportunities') }}" class="btn btn-outline-secondary">
+                    <a href="{{ url('career') }}" class="btn btn-outline-secondary">
                         <i class="bx bx-refresh"></i> Clear
                     </a>
-                    <a href="{{ url('career-opportunities/create') }}" class="btn" style="background-color: #009DE1; color:white">
+                    <a href="{{ url('career/create') }}" class="btn" style="background-color: #009DE1; color:white">
                         <i class="bx bx-plus"></i> New
                     </a>
                 </div>
             </div>
         </form>
-        <div class="table-responsive text-nowrap" id="contain">
-            @include('content.career-opportunity.table')
+        <div class="table-responsive text-nowrap" id="containlist">
+            @include('content.career.table')
         </div>
         <div class="d-flex justify-content-between align-items-center mt-3">
-            <p>Total Records: {{ $careeropportunities->total() }}</p>
-            {{ $careeropportunities->links() }}
+            <p>Total Records: {{ $careers->total() }}</p>
+            {{ $careers->links() }}
         </div>
     </div>
 </div>
@@ -48,15 +46,16 @@
     $(document).ready(function() {
         $('#search').on('keyup', function() {
             $value = $(this).val();
+            // alert($value);
             $.ajax({
                 type: 'get',
-                url: '/career-opportunities/search',
+                url: '/career/search',
                 data: {
                     'search': $value
                 },
                 success: function(data) {
                     console.log(data);
-                    $('#contain').html(data);
+                    $('#containlist').html(data);
                 },
             });
         });

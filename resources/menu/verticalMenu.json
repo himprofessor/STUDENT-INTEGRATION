@@ -46,6 +46,12 @@
       "name": "Student-activities",
       "icon": "menu-icon tf-icons bx bx-shape-polygon",
       "slug": "student-activities"
+    },
+    {
+      "url": "/career",
+      "name": "Career",
+      "icon": "menu-icon tf-icons bx bx-shape-polygon",
+      "slug": "careers"
     }
   ]
 }
