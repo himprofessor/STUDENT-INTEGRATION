@@ -23,7 +23,8 @@
     <div class="col-xl">
         <div class="card mb-4">
             <div class="card-body">
-                <form method="POST" action="{{ route('staff.edit',$staff->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ url('/department&staff/staff/edit/' . $staff->id) }}" enctype="multipart/form-data">
+
                     @csrf
                     @method('PUT')
                     @include('content.staff.form', ['staff' => $staff])

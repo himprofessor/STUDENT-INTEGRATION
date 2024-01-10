@@ -22,7 +22,7 @@
     <div class="col-xl">
         <div class="card mb-4">
             <div class="card-body">
-                <form method="POST" action="{{ route('user.edit', $user->id) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('/user/edit', $user->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     @include('content.user.form', ['user' => $user])

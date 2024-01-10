@@ -14,12 +14,12 @@
         {
           "url": "department&staff/department",
           "name": "Department",
-          "slug": "department"
+          "slug": "department&staff-department"
         },
         {
           "url": "department&staff/staff",
           "name": "Staff",
-          "slug": "staff"
+          "slug": "department&staff-staff"
         }
       ]
     },
