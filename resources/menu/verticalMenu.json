@@ -30,10 +30,10 @@
       "slug": "user"
     },
     {
-      "url": "/career-opportunities",
-      "name": "Career-opportunities",
+      "url": "/career",
+      "name": "Career-Opportunity",
       "icon": "menu-icon tf-icons bx bx-medal",
-      "slug": "career-opportunities"
+      "slug": "careers"
     },
     {
       "url": "/slideshow",

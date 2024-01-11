@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Storage;
 class Media extends Model
 {
     use HasFactory;
+
     protected $fillable = ['image'];
+
     public static function store($request, $id = null)
     {
         $data = $request->validate([
@@ -58,7 +60,7 @@ class Media extends Model
             'image.*' => 'required|image',
         ]);
         $mediaIds = [];
-        
+
         if ($request->hasFile('image')) {
             $photos = $request->file('image');
             foreach ($photos as $photo) {
@@ -86,20 +88,35 @@ class Media extends Model
     {
         return $this->hasOne(User::class, 'media_id', 'id');
     }
+
     public function staff(): HasOne
     {
         return $this->hasOne(Staff::class, 'media_id', 'id');
     }
+
     public function department(): HasOne
     {
         return $this->hasOne(Department::class, 'media_id', 'id');
     }
+
     public function slideshow(): HasOne
     {
         return $this->hasOne(Slideshow::class, 'media_id', 'id');
     }
+
     public function studentActivities()
     {
         return $this->belongsToMany(StudentActivity::class, 'student_activity_media');
     }
+
+    // public function careerOpportunities()
+    // {
+    //     return $this->hasMany(CareerOpportunity::class);
+    // }
+    public function careerOpportunities(): HasOne
+  {
+      return $this->hasOne(CareerOpportunity::class, 'id', 'media_id');
+  }
+
+
 }

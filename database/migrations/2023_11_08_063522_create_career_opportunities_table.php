@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->text('job_title')->nullable();
             $table->text('job_description')->nullable();
+            $table->unsignedBigInteger('media_id')->nullable();
+            $table->foreign('media_id')->references('id')->on('media')->onDelete('cascade');
             $table->timestamps();
         });
     }
