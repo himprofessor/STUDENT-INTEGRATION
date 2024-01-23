@@ -20,7 +20,7 @@ class StudentActivityResource extends JsonResource
     return [
       'id' => $this->id,
       'title' => $this->title,
-      'description' => html_entity_decode(strip_tags($this->description)),
+      'description' => $this->description,
       'images' => $images,
       'created_by' => $this->user->username ?? null,
       'created_at' => $this->created_at->format('Y-m-d'),

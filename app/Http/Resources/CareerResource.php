@@ -17,7 +17,7 @@ class CareerResource extends JsonResource
       return [
         'id' => $this->id,
         'title' => $this->title,
-        'description' => html_entity_decode(strip_tags($this->description)),
+        'description' => $this->description,
         'media_id' => $this->media->image ? asset('storage/' . $this->media->image) :null,
     ];
   }
