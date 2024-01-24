@@ -25,7 +25,7 @@ class StaffResource extends JsonResource
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
             'department' =>$this->department->department_name,
-            'about' => html_entity_decode(strip_tags($this->about)),
+            'about' => $this->about,
             'created_at' => $this->created_at->format('Y-m-d'),
             'updated_at' => $this->updated_at->format('Y-m-d'),
         ];
