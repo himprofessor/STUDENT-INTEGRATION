@@ -24,6 +24,28 @@
       ]
     },
     {
+      "name": "Term & Subject",
+      "icon": "menu-icon tf-icons bx bx-copy",
+      "slug": "term&subject",
+      "submenu": [
+        {
+          "url": "term&subject/term",
+          "name": "Term",
+          "slug": "term&subject-term"
+        },
+        {
+          "url": "term&subject/subject",
+          "name": "Subject",
+          "slug": "term&subject-subject"
+        },
+        {
+          "url": "term&subject/course",
+          "name": "Course",
+          "slug": "term&subject-course"
+        }
+      ]
+    },
+    {
       "url": "/user",
       "name": "User",
       "icon": "menu-icon tf-icons bx bx-user",

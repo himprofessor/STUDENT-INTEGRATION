@@ -93,5 +93,19 @@ Route::middleware('auth')->group(function () use ($controller_path) {
     Route::get('/search', $controller_path . '\career\CareerController@search')->name('career.search');
   });
 
-
+  //Route term&subject
+   Route::prefix('term&subject/')->group(function () use ($controller_path) {
+    // term
+    Route::prefix('term')->group(function () use ($controller_path) {
+      Route::get('/', $controller_path . '\term_subject\TermController@index')->name('term');
+    });
+    //subject
+    Route::prefix('subject')->group(function () use ($controller_path) {
+      Route::get('/', $controller_path . '\term_subject\SubjectController@index')->name('subject');
+    });
+    //course
+    Route::prefix('course')->group(function () use ($controller_path) {
+      Route::get('/', $controller_path . '\term_subject\CourseController@index')->name('course');
+    });
+  });
 });
