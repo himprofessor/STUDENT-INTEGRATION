@@ -115,7 +115,7 @@ class Media extends Model
     // }
     public function careerOpportunities(): HasOne
   {
-      return $this->hasOne(CareerOpportunity::class, 'id', 'media_id');
+      return $this->hasOne(Career::class, 'id', 'media_id');
   }
 
 

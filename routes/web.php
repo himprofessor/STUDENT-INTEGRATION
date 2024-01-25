@@ -98,6 +98,12 @@ Route::middleware('auth')->group(function () use ($controller_path) {
     // term
     Route::prefix('term')->group(function () use ($controller_path) {
       Route::get('/', $controller_path . '\term_subject\TermController@index')->name('term');
+      Route::get('/create', $controller_path . '\term_subject\TermController@create')->name('term.create');
+      Route::post('/store', $controller_path . '\term_subject\TermController@store')->name('term.store');
+      Route::get('/edit/{id}', $controller_path . '\term_subject\TermController@edit')->name('term.edit');
+      Route::put('/edit/{id}', $controller_path . '\term_subject\TermController@update')->name('term.update');
+      Route::delete('/delete/{id}', $controller_path . '\term_subject\TermController@destroy')->name('term.destroy');
+      Route::get('/search', $controller_path . '\term_subject\TermController@search')->name('term.search');
     });
     //subject
     Route::prefix('subject')->group(function () use ($controller_path) {
