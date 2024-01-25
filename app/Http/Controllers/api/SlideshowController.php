@@ -19,7 +19,5 @@ class SlideshowController extends Controller
         $data = Slideshow::list();
         $data = SlideshowResource::collection($data);
         return $this->ok($data);
-      
     }
-
 }

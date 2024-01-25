@@ -25,22 +25,22 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 @section('content')
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h5 class="fw-bold">Slideshow Create</h5>
+</div>
 <div class="row row-2">
     <div class="col-xl">
         <div class="card mb-4">
             <div class="card-body">
-                <h3 class="fw-bold text-center ">Create Slideshow</h3>
-
                 <form method="POST" action="{{ route('slideshow.store') }}" enctype="multipart/form-data">
                     @csrf
                     @include('content.slideshow.form')
-                    <a href="{{ url('slideshow') }}" class="btn btn-secondary me-1">Cancel</a>
-                    <button type="submit" class="btn" style="background-color: #009DE1; color:white">Submit</button>
+                    <a href="{{ url('slideshow') }}" class="btn btn-secondary me-1 mt-2">Cancel</a>
+                    <button type="submit" class="btn mt-2" style="background-color: #009DE1; color:white">Submit</button>
                 </form>
             </div>
         </div>
     </div>
-
 </div>
 <script>
     // CK Editor---
@@ -61,7 +61,6 @@
         });
 </script>
 @endsection
-
 
 <script>
     // <!-- Javascript Validate slideshow -->

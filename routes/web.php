@@ -93,8 +93,8 @@ Route::middleware('auth')->group(function () use ($controller_path) {
     Route::get('/search', $controller_path . '\career\CareerController@search')->name('career.search');
   });
 
-  //Route term&subject
-   Route::prefix('term&subject/')->group(function () use ($controller_path) {
+  //Route term, course and subject
+  Route::prefix('term&subject/')->group(function () use ($controller_path) {
     // term
     Route::prefix('term')->group(function () use ($controller_path) {
       Route::get('/', $controller_path . '\term_subject\TermController@index')->name('term');
@@ -102,10 +102,22 @@ Route::middleware('auth')->group(function () use ($controller_path) {
     //subject
     Route::prefix('subject')->group(function () use ($controller_path) {
       Route::get('/', $controller_path . '\term_subject\SubjectController@index')->name('subject');
+      Route::get('/create', $controller_path . '\term_subject\SubjectController@create')->name('subject.create');
+      Route::post('/store', $controller_path . '\term_subject\SubjectController@store')->name('subject.store');
+      Route::get('/edit/{id}', $controller_path . '\term_subject\SubjectController@edit')->name('subject.edit');
+      Route::put('/edit/{id}', $controller_path . '\term_subject\SubjectController@update')->name('subject.update');
+      Route::delete('/delete/{id}', $controller_path . '\term_subject\SubjectController@destroy')->name('subject.destroy');
+      Route::get('/search', $controller_path . '\term_subject\SubjectController@search')->name('subject.search');
     });
     //course
     Route::prefix('course')->group(function () use ($controller_path) {
       Route::get('/', $controller_path . '\term_subject\CourseController@index')->name('course');
+      Route::get('/create', $controller_path . '\term_subject\CourseController@create')->name('course.create');
+      Route::post('/store', $controller_path . '\term_subject\CourseController@store')->name('course.store');
+      Route::get('/edit/{id}', $controller_path . '\term_subject\CourseController@edit')->name('course.edit');
+      Route::put('/edit/{id}', $controller_path . '\term_subject\CourseController@update')->name('course.update');
+      Route::delete('/delete/{id}', $controller_path . '\term_subject\CourseController@destroy')->name('course.destroy');
+      Route::get('/search', $controller_path . '\term_subject\CourseController@search')->name('course.search');
     });
   });
 });

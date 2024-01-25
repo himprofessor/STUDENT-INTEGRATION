@@ -11,7 +11,6 @@ class CareerOpportunityController extends Controller
 {
   public function index()
   {
-    // dd(123456);
     $data = Career::list();
     $data = CareerResource::collection($data);
     return $this->ok($data);

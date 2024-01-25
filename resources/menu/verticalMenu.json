@@ -34,14 +34,14 @@
           "slug": "term&subject-term"
         },
         {
-          "url": "term&subject/subject",
-          "name": "Subject",
-          "slug": "term&subject-subject"
-        },
-        {
           "url": "term&subject/course",
           "name": "Course",
           "slug": "term&subject-course"
+        },
+        {
+          "url": "term&subject/subject",
+          "name": "Subject",
+          "slug": "term&subject-subject"
         }
       ]
     },
