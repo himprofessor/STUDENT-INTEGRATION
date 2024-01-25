@@ -17,6 +17,7 @@ class Career extends Model
     public static function list(){
       return self::orderBy('created_at', 'desc')->get();
     }
+
     public static function store($request, $id = null)
     {
       if ($id) {
@@ -28,7 +29,7 @@ class Career extends Model
               'title.required' => 'Please input title',
           ]
       );
-  } else {
+    } else {
       $validatedData = $request->validate(
           [
               'title' => 'required',

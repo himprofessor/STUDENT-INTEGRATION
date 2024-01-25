@@ -109,14 +109,14 @@ class Media extends Model
         return $this->belongsToMany(StudentActivity::class, 'student_activity_media');
     }
 
-    // public function careerOpportunities()
-    // {
-    //     return $this->hasMany(CareerOpportunity::class);
-    // }
     public function careerOpportunities(): HasOne
-  {
-      return $this->hasOne(CareerOpportunity::class, 'id', 'media_id');
-  }
+    {
+        return $this->hasOne(Career::class, 'id', 'media_id');
+    }
 
+    public function curriculum(): HasOne
+    {
+        return $this->hasOne(Curriculum::class, 'media_id', 'id');
+    }
 
 }
