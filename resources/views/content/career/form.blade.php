@@ -5,18 +5,13 @@
 </style>
 
 <fieldset class="form-group">
-  <strong for="title" class="form-label">
-    Title<span style="color: red; font-size: larger;">*</span>
-  </strong>
+  <strong>Title<span class="text-danger">*</span></strong>
   <input type="text" placeholder="Please enter title" class="form-control" id="title" name="title" value="{{ old('title', $career->title ?? '') }}" />
   {{ csrf_field() }}
 </fieldset>
 
 <fieldset class="form-group">
-  <label for="description" class="form-label">
-    Career Opportunity <span style="color:red; font-size: larger;">*</span>
-  </label>
-
+  <strong>Career Opportunity<span class="text-danger">*</span></strong>
   <div class="custom-file mb-2">
     <input type="file" id="upload" class="account-file-input custom-file-input @error('image') is-invalid @enderror" name="image" hidden accept="image/png, image/jpeg" />
     <label for="upload" class="btn btn-outline-primary btn-block">
@@ -52,9 +47,7 @@
 </fieldset>
 
 <fieldset class="form-group">
-  <strong for="description" class="form-label">
-    Descriptions<span style="color: red; font-size: larger;">*</span>
-  </strong>
+  <strong>Descriptions<span class="text-danger">*</span></strong>
   <textarea class="form-control" placeholder="Your text here" id="editor" name="description">{!! old('description', $career->description ?? '') !!}</textarea>
   {{ csrf_field() }}
 </fieldset>
