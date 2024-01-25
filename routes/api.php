@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\api\StudentActivityController;
 use App\Http\Controllers\api\SlideshowController;
+use App\Http\Controllers\api\term_subject\CourseController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   return $request->user();
@@ -48,3 +49,7 @@ Route::prefix('career')->group(function () {
   Route::get('/list', [CareerOpportunityController::class, 'index']);
 });
 
+// course
+Route::prefix('course')->group(function () {
+  Route::get('/list', [CourseController::class, 'index']);
+});

@@ -5,18 +5,13 @@
 </style>
 
 <fieldset class="form-group">
-  <strong for="heading" class="form-label">
-    Heading<span style="color: red; font-size: larger;">*</span>
-  </strong>
+  <strong>Heading<span class="text-danger">*</span></strong>
   <input type="text" placeholder="Please enter heading" class="form-control" id="heading" name="heading" value="{{ old('heading', $slideshow->heading ?? '') }}" />
   {{ csrf_field() }}
 </fieldset>
 
 <fieldset class="form-group">
-  <label for="description" class="form-label">
-    Slideshow <span style="color:red; font-size: larger;">*</span>
-  </label>
-
+  <strong>Upload Slideshow<span class="text-danger">*</span></strong>
   <div class="custom-file mb-2">
     <input type="file" id="upload" class="account-file-input custom-file-input @error('image') is-invalid @enderror" name="image" hidden accept="image/png, image/jpeg" />
     <label for="upload" class="btn btn-outline-primary btn-block">
@@ -33,7 +28,7 @@
     @enderror
   </div>
 
-  <div class="d-flex justify-content-start mb-2 bg-light">
+  <div class="d-flex justify-content-start bg-light">
     <img src="{{ old('image', $slideshow->media->image ?? '') ? asset('storage/' . old('image', $slideshow->media->image ?? '')) : asset('assets/img/avatars/1.png') }}" alt="slideshow-avatar" class="img-fluid" id="uploadedAvatar" />
   </div>
 
@@ -52,9 +47,7 @@
 </fieldset>
 
 <fieldset class="form-group">
-  <strong for="description" class="form-label">
-    Descriptions<span style="color: red; font-size: larger;">*</span>
-  </strong>
-  <textarea class="form-control" placeholder="Your text here" id="editor" name="description">{!! old('description', $slideshow->description ?? '') !!}</textarea>
+  <strong>Descriptions<span class="text-danger">*</span></strong>
+  <textarea class="form-control" placeholder="Description here " id="editor" name="description">{!! old('description', $slideshow->description ?? '') !!}</textarea>
   {{ csrf_field() }}
 </fieldset>
