@@ -15,7 +15,7 @@ return new class extends Migration
     {
       Schema::create('terms', function (Blueprint $table) {
         $table->id();
-        $table->string('term')->nullable();
+        $table->string('term_name')->nullable();
         $table->timestamps();
       });
     }
