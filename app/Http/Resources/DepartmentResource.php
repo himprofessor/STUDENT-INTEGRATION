@@ -17,7 +17,7 @@ class DepartmentResource extends JsonResource
         return [
             'id' => $this->id,
             'department_name' => $this->department_name,
-            'media_id' => $this->media->image ? asset('storage/' . $this->media->image) :null,
+            'media_id' => $this->media->image ? asset('storage/' . $this->media->image) : null,
             'created_at' => $this->created_at->format('Y-m-d'),
             'updated_at' => $this->updated_at->format('Y-m-d'),
         ];

@@ -20,7 +20,7 @@ class StudentActivityDetailResource extends JsonResource
                 $images[] = asset('storage/' . $media_img->image);
             }
         }
-    
+
         return [
             'id' => $this->id,
             'title' => $this->title,

@@ -55,7 +55,7 @@
 
     // Hide Validation text-danger
     $(document).ready(function() {
-        $('#basic-default-course, #editor').on('input change', function() {
+        $('#basic-default-course, #basic-default-term, #basic-default-subject').on('input change', function() {
             $(this).removeClass('is-invalid');
             $(this).next('.text-danger').hide();
         });
