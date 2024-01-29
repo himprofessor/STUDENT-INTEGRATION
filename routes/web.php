@@ -129,3 +129,13 @@ Route::middleware('auth')->group(function () use ($controller_path) {
     });
   });
 });
+  //route curriculum
+  Route::prefix('curriculum')->group(function () use ($controller_path){
+    Route::get("/",  $controller_path. "\curriculum\CurriculumController@index")->name('curriculum');
+    Route::get('/create', $controller_path . '\curriculum\CurriculumController@create' )->name('curriculum');
+    Route::post('/store', $controller_path . '\curriculum\CurriculumController@store')->name('curriculum.store');
+    Route::get('/edit/{id}', $controller_path . '\curriculum\CurriculumController@edit')->name('curriculum');
+    Route::put('/edit/{id}', $controller_path . '\curriculum\CurriculumController@update')->name('curriculum.update');
+    Route::delete('/delete/{id}', $controller_path . '\curriculum\CurriculumController@destroy')->name('curriculum.destroy');
+    Route::get('/search', $controller_path . '\curriculum\CurriculumController@search')->name('curriculum.search');
+  });

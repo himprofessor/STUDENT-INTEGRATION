@@ -19,8 +19,8 @@ class SlideshowResource extends JsonResource
             'heading' => $this->heading,
             'description' => $this->description,
             'image' => $this->media->image
-              ? asset('storage/' . $this->media->image)
-              : null,
+                ? asset('storage/' . $this->media->image)
+                : null,
             'media_id' => $this->media_id,
         ];
     }

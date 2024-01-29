@@ -16,8 +16,8 @@
         <tr>
             <div class="hover-card">
                 <td>{{ $rowNumber }}</td>
-                <td>{{$subject->term_id}}</td>
-                <td>{{$subject->course_id}}</td>
+                <td>{{$subject->term->term_name}}</td>
+                <td>{{$subject->course->course_name}}</td>
                 <td>{{$subject->subject_name}}</td>
             </div>
             <td>

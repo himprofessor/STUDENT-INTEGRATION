@@ -41,7 +41,6 @@ class CourseController extends Controller
   public function destroy($id)
   {
     DB::beginTransaction();
-    //find staff by id and delete
     $courses = Course::find($id);
     $courses->delete();
     DB::commit();

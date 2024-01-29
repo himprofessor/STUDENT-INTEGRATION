@@ -5,6 +5,7 @@ namespace App\Http\Controllers\term_subject;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Subject;
+use App\Models\Term;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,8 @@ class SubjectController extends Controller
   {
     $subjects = new Subject();
     $courses = Course::all();
-    return view('content.subject.create', compact('subjects', 'courses'));
+    $terms = Term::all();
+    return view('content.subject.create', compact('subjects', 'courses', 'terms'));
   }
   public function store(Request $request)
   {
@@ -32,8 +34,8 @@ class SubjectController extends Controller
   {
     $subjects = Subject::find($id);
     $courses = Course::all();
-    // $coursSelete = $subjects->course;
-    return view('content.subject.edit', compact('subjects', 'courses', 'coursSelete'));
+    $terms = Term::all();
+    return view('content.subject.edit', compact('subjects', 'courses', 'terms'));
   }
   public function update(Request $request, $id)
   {
@@ -45,7 +47,6 @@ class SubjectController extends Controller
   public function destroy($id)
   {
     DB::beginTransaction();
-    //find staff by id and delete
     $subjects = Subject::find($id);
     $subjects->delete();
     DB::commit();

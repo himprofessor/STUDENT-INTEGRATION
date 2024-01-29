@@ -9,7 +9,7 @@
 @section('content')
     <div class="card mb-4">
         <div class="card-header">
-            <h5 class="fw-bold mb-0">term List</h5>
+            <h5 class="fw-bold mb-0">Term List</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive text-nowrap" id="containterm">

@@ -18,6 +18,7 @@ class Career extends Model
     {
         return self::orderBy('created_at', 'desc')->get();
     }
+
     public static function store($request, $id = null)
     {
         if ($id) {

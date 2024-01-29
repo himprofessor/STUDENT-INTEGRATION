@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DepartmentResource extends JsonResource
+class CurriculumResources extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,9 @@ class DepartmentResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'department_name' => $this->department_name,
-            'media_id' => $this->media->image ? asset('storage/' . $this->media->image) : null,
-            'created_at' => $this->created_at->format('Y-m-d'),
-            'updated_at' => $this->updated_at->format('Y-m-d'),
+            'title' => $this->title,
+            'description' => html_entity_decode(strip_tags($this->description)),
+            'media_id' => $this->media->image ? asset('storage/' . $this->media->image) :null,
         ];
     }
 }

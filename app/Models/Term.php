@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Term extends Model
 {
@@ -11,9 +12,8 @@ class Term extends Model
   protected $fillable = [
     'term_name',
   ];
-
   public static function list(){
-    return self::orderBy('created_at', 'desc')->get();
+    return self::orderBy('created_at')->get();
   }
   public static function store($request, $id = null)
   {
@@ -45,5 +45,10 @@ class Term extends Model
   );
 
     return $term;
+  }
+
+  public function subject(): HasMany
+  {
+    return $this->hasMany(Subject::class);
   }
 }

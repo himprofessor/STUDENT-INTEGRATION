@@ -14,7 +14,7 @@
         {
           "url": "department&staff/department",
           "name": "Department",
-          "slug": "department&staff-department"
+          "slug": "department&staff-department" 
         },
         {
           "url": "department&staff/staff",
@@ -55,7 +55,7 @@
       "url": "/career",
       "name": "Career-Opportunity",
       "icon": "menu-icon tf-icons bx bx-medal",
-      "slug": "careers"
+      "slug": "career"
     },
     {
       "url": "/slideshow",
@@ -68,6 +68,12 @@
       "name": "Student-activities",
       "icon": "menu-icon tf-icons bx bx-shape-polygon",
       "slug": "student-activities"
+    },
+    {
+      "url": "/curriculum",
+      "name": "Curriculum",
+      "icon": "menu-icon tf-icons bx bx-briefcase-alt-2",
+      "slug": "curriculum"
     }
   ]
 }
