@@ -8,13 +8,13 @@
     },
     {
       "name": "Department & Staff",
-      "icon": "menu-icon tf-icons bx bx-copy",
+      "icon": "menu-icon tf-icons bx bx-building-house",
       "slug": "department&staff",
       "submenu": [
         {
           "url": "department&staff/department",
           "name": "Department",
-          "slug": "department&staff-department" 
+          "slug": "department&staff-department"
         },
         {
           "url": "department&staff/staff",
