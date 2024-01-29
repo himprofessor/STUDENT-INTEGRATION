@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\CareerOpportunityController;
+use App\Http\Controllers\api\CurriculumController;
 use App\Http\Controllers\api\department_staff\DepartmentController;
 use App\Http\Controllers\api\department_staff\StaffController;
 use Illuminate\Http\Request;
@@ -47,5 +48,10 @@ Route::prefix('department-list')->group(function () {
 // careeroppotunities
 Route::prefix('career')->group(function () {
   Route::get('/list', [CareerOpportunityController::class, 'index']);
+});
+
+//curriculum 
+Route::prefix('curriculum')->group(function() {
+  Route::get('/list', [CurriculumController::class, 'index']);
 });
 

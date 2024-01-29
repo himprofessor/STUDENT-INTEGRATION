@@ -5,22 +5,23 @@
 </style>
 
 <fieldset class="form-group">
-  <strong for="title" class="form-label">
-    Title<span style="color: red; font-size: larger;">*</span>
-  </strong>
-  <input type="text" placeholder="Please enter title" class="form-control" id="title" name="title" value="{{ old('title', $curriculum->title ?? '') }}" />
-  {{ csrf_field() }}
+<strong>Curriculum title <span class="text-danger">*</span></strong>
+  <!-- // Message error when haven't enter the department name(Validate department name )-->
+  <input type="text" placeholder="Please enter the curriculum title" class="form-control @error('title') is-invalid @enderror" id="basic-default-fullname" name="title" value="{{ old('title', $curriculum->title ?? '') }}" />
+  @error('title')
+  <div class="invalid-feedback">{{ $message }}</div>
+  @enderror
 </fieldset>
 
 <fieldset class="form-group">
   <label for="description" class="form-label">
-    Career Opportunity <span style="color:red; font-size: larger;">*</span>
+    Curriculum Image<span style="color:red; font-size: larger;">*</span>
   </label>
 
   <div class="custom-file mb-2">
     <input type="file" id="upload" class="account-file-input custom-file-input @error('image') is-invalid @enderror" name="image" hidden accept="image/png, image/jpeg" />
     <label for="upload" class="btn btn-outline-primary btn-block">
-      <span class="d-none d-sm-block">Choose an image for the Career</span>
+      <span class="d-none d-sm-block">Choose an image for the Curriculum</span>
       <i class="bx bx-upload d-block d-sm-none"></i>
     </label>
     <button type="button" class="btn btn-outline-secondary account-image-reset">
@@ -31,6 +32,7 @@
     @error('image')
     <div class="invalid-feedback">{{ $message }}</div>
     @enderror
+
   </div>
 
   <div class="d-flex justify-content-start mb-2 bg-light">
@@ -52,9 +54,10 @@
 </fieldset>
 
 <fieldset class="form-group">
-  <strong for="description" class="form-label">
-    Descriptions<span style="color: red; font-size: larger;">*</span>
-  </strong>
-  <textarea class="form-control" placeholder="Your text here" id="editor" name="description">{!! old('description', $curriculum->description ?? '') !!}</textarea>
-  {{ csrf_field() }}
+    <strong>Curriculum Description<span class="text-danger">*</span></strong>
+    <p><textarea class="form-control  @error('description') is-invalid @enderror" placeholder="Your text here" id="editor" name="description">{!! old('description', $curriculum->description ?? '') !!}</textarea></p>
+    {{ csrf_field() }}
+    @error('description')
+    <div class="text-danger">{{ $message }}</div>
+    @enderror
 </fieldset>
