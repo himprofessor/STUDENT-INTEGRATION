@@ -14,12 +14,34 @@
         {
           "url": "department&staff/department",
           "name": "Department",
-          "slug": "department&staff-department"
+          "slug": "department&staff-department" 
         },
         {
           "url": "department&staff/staff",
           "name": "Staff",
           "slug": "department&staff-staff"
+        }
+      ]
+    },
+    {
+      "name": "Term & Subject",
+      "icon": "menu-icon tf-icons bx bx-copy",
+      "slug": "term&subject",
+      "submenu": [
+        {
+          "url": "term&subject/term",
+          "name": "Term",
+          "slug": "term&subject-term"
+        },
+        {
+          "url": "term&subject/course",
+          "name": "Course",
+          "slug": "term&subject-course"
+        },
+        {
+          "url": "term&subject/subject",
+          "name": "Subject",
+          "slug": "term&subject-subject"
         }
       ]
     },
@@ -33,7 +55,7 @@
       "url": "/career",
       "name": "Career-Opportunity",
       "icon": "menu-icon tf-icons bx bx-medal",
-      "slug": "careers"
+      "slug": "career"
     },
     {
       "url": "/slideshow",

@@ -19,10 +19,12 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\api\StudentActivityController;
 use App\Http\Controllers\api\SlideshowController;
-
+use App\Http\Controllers\api\term_subject\CourseController;
+use App\Http\Controllers\api\term_subject\SubjectController as Term_subjectSubjectController;
+use App\Http\Controllers\api\term_subject\TermController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+  return $request->user();
 });
 
 //slideshow
@@ -34,17 +36,6 @@ Route::prefix('student-activity')->group(function () {
   Route::get('/list', [StudentActivityController::class, 'index']);
   Route::get('/list/{id}', [StudentActivityController::class, 'getOne']);
 });
-
-// staff
-Route::prefix('staff-list')->group(function () {
-  Route::get('/list', [StaffController ::class, 'index']);
-});
-
-// department
-Route::prefix('department-list')->group(function () {
-  Route::get('/list', [DepartmentController ::class, 'index']);
-});
-
 // careeroppotunities
 Route::prefix('career')->group(function () {
   Route::get('/list', [CareerOpportunityController::class, 'index']);
@@ -55,3 +46,21 @@ Route::prefix('curriculum')->group(function() {
   Route::get('/list', [CurriculumController::class, 'index']);
 });
 
+// staff and department 
+Route::prefix('staff-list')->group(function () {
+  Route::get('/list', [StaffController ::class, 'index']);
+});
+Route::prefix('department-list')->group(function () {
+  Route::get('/list', [DepartmentController ::class, 'index']);
+});
+
+// course, subject and term 
+Route::prefix('course')->group(function () {
+  Route::get('/list', [CourseController::class, 'index']);
+});
+Route::prefix('subject')->group(function () {
+  Route::get('/list', [Term_subjectSubjectController::class, 'index']);
+});
+Route::prefix('term')->group(function () {
+  Route::get('/list', [TermController::class, 'index']);
+});
