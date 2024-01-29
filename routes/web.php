@@ -104,6 +104,8 @@ Route::middleware('auth')->group(function () use ($controller_path) {
       Route::put('/edit/{id}', $controller_path . '\term_subject\TermController@update')->name('term.update');
       Route::delete('/delete/{id}', $controller_path . '\term_subject\TermController@destroy')->name('term.destroy');
       Route::get('/search', $controller_path . '\term_subject\TermController@search')->name('term.search');
+      // Route::get('/term/search', 'TermController@search')->name('term.search');
+
     });
     //subject
     Route::prefix('subject')->group(function () use ($controller_path) {

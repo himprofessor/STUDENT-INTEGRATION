@@ -25,7 +25,7 @@
     },
     {
       "name": "Term & Subject",
-      "icon": "menu-icon tf-icons bx bx-copy",
+      "icon": "menu-icon tf-icons bx bx-book",
       "slug": "term&subject",
       "submenu": [
         {

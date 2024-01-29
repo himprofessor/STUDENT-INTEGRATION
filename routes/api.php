@@ -3,6 +3,7 @@
 use App\Http\Controllers\api\CareerOpportunityController;
 use App\Http\Controllers\api\department_staff\DepartmentController;
 use App\Http\Controllers\api\department_staff\StaffController;
+use App\Http\Controllers\api\term_subject\TermController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -52,4 +53,9 @@ Route::prefix('career')->group(function () {
 // course
 Route::prefix('course')->group(function () {
   Route::get('/list', [CourseController::class, 'index']);
+});
+
+// term
+Route::prefix('term')->group(function () {
+  Route::get('/list', [TermController::class, 'index']);
 });

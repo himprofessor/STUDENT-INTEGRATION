@@ -1,43 +1,29 @@
-@extends('layouts/contentNavbarLayout')
+<div class="modal fade" id="confirmEdit{{ $term->id }}" tabindex="-1" role="dialog" aria-labelledby="confirmEditLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="confirmEditLabel">Confirm Edit</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p class="mb-0 text-wrap">You want to Edit this term?</p>
+          </div>
+          <div class="modal-footer">
+              <form method="POST" action="{{ url('/term&subject/term/edit/' . $term->id) }}">
+                @csrf
+                @method('PUT')
+                <!-- Hidden input for term_id -->
+                <input type="hidden" name="term_id" value="{{ $term->id }}">
 
-@section('title', 'term basic - UI elements')
-
-@section('vendor-script')
-<script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
-@endsection
-
-@section('page-script')
-<script src="{{asset('assets/js/pages-account-settings-account.js')}}"></script>
-@endsection
-
-@section('content')
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h5 class="fw-bold">term Update</h5>
+                <!-- Form fields -->
+                <div class="input-group w-75">
+                    <input type="text" name="term_name" id="term" class="form-control border border-1" placeholder="Term" value="{{ old('term_name', $term->term_name) }}">
+                    <button type="submit" class="btn" style="background-color: #009DE1; color:white">Update</button>
+                </div>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </form>
+            <br>
+          </div>
+      </div>
+  </div>
 </div>
-<div class="row">
-    <div class="col-xl">
-        <div class="card mb-4">
-            <div class="card-body">
-                <form method="POST" action="{{ url('/term&subject/term/edit/' . $terms->id) }}">
-                    @csrf
-                    @method('PUT')
-                    {{-- @include('content.term.table', ['term' => $terms]) --}}
-                    @include('content.term.table', ['terms' => $terms])
-                    <a href="{{ url('term&subject/term') }}" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn" style="background-color: #009DE1; color:white">update</button>
-                </form>
-
-                <form action="{{ ('/term&subject/term/edit/' . $terms->id) }}" method="post"  class="col-md-6">
-                  @csrf
-                  <!-- Form fields -->
-                  <div class="input-group">
-                    {{-- <input type="text" name="term" id="term" class="form-control border border-1" placeholder="Term"> --}}
-                    <button type="submit" class="btn" style="background-color: #009DE1; color:white">update</button>
-                    <a href="{{ url('term&subject/term')}}" class="btn btn-secondary me-1">Cancel</a>
-                  </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection

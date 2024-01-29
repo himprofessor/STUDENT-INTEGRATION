@@ -22,10 +22,10 @@ class TermController extends Controller
     return redirect('term&subject/term')->with('success', 'term has been created successfully.');
   }
   public function edit($id)
-  {
-    $terms = Term::find($id);
-    return view('content.term.edit', compact('terms'));
-  }
+{
+    $term = Term::find($id);
+    return view('content.term.edit', compact('term'));
+}
   public function update(Request $request, $id)
   {
     DB::beginTransaction();
