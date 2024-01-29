@@ -68,6 +68,12 @@
       "name": "Student-activities",
       "icon": "menu-icon tf-icons bx bx-shape-polygon",
       "slug": "student-activities"
+    },
+    {
+      "url": "/curriculum",
+      "name": "Curriculum",
+      "icon": "menu-icon tf-icons bx bx-briefcase-alt-2",
+      "slug": "curriculum"
     }
   ]
 }
