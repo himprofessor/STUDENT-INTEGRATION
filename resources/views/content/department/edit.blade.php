@@ -1,6 +1,15 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'Department basic - UI elements')
+@section('title', 'Department - UI elements')
+
+<!-- CKEditor  -->
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<!-- //crop -->
+<script src="https://unpkg.com/cropperjs/dist/cropper.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
 
 @section('vendor-script')
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
@@ -29,4 +38,34 @@
         </div>
     </div>
 </div>
+
+<script>
+    // CK Editor---
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            toolbar: [
+                'heading',
+                '|',
+                'bold',
+                'italic',
+                'link',
+                'bulletedList',
+                'numberedList'
+            ],
+        })
+        .catch(error => {
+            console.log(error);
+        });
+</script>
+
+<!-- Javascript Validate department -->
+<script>
+    $(document).ready(function() {
+        $('#basic-default-fullname, #upload').on('input change', function() {
+            $('#department-name-error').hide();
+            $('#department-cover-error').hide();
+            $(this).removeClass('is-invalid');
+        });
+    });
+</script>
 @endsection
