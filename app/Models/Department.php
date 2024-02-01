@@ -12,6 +12,7 @@ class Department extends Model
     use HasFactory;
     protected $fillable = [
         'department_name',
+        'description',
         'media_id',
     ];
     // get api
@@ -33,13 +34,14 @@ class Department extends Model
             $validatedData = $request->validate([
 
                 'department_name' => 'required',
+                'description' => 'nullable',
                 'image' => 'required|image|mimes:jpeg,png,gif|max:2000',
             ], [
                 'department_name.required' => 'Please enter the department name',
                 'image.required' => 'Please choose a department cover image',
             ]);
         }
-        $department = $request->only('department_name');
+        $department = $request->only('department_name','description');
 
         if ($id) {
             $media_id = self::find($id)->media_id;

@@ -2,6 +2,17 @@
 
 @section('title', 'Departments basic - UI elements')
 
+<!-- CKEditor  -->
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+<!-- //crop -->
+<script src="https://unpkg.com/cropperjs/dist/cropper.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+
 @section('vendor-script')
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
 @endsection
@@ -31,8 +42,26 @@
         </div>
     </div>
 </div>
-@endsection
 
+<script>
+    // CK Editor---
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            toolbar: [
+                'heading',
+                '|',
+                'bold',
+                'italic',
+                'link',
+                'bulletedList',
+                'numberedList'
+            ],
+        })
+        .catch(error => {
+            console.log(error);
+        });
+</script>
+@endsection
 <!-- Javascript Validate department -->
 <script>
     $(document).ready(function() {
