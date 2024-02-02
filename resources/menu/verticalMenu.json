@@ -74,6 +74,12 @@
       "name": "Curriculum",
       "icon": "menu-icon tf-icons bx bx-briefcase-alt-2",
       "slug": "curriculum"
+    },
+    {
+      "url": "/impact",
+      "name": "Impact",
+      "icon": "menu-icon tf-icons bx bx-info-circle",
+      "slug": "impact"
     }
   ]
 }

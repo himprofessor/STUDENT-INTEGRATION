@@ -1,6 +1,6 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'Departments basic - UI elements')
+@section('title', 'Impact basic - UI elements')
 
 <!-- CKEditor  -->
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
@@ -25,31 +25,28 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h5 class="fw-bold">Department Create</h5>
-</div>
-<div class="row">
+<div class="row row-2">
     <div class="col-xl">
         <div class="card mb-4">
             <div class="card-body">
-            <h3 class="fw-bold text-center ">Create Department</h3>
-                <form method="POST" action="{{ route('department.store') }}" enctype="multipart/form-data">
+                <h3 class="fw-bold text-center ">Create Impact</h3>
+
+                <form method="POST" action="{{ route('impact.store') }}" enctype="multipart/form-data">
                     @csrf
-                    @include('content.department.form')
-                    <a href="{{ url('department&staff/department') }}" class="btn btn-secondary me-1">Cancel</a>
+                    @include('content.impact.form')
+                    <a href="{{ url('impact') }}" class="btn btn-secondary me-1">Cancel</a>
                     <button type="submit" class="btn" style="background-color: #009DE1; color:white">Submit</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 <script>
     // CK Editor---
     ClassicEditor
         .create(document.querySelector('#editor'), {
             toolbar: [
-                'heading',
+                'title',
                 '|',
                 'bold',
                 'italic',
@@ -63,12 +60,12 @@
         });
 </script>
 @endsection
-<!-- Javascript Validate department -->
+
 <script>
+    // <!-- Javascript Validate impact -->
     $(document).ready(function() {
         $('#basic-default-fullname, #upload').on('input change', function() {
-            $('#department-name-error').hide();
-            $('#department-cover-error').hide();
+            $('#title-error').hide();
             $(this).removeClass('is-invalid');
         });
     });
