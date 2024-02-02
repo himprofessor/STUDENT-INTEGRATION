@@ -17,6 +17,7 @@
             <td>N.o</td>
             <th>department_cover</th>
             <th>department_name</th>
+            <th>description</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -33,7 +34,7 @@
                 @endif
             </td>
             <td>{{ $department->department_name }}</td>
-
+            <td class="text-wrap">{!!($department->description)!!}</td>
             <td>
                 <a href="{{ url('department&staff/department/edit', $department->id) }}" class="btn btn-sm"style="background-color: #009DE1; color:white">
                     <i class="bx bx-edit-alt me-1"></i> Edit

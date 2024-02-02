@@ -29,3 +29,11 @@
     </div>
   </div>
 </div>
+<div class="mb-3">
+    <strong>Department Description<span class="text-danger">*</span></strong>
+    <p><textarea class="form-control  @error('description') is-invalid @enderror" placeholder="Your text here" id="editor" name="description">{!! old('description', $department->description ?? '') !!}</textarea></p>
+    {{ csrf_field() }}
+    @error('description')
+    <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
