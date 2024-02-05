@@ -72,8 +72,14 @@
     {
       "url": "/curriculum",
       "name": "Curriculum",
-      "icon": "menu-icon tf-icons bx bx-briefcase-alt-2",
+      "icon": "menu-icon tf-icons bx bx-trophy",
       "slug": "curriculum"
+    },
+    {
+      "url": "/internships-program",
+      "name": "Internships-Program",
+      "icon": "menu-icon tf-icons bx bx-briefcase-alt-2",
+      "slug": "internships-program"
     }
   ]
 }

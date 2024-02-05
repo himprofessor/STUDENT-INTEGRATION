@@ -83,40 +83,44 @@ class Media extends Model
         }
         return $mediaIds;
     }
-
+    // one user has one media image 
     public function user(): HasOne
     {
         return $this->hasOne(User::class, 'media_id', 'id');
     }
-
+    // one staff has one media image 
     public function staff(): HasOne
     {
         return $this->hasOne(Staff::class, 'media_id', 'id');
     }
-
+    // one department has one media image 
     public function department(): HasOne
     {
         return $this->hasOne(Department::class, 'media_id', 'id');
     }
-
+    // one slideshow has one media image 
     public function slideshow(): HasOne
     {
         return $this->hasOne(Slideshow::class, 'media_id', 'id');
     }
-
+    // one student activity hase many media image 
     public function studentActivities()
     {
         return $this->belongsToMany(StudentActivity::class, 'student_activity_media');
     }
-
+    // one carrer opportunity has one media image 
     public function careerOpportunities(): HasOne
     {
         return $this->hasOne(Career::class, 'id', 'media_id');
     }
-
+    // one curriculum has one media image 
     public function curriculum(): HasOne
     {
         return $this->hasOne(Curriculum::class, 'media_id', 'id');
     }
-
+    // one internships program has many media image 
+    public function Internship()
+    {
+        return $this->belongsToMany(Internships::class, 'internships_media');
+    }
 }
