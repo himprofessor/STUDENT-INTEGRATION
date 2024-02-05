@@ -5,6 +5,7 @@ use App\Http\Controllers\api\CurriculumController;
 use App\Http\Controllers\api\department_staff\DepartmentController;
 use App\Http\Controllers\api\department_staff\StaffController;
 use App\Http\Controllers\api\ImpactController;
+use App\Http\Controllers\api\InternshipController;
 use App\Http\Controllers\api\term_subject\TermController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -59,8 +60,6 @@ Route::prefix('department-list')->group(function () {
 Route::prefix('course')->group(function () {
   Route::get('/list', [CourseController::class, 'index']);
 });
-
-// term
 Route::prefix('subject')->group(function () {
   Route::get('/list', [Term_subjectSubjectController::class, 'index']);
 });
@@ -73,3 +72,7 @@ Route::prefix('impact')->group(function() {
   Route::get('/list', [ImpactController::class, 'index']);
 });
 
+// Internship 
+Route::prefix('internship')->group(function () {
+  Route::get('/list', [InternshipController::class, 'index']);
+});

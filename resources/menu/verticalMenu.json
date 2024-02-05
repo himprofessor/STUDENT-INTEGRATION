@@ -72,7 +72,7 @@
     {
       "url": "/curriculum",
       "name": "Curriculum",
-      "icon": "menu-icon tf-icons bx bx-briefcase-alt-2",
+      "icon": "menu-icon tf-icons bx bx-trophy",
       "slug": "curriculum"
     },
     {
@@ -80,6 +80,12 @@
       "name": "Impact",
       "icon": "menu-icon tf-icons bx bx-donate-heart",
       "slug": "impact"
+    },
+    {
+      "url": "/internships-program",
+      "name": "Internships-Program",
+      "icon": "menu-icon tf-icons bx bx-briefcase-alt-2",
+      "slug": "internships-program"
     }
   ]
 }

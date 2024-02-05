@@ -15,7 +15,9 @@
         <tr>
             <td class="hover-row" data-bs-toggle="modal" data-bs-target="#confirmView{{ $activities->id }}" style="cursor: pointer;" title="view Image">{{ $rowNumber }}</td>
             <td class="hover-row" data-bs-toggle="modal" data-bs-target="#confirmView{{ $activities->id }}" style="cursor: pointer;" title="view Image">{{$activities->title}}</td>
-            <td class="hover-row text-wrap" data-bs-toggle="modal" data-bs-target="#confirmView{{ $activities->id }}" style="cursor: pointer;" title="view Image">{!! $activities->description !!}</td>
+            <td class="hover-row text-wrap" data-bs-toggle="modal" data-bs-target="#confirmView{{ $activities->id }}" style="cursor: pointer;" title="view Image">
+                {!! Str::limit($activities->description, 140, '...') !!}
+            </td>
             <td>
                 <a href="{{ url('student-activities/edit', $activities->id) }}" class="btn btn-sm" style="background-color: #009DE1; color:white">
                     <i class="bx bx-edit-alt me-1"></i> Edit

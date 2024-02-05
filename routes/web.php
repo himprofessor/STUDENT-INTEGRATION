@@ -94,9 +94,9 @@ Route::middleware('auth')->group(function () use ($controller_path) {
   });
 
   //route curriculum
-  Route::prefix('curriculum')->group(function () use ($controller_path){
-    Route::get("/",  $controller_path. "\curriculum\CurriculumController@index")->name('curriculum');
-    Route::get('/create', $controller_path . '\curriculum\CurriculumController@create' )->name('curriculum');
+  Route::prefix('curriculum')->group(function () use ($controller_path) {
+    Route::get("/",  $controller_path . "\curriculum\CurriculumController@index")->name('curriculum');
+    Route::get('/create', $controller_path . '\curriculum\CurriculumController@create')->name('curriculum');
     Route::post('/store', $controller_path . '\curriculum\CurriculumController@store')->name('curriculum.store');
     Route::get('/edit/{id}', $controller_path . '\curriculum\CurriculumController@edit')->name('curriculum');
     Route::put('/edit/{id}', $controller_path . '\curriculum\CurriculumController@update')->name('curriculum.update');
@@ -115,37 +115,48 @@ Route::middleware('auth')->group(function () use ($controller_path) {
     Route::get('/search', $controller_path . '\impact\ImpactController@search')->name('impact.search');
   });
 
-});
   //Route term, course and subject
-Route::prefix('term&subject/')->group(function () use ($controller_path) {
-  // term
-  Route::prefix('term')->group(function () use ($controller_path) {
-    Route::get('/', $controller_path . '\term_subject\TermController@index')->name('term&subject-term');
-    Route::get('/create', $controller_path . '\term_subject\TermController@create')->name('term&subject-term');
-    Route::post('/store', $controller_path . '\term_subject\TermController@store')->name('term.store');
-    Route::get('/edit/{id}', $controller_path . '\term_subject\TermController@edit')->name('term.edit');
-    Route::put('/edit/{id}', $controller_path . '\term_subject\TermController@update')->name('term.update');
-    Route::delete('/delete/{id}', $controller_path . '\term_subject\TermController@destroy')->name('term.destroy');
-    Route::get('/search', $controller_path . '\term_subject\TermController@search')->name('term.search');
+  Route::prefix('term&subject/')->group(function () use ($controller_path) {
+    // term
+    Route::prefix('term')->group(function () use ($controller_path) {
+      Route::get('/', $controller_path . '\term_subject\TermController@index')->name('term&subject-term');
+      Route::get('/create', $controller_path . '\term_subject\TermController@create')->name('term&subject-term');
+      Route::post('/store', $controller_path . '\term_subject\TermController@store')->name('term.store');
+      Route::get('/edit/{id}', $controller_path . '\term_subject\TermController@edit')->name('term.edit');
+      Route::put('/edit/{id}', $controller_path . '\term_subject\TermController@update')->name('term.update');
+      Route::delete('/delete/{id}', $controller_path . '\term_subject\TermController@destroy')->name('term.destroy');
+      Route::get('/search', $controller_path . '\term_subject\TermController@search')->name('term.search');
+    });
+    //subject
+    Route::prefix('subject')->group(function () use ($controller_path) {
+      Route::get('/', $controller_path . '\term_subject\SubjectController@index')->name('term&subject-subject');
+      Route::get('/create', $controller_path . '\term_subject\SubjectController@create')->name('term&subject-subject');
+      Route::post('/store', $controller_path . '\term_subject\SubjectController@store')->name('subject.store');
+      Route::get('/edit/{id}', $controller_path . '\term_subject\SubjectController@edit')->name('term&subject-subject');
+      Route::put('/edit/{id}', $controller_path . '\term_subject\SubjectController@update')->name('subject.update');
+      Route::delete('/delete/{id}', $controller_path . '\term_subject\SubjectController@destroy')->name('subject.destroy');
+      Route::get('/search', $controller_path . '\term_subject\SubjectController@search')->name('subject.search');
+    });
+    //course
+    Route::prefix('course')->group(function () use ($controller_path) {
+      Route::get('/', $controller_path . '\term_subject\CourseController@index')->name('term&subject-course');
+      Route::get('/create', $controller_path . '\term_subject\CourseController@create')->name('term&subject-course');
+      Route::post('/store', $controller_path . '\term_subject\CourseController@store')->name('course.store');
+      Route::get('/edit/{id}', $controller_path . '\term_subject\CourseController@edit')->name('term&subject-course');
+      Route::put('/edit/{id}', $controller_path . '\term_subject\CourseController@update')->name('course.update');
+      Route::delete('/delete/{id}', $controller_path . '\term_subject\CourseController@destroy')->name('course.destroy');
+      Route::get('/search', $controller_path . '\term_subject\CourseController@search')->name('course.search');
+    });
   });
-  //subject
-  Route::prefix('subject')->group(function () use ($controller_path) {
-    Route::get('/', $controller_path . '\term_subject\SubjectController@index')->name('term&subject-subject');
-    Route::get('/create', $controller_path . '\term_subject\SubjectController@create')->name('term&subject-subject');
-    Route::post('/store', $controller_path . '\term_subject\SubjectController@store')->name('subject.store');
-    Route::get('/edit/{id}', $controller_path . '\term_subject\SubjectController@edit')->name('term&subject-subject');
-    Route::put('/edit/{id}', $controller_path . '\term_subject\SubjectController@update')->name('subject.update');
-    Route::delete('/delete/{id}', $controller_path . '\term_subject\SubjectController@destroy')->name('subject.destroy');
-    Route::get('/search', $controller_path . '\term_subject\SubjectController@search')->name('subject.search');
-  });
-  //course
-  Route::prefix('course')->group(function () use ($controller_path) {
-    Route::get('/', $controller_path . '\term_subject\CourseController@index')->name('term&subject-course');
-    Route::get('/create', $controller_path . '\term_subject\CourseController@create')->name('term&subject-course');
-    Route::post('/store', $controller_path . '\term_subject\CourseController@store')->name('course.store');
-    Route::get('/edit/{id}', $controller_path . '\term_subject\CourseController@edit')->name('term&subject-course');
-    Route::put('/edit/{id}', $controller_path . '\term_subject\CourseController@update')->name('course.update');
-    Route::delete('/delete/{id}', $controller_path . '\term_subject\CourseController@destroy')->name('course.destroy');
-    Route::get('/search', $controller_path . '\term_subject\CourseController@search')->name('course.search');
+
+  // Route Internships Program 
+  Route::prefix('internships-program')->group(function () use ($controller_path) {
+    Route::get('/', $controller_path . '\internships\InternshipController@index')->name('internships-program');
+    Route::get('/create', $controller_path . '\internships\InternshipController@create')->name('internships-program');
+    Route::post('/store', $controller_path . '\internships\InternshipController@store')->name('internship.store');
+    Route::get('/edit/{id}', $controller_path . '\internships\InternshipController@edit')->name('internships-program');
+    Route::put('/edit/{id}', $controller_path . '\internships\InternshipController@update')->name('internship.update');
+    Route::delete('/delete/{id}', $controller_path . '\internships\InternshipController@destroy')->name('internship.destroy');
+    Route::get('/search', $controller_path . '\internships\InternshipController@search')->name('internship.search');
   });
 });
