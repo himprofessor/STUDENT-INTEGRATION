@@ -107,7 +107,7 @@ Route::middleware('auth')->group(function () use ($controller_path) {
   //route impact
   Route::prefix('impact')->group(function() use ($controller_path) {
     Route::get('/', $controller_path . '\impact\ImpactController@index')->name('impact');
-    Route::get('/create', $controller_path . '\impact\ImpactController@create')->name('impact.create');
+    Route::get('/create', $controller_path . '\impact\ImpactController@create')->name('impact');
     Route::post('/store', $controller_path . '\impact\ImpactController@store')->name('impact.store');
     Route::get('/edit/{id}', $controller_path . '\impact\ImpactController@edit')->name('impact');
     Route::put('/edit/{id}', $controller_path . '\impact\ImpactController@update')->name('impact.update');

@@ -78,7 +78,7 @@
     {
       "url": "/impact",
       "name": "Impact",
-      "icon": "menu-icon tf-icons bx bx-info-circle",
+      "icon": "menu-icon tf-icons bx bx-donate-heart",
       "slug": "impact"
     }
   ]
