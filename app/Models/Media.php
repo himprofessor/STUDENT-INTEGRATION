@@ -123,4 +123,9 @@ class Media extends Model
     {
         return $this->belongsToMany(Internships::class, 'internships_media');
     }
+    // one partnership has one media image 
+    public function partnership(): HasOne
+    {
+    return $this->hasOne(Partnership::class, 'media_id', 'id');
+    }
 }

@@ -148,7 +148,6 @@ Route::middleware('auth')->group(function () use ($controller_path) {
       Route::get('/search', $controller_path . '\term_subject\CourseController@search')->name('course.search');
     });
   });
-
   // Route Internships Program 
   Route::prefix('internships-program')->group(function () use ($controller_path) {
     Route::get('/', $controller_path . '\internships\InternshipController@index')->name('internships-program');
@@ -159,4 +158,15 @@ Route::middleware('auth')->group(function () use ($controller_path) {
     Route::delete('/delete/{id}', $controller_path . '\internships\InternshipController@destroy')->name('internship.destroy');
     Route::get('/search', $controller_path . '\internships\InternshipController@search')->name('internship.search');
   });
+  //route partnership
+  Route::prefix('partnership')->group(function() use ($controller_path) {
+    Route::get('/', $controller_path . '\partnership\PartnershipController@index')->name('partnership');
+    Route::get('/create', $controller_path . '\partnership\PartnershipController@create')->name('partnership');
+    Route::post('/store', $controller_path . '\partnership\PartnershipController@store')->name('partnership.store');
+    Route::get('/edit/{id}', $controller_path . '\partnership\PartnershipController@edit')->name('partnership');
+    Route::put('/edit/{id}', $controller_path . '\partnership\PartnershipController@update')->name('partnership.update');
+    Route::delete('/delete/{id}', $controller_path . '\partnership\PartnershipController@destroy')->name('partnership.destroy');
+    Route::get('/search', $controller_path . '\partnership\PartnershipController@search')->name('partnership.search');
+  });
+
 });
