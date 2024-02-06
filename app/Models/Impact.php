@@ -13,11 +13,10 @@ class Impact extends Model
         'description',
     ];
     
-      // get api
+    // get api
     public static function list(){
         return self::orderBy('created_at', 'desc')->get();
     }
-
     public static function store($request, $id = null)
     {
         //Condition validate edit
