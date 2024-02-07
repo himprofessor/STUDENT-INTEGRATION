@@ -1,6 +1,6 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'Impact basic - UI elements')
+@section('data', 'Impact basic - UI elements')
 
 <!-- CKEditor  -->
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
@@ -30,7 +30,6 @@
         <div class="card mb-4">
             <div class="card-body">
                 <h3 class="fw-bold text-center ">Create Impact</h3>
-
                 <form method="POST" action="{{ route('impact.store') }}" enctype="multipart/form-data">
                     @csrf
                     @include('content.impact.form')
