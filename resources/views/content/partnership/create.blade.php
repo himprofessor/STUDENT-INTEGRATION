@@ -90,7 +90,6 @@
                 document.getElementById('img').style.display = 'block';
             });
         });
-
         // Close modal event
         $('#crop-modal').on('hidden.bs.modal', function() {
             // Clear the file input to allow reselection of the same file
