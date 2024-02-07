@@ -4,6 +4,7 @@ use App\Http\Controllers\api\CareerOpportunityController;
 use App\Http\Controllers\api\CurriculumController;
 use App\Http\Controllers\api\department_staff\DepartmentController;
 use App\Http\Controllers\api\department_staff\StaffController;
+use App\Http\Controllers\api\ImpactController;
 use App\Http\Controllers\api\InternshipController;
 use App\Http\Controllers\api\term_subject\TermController;
 use Illuminate\Http\Request;
@@ -64,6 +65,11 @@ Route::prefix('subject')->group(function () {
 });
 Route::prefix('term')->group(function () {
   Route::get('/list', [TermController::class, 'index']);
+});
+
+//impact
+Route::prefix('impact')->group(function() {
+  Route::get('/list', [ImpactController::class, 'index']);
 });
 
 // Internship 

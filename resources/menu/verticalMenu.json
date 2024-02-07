@@ -76,10 +76,23 @@
       "slug": "curriculum"
     },
     {
+      "url": "/impact",
+      "name": "Impact",
+      "icon": "menu-icon tf-icons bx bx-donate-heart",
+      "slug": "impact"
+    },
+    {
       "url": "/internships-program",
       "name": "Internships-Program",
       "icon": "menu-icon tf-icons bx bx-briefcase-alt-2",
       "slug": "internships-program"
+    },
+    {
+      "url": "/partnership",
+      "name": "Partnership",
+      "icon": "menu-icon tf-icons bx bx-badge",
+      "slug": "partnership"
     }
+
   ]
 }
