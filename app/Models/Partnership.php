@@ -10,11 +10,15 @@ class Partnership extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'media_id',
         'partnership_name',
         'address',
         'website',
-        'media_id',
     ];
+    // get api
+    public static function list(){
+        return self::orderBy('created_at', 'desc')->get();
+    }
 
     public static function store($request, $id = null)
     {
@@ -23,7 +27,6 @@ class Partnership extends Model
             $validatedData = $request->validate([
 
                 'partnership_name' => 'required',
-            
             ], [
                 'partnership_name.required' => '* Please enter the partnership name',
             ]);
@@ -64,5 +67,4 @@ class Partnership extends Model
     {
         return $this->hasOne(Media::class, 'id', 'media_id');
     }
-
 }
