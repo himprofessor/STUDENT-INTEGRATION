@@ -12,37 +12,32 @@ class Term extends Model
   protected $fillable = [
     'term_name',
   ];
-  public static function list(){
+  public static function list()
+  {
     return self::orderBy('created_at')->get();
   }
   public static function store($request, $id = null)
   {
     if ($id) {
       $validatedData = $request->validate(
-          [
-              'term_name' => 'required',
-          ],
-          [
-              'term_name.required' => 'Please input Name of term',
-          ]
+        ['term_name' => 'required'],
+        ['term_name.required' => 'Please input Name of term']
       );
-  } else {
+    } else {
       $validatedData = $request->validate(
-          [
-              'term_name' => 'required',
-          ],
-          [
-              'term_name.required' => 'Please input Term name',
-          ]
+        ['term_name' => 'required'],
+        ['term_name.required' => 'Please input Term name']
       );
-  }
+    }
+
     $term = $request->only([
       'term_name',
     ]);
+
     $term = Term::updateOrCreate(
       ['id' => $request->input('term_id')],
       ['term_name' => $request->input('term_name')]
-  );
+    );
 
     return $term;
   }

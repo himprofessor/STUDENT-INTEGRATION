@@ -88,11 +88,16 @@
       "slug": "internships-program"
     },
     {
+      "url": "/disciplines-home",
+      "name": "Disciplines",
+      "icon": "menu-icon tf-icons bx bx-book-reader",
+      "slug": "disciplines-home"
+    },
+    {
       "url": "/partnership",
       "name": "Partnership",
       "icon": "menu-icon far fa-handshake",
       "slug": "partnership"
     }
-
   ]
 }
