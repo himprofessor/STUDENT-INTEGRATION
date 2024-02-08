@@ -83,3 +83,7 @@ Route::prefix('internship')->group(function () {
 Route::prefix('rules')->group(function () {
   Route::get('/list', [DisciplineController::class, 'index']);
 });
+//partnership
+Route::prefix('partnership')->group(function() {
+  Route::get('/list', [PartnershipController::class, 'index']);
+});
