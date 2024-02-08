@@ -1,4 +1,7 @@
 <!-- BEGIN: Vendor JS-->
+<!-- //icon partnership link  -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
 <script src="{{ asset(mix('assets/vendor/libs/jquery/jquery.js')) }}"></script>
 <script src="{{ asset(mix('assets/vendor/libs/popper/popper.js')) }}"></script>
 <script src="{{ asset(mix('assets/vendor/js/bootstrap.js')) }}"></script>
