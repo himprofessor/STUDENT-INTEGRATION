@@ -104,6 +104,17 @@ Route::middleware('auth')->group(function () use ($controller_path) {
     Route::get('/search', $controller_path . '\curriculum\CurriculumController@search')->name('curriculum.search');
   });
 
+  //route impact
+  Route::prefix('impact')->group(function() use ($controller_path) {
+    Route::get('/', $controller_path . '\impact\ImpactController@index')->name('impact');
+    Route::get('/create', $controller_path . '\impact\ImpactController@create')->name('impact');
+    Route::post('/store', $controller_path . '\impact\ImpactController@store')->name('impact.store');
+    Route::get('/edit/{id}', $controller_path . '\impact\ImpactController@edit')->name('impact');
+    Route::put('/edit/{id}', $controller_path . '\impact\ImpactController@update')->name('impact.update');
+    Route::delete('/delete/{id}', $controller_path . '\impact\ImpactController@destroy')->name('impact.destroy');
+    Route::get('/search', $controller_path . '\impact\ImpactController@search')->name('impact.search');
+  });
+
   //Route term, course and subject
   Route::prefix('term&subject/')->group(function () use ($controller_path) {
     // term
@@ -137,7 +148,6 @@ Route::middleware('auth')->group(function () use ($controller_path) {
       Route::get('/search', $controller_path . '\term_subject\CourseController@search')->name('course.search');
     });
   });
-
   // Route Internships Program 
   Route::prefix('internships-program')->group(function () use ($controller_path) {
     Route::get('/', $controller_path . '\internships\InternshipController@index')->name('internships-program');
