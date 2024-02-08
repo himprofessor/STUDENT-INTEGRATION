@@ -80,6 +80,12 @@
       "name": "Internships-Program",
       "icon": "menu-icon tf-icons bx bx-briefcase-alt-2",
       "slug": "internships-program"
+    },
+    {
+      "url": "/disciplines-home",
+      "name": "Disciplines",
+      "icon": "menu-icon tf-icons bx bx-book-reader",
+      "slug": "disciplines-home"
     }
   ]
 }
