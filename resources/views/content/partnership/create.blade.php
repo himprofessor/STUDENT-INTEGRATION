@@ -103,10 +103,9 @@
     $(document).ready(function() {
         $('#basic-default-fullname, #upload').on('input change', function() {
             $('#partnership-name-error').hide();
-            // $('#partnership-icon-error').hide();
             $('#image-error').hide();
-
             $(this).removeClass('is-invalid');
+            $(this).next('.text-danger').hide();
         });
     });
 </script>

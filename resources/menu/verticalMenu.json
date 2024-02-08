@@ -90,7 +90,7 @@
     {
       "url": "/partnership",
       "name": "Partnership",
-      "icon": "menu-icon tf-icons bx bx-badge",
+      "icon": "menu-icon far fa-handshake",
       "slug": "partnership"
     }
 
