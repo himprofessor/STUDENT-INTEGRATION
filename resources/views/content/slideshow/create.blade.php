@@ -61,9 +61,8 @@
         });
 </script>
 @endsection
-
 <script>
-    // <!-- Javascript Validate slideshow -->
+    // Javascript Validate career 
     $(document).ready(function() {
         $('#basic-default-fullname, #upload').on('input change', function() {
             $('#heading-error').hide();
@@ -71,8 +70,7 @@
         });
     });
 
-    // <!-- Javascript crop image slideshow -->
-
+    // Javascript crop image career 
     $(document).ready(function() {
         let cropper;
         let originalImageSrc;
@@ -138,4 +136,5 @@
             $('#upload').val('');
         });
     });
+
 </script>

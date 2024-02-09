@@ -43,10 +43,8 @@ class Career extends Model
             );
         }
 
-        $data = $request->only(
-            'title',
-            'description',
-        );
+        $data = $request->only('title','description');
+        
         if ($id) {
             $media_id = self::find($id)->media_id;
             if ($request->hasFile('image')) {
