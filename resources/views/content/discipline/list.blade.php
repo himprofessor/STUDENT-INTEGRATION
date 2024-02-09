@@ -1,6 +1,6 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'term List - UI elements')
+@section('title', 'discipline List - UI elements')
 
 @section('vendor-script')
 <script src="{{ asset('assets/vendor/libs/masonry/masonry.js') }}"></script>
@@ -9,19 +9,19 @@
 @section('content')
 <div class="card mb-4">
     <div class="card-header">
-        <h5 class="fw-bold mb-0">Term List</h5>
+        <h5 class="fw-bold mb-0">Discipline List</h5>
     </div>
     <div class="card-body">
         <div class="d-flex justify-content-between">
             <!-- create  -->
-            <form action="{{ route('term.store') }}" method="post" class="col-md-5">
+            <form action="{{ route('disciplines.store') }}" method="post" class="col-md-5" enctype="multipart/form-data">
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="text" placeholder="Input term name" name="term_name" id="term" class="form-control @error('term_name') is-invalid @enderror" value="{{ old('term_name', $term->term_name ?? '') }}">
+                    <input type="file" name="file" id="upload" class="form-control @error('file') is-invalid @enderror">
                     <button type="submit" class="btn" style="background-color: #009DE1; color:white">Add</button>
-                    <a href="{{ url('term&subject/term') }}" class="btn" style="background: rgb(154, 154, 154); color:white">Cancel</a>
+                    <a href="{{ url('disciplines-home') }}" class="btn" style="background: rgb(154, 154, 154); color:white">Cancel</a>
                 </div>
-                @error('term_name')
+                @error('file')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </form>
@@ -35,13 +35,13 @@
                 </div>
             </form>
         </div>
-        <!-- content table  -->
-        <div class="table-responsive text-nowrap" id="containterm">
-            @include('content.term.table')
+        <!-- content tabe  -->
+        <div class="table-responsive text-nowrap" id="containlist">
+            @include('content.discipline.table')
         </div>
         <div class="d-flex justify-content-between align-items-center mt-3">
-            <p>Total Records: {{ $terms->total() }}</p>
-            {{ $terms->links() }}
+            <p>Total Records: {{ $rules->total() }}</p>
+            {{ $rules->links() }}
         </div>
     </div>
 </div>
@@ -51,15 +51,16 @@
     $(document).ready(function() {
         $('#search').on('keyup', function() {
             $value = $(this).val();
+            // alert($value);
             $.ajax({
                 type: 'get',
-                url: '/term&subject/term/search',
+                url: '/disciplines-home/search',
                 data: {
                     'search': $value
                 },
                 success: function(data) {
                     console.log(data);
-                    $('#containterm').html(data);
+                    $('#containlist').html(data);
                 },
             });
         });

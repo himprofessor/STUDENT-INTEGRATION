@@ -4,6 +4,7 @@ use App\Http\Controllers\api\CareerOpportunityController;
 use App\Http\Controllers\api\CurriculumController;
 use App\Http\Controllers\api\department_staff\DepartmentController;
 use App\Http\Controllers\api\department_staff\StaffController;
+use App\Http\Controllers\api\DisciplineController;
 use App\Http\Controllers\api\ImpactController;
 use App\Http\Controllers\api\InternshipController;
 use App\Http\Controllers\api\PartnershipController;
@@ -78,6 +79,10 @@ Route::prefix('internship')->group(function () {
   Route::get('/list', [InternshipController::class, 'index']);
 });
 
+// file rules 
+Route::prefix('rules')->group(function () {
+  Route::get('/list', [DisciplineController::class, 'index']);
+});
 //partnership
 Route::prefix('partnership')->group(function() {
   Route::get('/list', [PartnershipController::class, 'index']);

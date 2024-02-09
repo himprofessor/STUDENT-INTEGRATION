@@ -55,7 +55,7 @@
 
     // Hide Validation text-danger
     $(document).ready(function() {
-        $('#basic-default-firstname, #basic-default-lastname, #basic-default-email, #basic-default-position, #basic-default-department, #basic-default-start, #basic-default-end, #basic-default-phone').on('input change', function() {
+        $('#basic-default-firstname, #basic-default-lastname, #basic-default-email, #basic-default-position, #basic-default-department, #basic-default-start, #basic-default-end, #basic-default-phone, #upload').on('input file change', function() {
             $(this).removeClass('is-invalid');
             $(this).next('.text-danger').hide();
         });

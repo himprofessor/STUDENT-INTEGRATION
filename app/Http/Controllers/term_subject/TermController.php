@@ -22,10 +22,10 @@ class TermController extends Controller
     return redirect('term&subject/term')->with('success', 'term has been created successfully.');
   }
   public function edit($id)
-{
+  {
     $term = Term::find($id);
     return view('content.term.edit', compact('term'));
-}
+  }
   public function update(Request $request, $id)
   {
     DB::beginTransaction();
@@ -43,8 +43,7 @@ class TermController extends Controller
   }
   public function search(Request $request)
   {
-    $searchterm = Term::where('term_name', 'like', '%' . $request->search . '%')
-      ->paginate(10);
+    $searchterm = Term::where('term_name', 'like', '%' . $request->get('search') . '%')->get();
     if ($request->ajax()) {
       return view('content.term.table', ['terms' => $searchterm])->render();
     } else {
