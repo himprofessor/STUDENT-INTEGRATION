@@ -62,8 +62,6 @@
         });
 </script>
 @endsection
-
-
 <script>
     // <!-- Javascript Validate curriculum -->
     $(document).ready(function() {

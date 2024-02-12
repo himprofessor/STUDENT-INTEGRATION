@@ -47,7 +47,7 @@ class Curriculum extends Model
         if ($id) {
             $media_id = self::find($id)->media_id;
             if ($request->hasFile('image')) {
-                $media = Media::store($request, $media_id);
+                $media = Media::croppImage($request, $media_id);
                 $data['media_id'] = $media_id;
             }
             $existingUser = self::find($id);
@@ -55,7 +55,7 @@ class Curriculum extends Model
             $data = $existingUser;
         } else {
             if ($request->hasFile('image')) {
-                $media = Media::store($request);
+                $media = Media::croppImage($request);
                 $data['media_id'] = $media->id;
                 $data['image'] = $media->image;
             }

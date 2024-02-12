@@ -36,15 +36,15 @@ class Slideshow extends Model
         if ($id) {
             $media_id = self::find($id)->media_id;
             if ($request->hasFile('image')) {
-                $media = Media::store($request, $media_id);
+                $media = Media::croppImage($request, $media_id);
                 $data['media_id'] = $media_id;
             }
-            $existingUser = self::find($id);
-            $existingUser->update($data);
-            $data = $existingUser;
+            $existingSlideshow = self::find($id);
+            $existingSlideshow->update($data);
+            $data = $existingSlideshow;
         } else {
             if ($request->hasFile('image')) {
-                $media = Media::store($request);
+                $media = Media::croppImage($request);
                 $data['media_id'] = $media->id;
                 $data['image'] = $media->image;
             }
