@@ -32,7 +32,6 @@
     <div class="col-xl">
         <div class="card mb-4">
             <div class="card-body">
-            <h3 class="fw-bold text-center ">Create Department</h3>
                 <form method="POST" action="{{ route('department.store') }}" enctype="multipart/form-data">
                     @csrf
                     @include('content.department.form')

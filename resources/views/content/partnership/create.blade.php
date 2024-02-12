@@ -25,7 +25,6 @@
     <div class="col-xl">
         <div class="card mb-4">
             <div class="card-body">
-                <h3 class="fw-bold text-center ">Create Partnership</h3>
                 <form method="POST" action="{{ route('partnership.store') }}" enctype="multipart/form-data">
                     @csrf
                     @include('content.partnership.form')

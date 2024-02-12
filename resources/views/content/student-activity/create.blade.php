@@ -56,7 +56,7 @@
 
     // Hide Validation text-danger
     $(document).ready(function() {
-        $('#basic-default-title, #basic-default-user, #basic-default-image').on('input change', function() {
+        $('#basic-default-title,#upload').on('input file change', function() {
             $(this).removeClass('is-invalid');
             $(this).next('.text-danger').hide();
         });

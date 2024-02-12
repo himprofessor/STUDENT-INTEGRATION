@@ -29,7 +29,7 @@
         <tr>
             <td>{{ $rowNumber }}</td>
             <td>
-                <img src="{{ asset('storage/' .$slideshow->media->image) }}" class="equal-image" alt="Slideshow Image" width="200" height="100">
+                <img src="{{ asset('storage/' .$slideshow->media->image) }}" class="equal-image" alt="Slideshow Image" width="150" height="90">
             </td>
             <td class="text-wrap">{{ $slideshow->heading }}</td>
             <td class="text-wrap">{!!($slideshow->description)!!}</td>

@@ -13,10 +13,10 @@
             <i class="bx bx-upload d-block d-sm-none"></i>
         </label>
         <input type="file" class="form-control @error('image') is-invalid @enderror" id="upload" name="image[]" multiple onchange="previewImages(event)" hidden />
+        @error('image')
+        <div class="text-danger">{{ $message }}</div>
+        @enderror
     </div>
-    @error('image')
-    <div class="text-danger">{{ $message }}</div>
-    @enderror
 </div>
 <div class="mb-3">
     <strong>Title <span class="text-danger">*</span></strong>

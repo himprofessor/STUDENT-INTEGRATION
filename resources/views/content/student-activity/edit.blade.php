@@ -1,6 +1,8 @@
 @extends('layouts/contentNavbarLayout')
 
 @section('title', 'Cards basic - UI elements')
+<!-- Hide validation  -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- CKEditor  -->
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
@@ -52,6 +54,13 @@
             console.log(error);
         });
 
+    // Hide Validation text-danger
+    $(document).ready(function() {
+        $('#basic-default-title,#upload').on('input file change', function() {
+            $(this).removeClass('is-invalid');
+            $(this).next('.text-danger').hide();
+        });
+    });
     // PreviewImage edit
     function previewImages(event) {
         let previewContainer = document.getElementById('preview-container');

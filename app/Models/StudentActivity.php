@@ -23,10 +23,14 @@ class StudentActivity extends Model
         if ($id) {
             $validatedData = $request->validate(
                 [
+                    'image'   => 'array|min:1|max:5',
+                    'image.*' => 'image|mimes:jpeg,png,jpg|max:2048',
                     'title' => 'required|min:1|max:100',
                 ],
                 [
-                    'title.required' => 'Please input title',
+                    'image.required' => 'Please upload at least one image',
+                    'image.max'      => 'This image must not be more than 5 images',
+                    'title'          => 'Please input title',
                 ]
             );
         } else {
