@@ -25,11 +25,13 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 @section('content')
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h5 class="fw-bold">Impact Create</h5>
+</div>
 <div class="row row-2">
     <div class="col-xl">
         <div class="card mb-4">
             <div class="card-body">
-                <h3 class="fw-bold text-center ">Create Impact</h3>
                 <form method="POST" action="{{ route('impact.store') }}" enctype="multipart/form-data">
                     @csrf
                     @include('content.impact.form')

@@ -8,7 +8,7 @@
     // Fade out the success message after 5 seconds
     setTimeout(function() {
         document.getElementById('success-message').style.display = 'none';
-    }, 800);
+    }, 1000);
 </script>
 
 <table class="table table-striped">
@@ -29,7 +29,7 @@
         <tr>
             <td>{{ $rowNumber }}</td>
             <td>
-                <img src="{{ asset('storage/' .$career->media->image) }}" class="equal-image" alt="career Image" width="200" height="100">
+                <img src="{{ asset('storage/' .$career->media->image) }}" class="equal-image" alt="career Image" width="150" height="90">
             </td>
             <td class="text-wrap">{{ $career->title }}</td>
             <td class="text-wrap">{!!($career->description)!!}</td>

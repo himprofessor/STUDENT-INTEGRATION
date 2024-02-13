@@ -15,8 +15,8 @@
     <thead>
         <tr>
             <th>N.o</th>
-            <th>partnership_icon</th>
-            <th>Partnership_name</th>
+            <th>Logo</th>
+            <th>Name</th>
             <th>Address</th>
             <th>Website</th>
             <th>Actions</th>
@@ -31,12 +31,14 @@
             <td>{{ $rowNumber }}</td> 
             <td>
                 @if ($partnership->media)
-                <img src="{{ asset('storage/' .$partnership->media->image) }}" class="rounded-circle" alt="partnership-icon" width="100" height="100">
+                <img src="{{ asset('storage/' .$partnership->media->image) }}" class="rounded-md" alt="partnership-icon" width="70" height="50">
                 @endif
             </td>
             <td class="text-wrap">{{ $partnership->partnership_name }}</td>
             <td class="text-wrap">{{ $partnership->address }}</td>
-            <td class="text-wrap">{{ $partnership->website}}</td>
+            <td style="cursor: pointer;">
+                <a href="{{ $partnership->website }}">Link</a>
+            </td>
             <td>
                 <a href="{{ url('partnership/edit', $partnership->id) }}" class="btn btn-sm" style="background-color: #009DE1; color:white">
                     <i class="bx bx-edit-alt me-2"></i> Edit
