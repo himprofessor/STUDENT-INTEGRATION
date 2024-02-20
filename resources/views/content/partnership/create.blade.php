@@ -1,11 +1,9 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'Cards basic - UI elements')
+@section('title', 'Partnership basic - UI elements')
 
 <!-- Hide validation  -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- CKEditor  -->
-<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
 @section('vendor-script')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css">
@@ -21,14 +19,14 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h5 class="fw-bold">Partnership Create</h5>
 </div>
-<div class="row">
+<div class="row row-2">
     <div class="col-xl">
-        <div class="card mb-4">
+        <div class="card">
             <div class="card-body">
                 <form method="POST" action="{{ route('partnership.store') }}" enctype="multipart/form-data">
                     @csrf
                     @include('content.partnership.form')
-                    <a href="{{ url('partnership') }}" class="btn btn-secondary me-1">Cancel</a>
+                    <a href="{{ url('partnership') }}" class="btn btn-secondary">Cancel</a>
                     <button type="submit" class="btn" style="background-color: #009DE1; color:white">Submit</button>
                 </form>
             </div>
@@ -44,13 +42,14 @@
             viewport: {
                 width: 150,
                 height: 150,
-                type: 'circle'
+                type: 'square'
             },
             boundary: {
                 width: 200,
                 height: 200
             },
         });
+
         // Handle file input change
         $('#upload').on('change', function() {
             console.log(1);
@@ -89,6 +88,7 @@
                 document.getElementById('img').style.display = 'block';
             });
         });
+
         // Close modal event
         $('#crop-modal').on('hidden.bs.modal', function() {
             // Clear the file input to allow reselection of the same file
@@ -97,14 +97,3 @@
     });
 </script>
 @endsection
-<!-- Javascript Validate department -->
-<script>
-    $(document).ready(function() {
-        $('#basic-default-fullname, #upload').on('input change', function() {
-            $('#partnership-name-error').hide();
-            $('#image-error').hide();
-            $(this).removeClass('is-invalid');
-            $(this).next('.text-danger').hide();
-        });
-    });
-</script>
