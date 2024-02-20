@@ -7,7 +7,6 @@
                     <div class="img" id="img">
                         <img src="{{ old('image', $partnership->media->image ?? '') ? asset('storage/' . old('image', $partnership->media->image ?? '')) : asset('assets/img/avatars/1.png') }}" class="d-block rounded" height="100" width="100" id="uploadedAvatar" style="cursor: pointer;" />
                         <input type="file" name="image" id="upload" class="account-file-input @error('image') is-invalid @enderror" hidden accept="image/png, image/jpeg" />
-                        
                         @error('image')
                         <div class="text-danger text-center">{{ $message }}</div>
                         @enderror
@@ -15,7 +14,6 @@
                 </label>
             </div>
         </div>
-      
         <!-- Hidden input to store cropped image data -->
         <input type="hidden" id="cropped-image" name="cropped_image">
 
