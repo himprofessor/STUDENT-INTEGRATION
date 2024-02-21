@@ -33,7 +33,6 @@
   @enderror
 </div>
 
-
 <div class="mb-3">
   <strong>Address<span class="text-danger">*</span></strong>
   <!-- // Message error when haven't enter the partnership name(Validate partnership name )-->

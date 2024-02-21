@@ -31,13 +31,17 @@
             <td>{{ $rowNumber }}</td> 
             <td>
                 @if ($partnership->media)
-                <img src="{{ asset('storage/' .$partnership->media->image) }}" class="rounded-md" alt="partnership-icon" width="70" height="50">
+                <img src="{{ asset('storage/' . $partnership->media->image) }}" class="rounded-md" alt="partnership-icon" width="70" height="50">
                 @endif
             </td>
             <td class="text-wrap">{{ $partnership->partnership_name }}</td>
             <td class="text-wrap">{{ $partnership->address }}</td>
             <td style="cursor: pointer;">
+                @if($partnership->website)
                 <a href="{{ $partnership->website }}">Link</a>
+                @else 
+                <p class="{{ $partnership->website }}"></p>
+                @endif
             </td>
             <td>
                 <a href="{{ url('partnership/edit', $partnership->id) }}" class="btn btn-sm" style="background-color: #009DE1; color:white">
