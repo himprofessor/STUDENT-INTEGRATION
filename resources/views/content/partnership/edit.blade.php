@@ -60,14 +60,14 @@
             viewport: {
                 width: 150,
                 height: 150,
-                type: 'circle'
+                type: 'square'
             },
             boundary: {
                 width: 200,
                 height: 200
             },
         });
-
+        
         // Handle file input change
         $('#upload').on('change', function() {
             console.log(1);

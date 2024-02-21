@@ -35,6 +35,14 @@
 </div>
 
 <script>
+    // Hide Validation text-danger
+    $(document).ready(function() {
+        $('#basic-default-fullname, #upload').on('input file change', function() {
+            $(this).removeClass('is-invalid');
+            $(this).next('.text-danger').hide();
+        });
+    });
+   
     // Crop Image of partnership
     $(document).ready(function() {
         // Initialize Croppie
