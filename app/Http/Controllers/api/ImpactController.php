@@ -14,5 +14,4 @@ class ImpactController extends Controller
         $data = ImpactResources::collection($data);
         return $this->ok($data);
     }
-    
 }

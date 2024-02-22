@@ -18,7 +18,6 @@
                     <div class="app-brand justify-content-center">
                         <a href="{{url('/')}}" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">@include('_partials.macros',["width"=>25,"withbg"=>'#696cff'])</span>
-                            <!-- <span class="app-brand-text demo text-body fw-bolder"></span> -->
                         </a>
                     </div>
                     <!-- /Logo -->
@@ -45,25 +44,13 @@
                                 @enderror
                             </div>
                         </div>
-                        <!-- <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="remember-me" name="remember">
-                                <label class="form-check-label" for="remember-me">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div> -->
-                        
                         <div class="mb-3">
                             <button class="btn d-grid w-100" style="background-color: #009DE1; color:white" type="submit">Sign in</button>
                         </div>
                     </form>
-                    
-                    
                 </div>
             </div>
         </div>
-        <!-- /Register -->
     </div>
 </div>
 </div>

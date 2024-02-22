@@ -17,7 +17,7 @@
                 <!-- search button -->
                 <div class="col-md-6">
                     <div class="input-group">
-                        <input type="text" name="search" id="search" class="form-control border border-1" placeholder="search by course name">
+                        <input type="text" name="search" id="search" class="form-control border border-1" placeholder="search by subject name">
                         <button type="submit" class="btn" style="background-color: #009DE1; color: white">
                             <i class="bx bx-search"></i> Search
                         </button>

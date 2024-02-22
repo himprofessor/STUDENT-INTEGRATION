@@ -126,6 +126,6 @@ class Media extends Model
     // one partnership has one media image 
     public function partnership(): HasOne
     {
-    return $this->hasOne(Partnership::class, 'media_id', 'id');
+        return $this->hasOne(Partnership::class, 'media_id', 'id');
     }
 }

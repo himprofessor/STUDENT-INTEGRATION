@@ -48,7 +48,6 @@
     $(document).ready(function() {
         $('#search').on('keyup', function() {
             $value = $(this).val();
-            // alert($value);
             $.ajax({
                 type: 'get',
                 url: '/department&staff/staff/search',
