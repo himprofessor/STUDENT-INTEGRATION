@@ -44,6 +44,25 @@ class Partnership extends Model
         }
         $data = $request->only('partnership_name','address','website');
 
+        // if ($id) {
+        //     $media_id = self::find($id)->media_id;
+        //     if ($request->hasFile('image')) {
+        //         $media = Media::croppImage($request, $media_id);
+        //         $data['media_id'] = $media_id;
+        //     }
+        //     $existingUser = self::find($id);
+        //     $existingUser->update($data);
+        //     $data = $existingUser;
+        // } else {
+        //     if ($request->hasFile('image')) {
+        //         $media = Media::croppImage($request);
+        //         $data['media_id'] = $media->id;
+        //         $data['image'] = $media->image;
+        //     }
+        //     $data = self::create($data);
+        // }
+        // return $data;
+
         if ($id) {
             $media_id = self::find($id)->media_id;
             if ($request->hasFile('image')) {

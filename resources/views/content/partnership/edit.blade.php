@@ -3,6 +3,9 @@
 @section('title', 'Partnership basic - UI elements')
 <!-- CKEditor  -->
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<!-- //crop -->
+<script src="https://unpkg.com/cropperjs/dist/cropper.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.css">
 
 @section('vendor-script')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css">
@@ -35,79 +38,79 @@
         </div>
     </div>
 </div>
+
 <script>
-    // CKEditor
-    ClassicEditor
-        .create(document.querySelector('#editor'), {
-            toolbar: [
-                'heading',
-                '|',
-                'bold',
-                'italic',
-                'link',
-                'bulletedList',
-                'numberedList'
-            ],
-        })
-        .catch(error => {
-            console.log(error);
+    // Hide Validation text-danger
+    $(document).ready(function() {
+        $('#basic-default-fullname, #upload').on('input file change', function() {
+            $(this).removeClass('is-invalid');
+            $(this).next('.text-danger').hide();
+        });
     });
 
-    // Crop Image of partnership
+    // <!-- Javascript crop image partnership -->
     $(document).ready(function() {
-        // Initialize Croppie
-        var croppie = new Croppie(document.getElementById('croppie-container'), {
-            viewport: {
-                width: 150,
-                height: 150,
-                type: 'square'
-            },
-            boundary: {
-                width: 200,
-                height: 200
-            },
-        });
-        
-        // Handle file input change
+        let cropper;
+        let originalImageSrc;
+
         $('#upload').on('change', function() {
-            console.log(1);
-            var input = this;
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    // Bind image to Croppie
-                    croppie.bind({
-                        url: e.target.result
-                    });
-                    // Open cropping modal
-                    $('#crop-modal').modal('show');
-                };
-                reader.readAsDataURL(input.files[0]);
-                document.getElementById('img').style.display = 'none'
-                document.getElementById('croppie-container').style.display = 'block';
-                document.getElementById('crop-button').style.display = 'block';
-            }
+            $('#uploadedAvatar').hide();
+            $('#cropForm').show();
+            let input = this;
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                $('#cropPreview').attr('src', e.target.result);
+
+                // Initialize Cropper.js
+                cropper = new Cropper($('#cropPreview')[0], {
+                    viewport: {
+                        width: 400,
+                        height: 400,
+                        type: 'square'
+
+                    },
+                    boundary: {
+                        width: 500,
+                        height: 500
+                    },
+                    showZoomer: false,
+                    enableResize: true,
+                    enableOrientation: true,
+                    mouseWheelZoom: 'ctrl'
+                });
+
+                $('#cropButton').on('click', function() {
+                    let canvas = cropper.getCroppedCanvas(); // Get the cropped canvas
+                    let croppedImage = canvas.toDataURL(); // Convert canvas to base64 data URL
+
+                    // Set the cropped image as the source for the original image
+                    $('#uploadedAvatar').attr('src', croppedImage);
+                    $('#uploadedAvatar').show();
+                    $('#cropForm').hide(); // Hide the crop form
+
+                    // Set the cropped image data to the hidden input field
+                    $('#croppedImage').val(croppedImage);
+                });
+            };
+            reader.readAsDataURL(input.files[0]);
         });
 
-        // Handle crop button click
-        $('#crop-button').on('click', function() {
-            // Get cropped image data
-            croppie.result('base64').then(function(base64) {
-                // Set the value of the hidden input
-                $('#cropped-image').val(base64);
+        $('.account-image-reset').on('click', function() {
+            cropper.destroy(); // Destroy the existing cropper instance
+            $('#uploadedAvatar').attr('src', originalImageSrc); // Restore the original image
+            $('#uploadedAvatar').show();
+            $('#cropForm').hide();
+            $('#upload').val(''); // Clear the file input
 
-                // You can also display the cropped image if needed
-                $('#uploadedAvatar').attr('src', base64);
-
-                // Close the cropping modal
-                $('#crop-modal').modal('hide');
-                document.getElementById('croppie-container').style.display = 'none';
-                document.getElementById('crop-button').style.display = 'none';
-                document.getElementById('img').style.display = 'block';
-            });
+            // Clear the cropped image data from the hidden input field
+            $('#croppedImage').val('');
         });
 
-        // Close modal event
+        $('#crop-modal').on('show.bs.modal', function() {
+            // Store the original image source
+            originalImageSrc = $('#uploadedAvatar').attr('src');
+        });
+
         $('#crop-modal').on('hidden.bs.modal', function() {
             // Clear the file input to allow reselection of the same file
             $('#upload').val('');
@@ -115,13 +118,4 @@
     });
 </script>
 @endsection
-<!-- Javascript Validate partnership -->
-<script>
-    $(document).ready(function() {
-        $('#basic-default-fullname, #upload').on('input change', function() {
-            $('#partnership-name-error').hide();
-            $('#partnership-icon-error').hide();
-            $(this).removeClass('is-invalid');
-        });
-    });
-</script>
+
