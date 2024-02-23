@@ -24,8 +24,9 @@
 ```
 8. php artisan db:seed
 ```
+###Create storage file to store images
 ```
-9. php artisan storage:link (create storage file to store file images)
+9. php artisan storage:link
 ```
 ```
 10. php artisan serve
