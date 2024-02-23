@@ -1,3 +1,5 @@
+Step after clone this porject 
+
 1. composer install or composer i
 2. copy .env.example file to the .env file
 3. config database name in file .env
