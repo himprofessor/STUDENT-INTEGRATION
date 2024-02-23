@@ -1,4 +1,4 @@
-Step after clone this porject 
+To set up STUDENT-INTERGRATION-BACKEN 
 
 1. composer install or composer i
 2. copy .env.example file to the .env file
