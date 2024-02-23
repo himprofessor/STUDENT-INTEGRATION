@@ -36,7 +36,7 @@
                     {{$staff->last_name}}
                 </td>
                 <td class="hover-row" data-bs-toggle="modal" data-bs-target="#confirmView{{ $staff->id }}" style="cursor: pointer;" title="view detail">
-                    {{$staff->email}}
+                    {!! Str::limit($staff->email, 35, '...') !!}
                 </td>
             </div>
             <td>

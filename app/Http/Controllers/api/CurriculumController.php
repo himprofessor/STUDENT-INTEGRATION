@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 
 class CurriculumController extends Controller
 {
-    public function index()
-    {
-      $data = Curriculum::list();
-      $data = CurriculumResources::collection($data);
-      return $this->ok($data);
-    }
+  public function index()
+  {
+    $data = Curriculum::list();
+    $data = CurriculumResources::collection($data);
+    return $this->ok($data);
+  }
 }

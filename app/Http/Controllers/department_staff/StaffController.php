@@ -47,7 +47,6 @@ class StaffController extends Controller
     public function destroy($id)
     {
         DB::beginTransaction();
-        //find staff by id and delete
         $staffs = Staff::find($id);
         if ($staffs->media) {
             $staffs->media->delete();
